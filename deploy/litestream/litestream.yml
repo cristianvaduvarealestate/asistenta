@@ -1,0 +1,21 @@
+# ==============================================================================
+# LITESTREAM CONFIGURATION — OFF-SITE SQLITE STREAMING REPLICATION
+# ==============================================================================
+# Litestream monitorizează fișierele WAL SQLite și transmite fiecare tranzacție
+# pe un bucket compatibil S3 (Cloudflare R2, Backblaze B2, AWS S3).
+# RPO (Recovery Point Objective): sub 1 secundă.
+# ==============================================================================
+
+dbs:
+  - path: /var/lib/insurance-helpdesk/helpdesk.sqlite
+    replicas:
+      # Exemplu: Cloudflare R2 (Recomandat: zero costuri la descărcare/egress)
+      - type: s3
+        bucket: helpdesk-backups
+        path: sqlite
+        endpoint: https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com
+        access-key-id: ${LITESTREAM_ACCESS_KEY_ID}
+        secret-access-key: ${LITESTREAM_SECRET_ACCESS_KEY}
+        retention: 720h # Păstrează istoricul 30 de zile
+        sync-interval: 1s
+        validation-interval: 1h

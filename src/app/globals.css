@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #08090B;
+}
+
+body {
+  @apply bg-[#08090B] text-[#F5F6F7] antialiased selection:bg-[#4779B8]/35 selection:text-white;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom subtle dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08090B;
+}
+::-webkit-scrollbar-thumb {
+  background: #22262D;
+  border-radius: 9999px;
+  border: 2px solid #08090B;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A404A;
+}
+
+:focus-visible {
+  outline: 2px solid #4779B8;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:border focus:border-[#22262D] focus:bg-[#101216] focus:px-4 focus:py-2 focus:text-sm focus:text-white focus:shadow-2xl;
+}
