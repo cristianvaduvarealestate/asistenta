@@ -15,6 +15,8 @@ import {
   FileWarning,
 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 interface Props {
   params: { slug: string };
 }
@@ -30,8 +32,11 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!scenario) return { title: "Scenariu inexistent" };
 
   return {
-    title: `${scenario.title} — Simulare Educațională & Scenariu de Daună`,
+    title: `${scenario.title} | Scenarii de daune`,
     description: scenario.shortSummary,
+    alternates: {
+      canonical: `${SITE.publicUrl}/afaceri/scenarii-daune/${scenario.slug}`,
+    },
   };
 }
 

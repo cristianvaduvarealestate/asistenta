@@ -11,13 +11,13 @@ export const HELP_CARDS: HelpCard[] = [
   {
     id: "oferta",
     title: "Vreau o ofertă",
-    description: "Spune-mi ce vrei să asiguri și discutăm despre variantele potrivite.",
+    description: "Identificăm împreună opțiunile potrivite din oferta de protecție Generali.",
     icon: "file",
   },
   {
     id: "aminteste",
     title: "Amintește-mi",
-    description: "Nu uita de expirarea RCA-ului, CASCO, locuinței sau altor polițe.",
+    description: "Lasă datele scadenței poliței și te contactez personal pentru a discuta reînnoirea.",
     icon: "bell",
   },
   {
@@ -28,20 +28,20 @@ export const HELP_CARDS: HelpCard[] = [
   },
   {
     id: "acoperire",
-    title: "Este asigurat?",
-    description: "Descrie situația și află ce trebuie verificat în polița ta.",
+    title: "Sunt asigurat?",
+    description: "Descrie situația și află ce aspecte trebuie verificate în polița ta.",
     icon: "search",
   },
   {
     id: "nevoi",
     title: "Ce ar trebui să asigur?",
-    description: "Identificăm împreună bunurile, activitățile și riscurile care merită protejate.",
+    description: "Identificăm bunurile, activitățile și prioritățile de protecție pentru tine sau firmă.",
     icon: "scan",
   },
   {
     id: "dauna",
     title: "Am o daună",
-    description: "Spune-mi ce s-a întâmplat și ce trebuie să fac.",
+    description: "Spune-mi ce s-a întâmplat și te îndrum privind pregătirea dosarului de daună.",
     icon: "alert",
   },
 ];
@@ -100,15 +100,16 @@ export const NEEDS_PF = [
 ];
 
 export const NEEDS_PJ = [
-  "Activitate",
-  "Clădiri",
-  "Spații închiriate",
-  "Vehicule",
-  "Echipamente",
-  "Utilaje",
-  "Stocuri",
-  "Angajați",
-  "Răspundere civilă",
-  "Răspundere profesională",
-  "Riscuri operaționale",
+  "Sediu, depozit, clădiri",
+  "Echipamente, utilaje, calculatoare",
+  "Stocuri de marfă și materii prime",
+  "Autoutilitare și flotă auto",
+  "Răspundere civilă față de terți",
+  "Răspundere profesională (E&O)",
+  "Sănătate și accidente pentru angajați",
+  "Întreruperea activității (Business Interruption)",
+  "Risc cibernetic (Cyber)",
+  "Transport marfă (CMR / Cargo)",
+  "Răspunderea administratorilor (D&O)",
+  "Alt domeniu specific",
 ];

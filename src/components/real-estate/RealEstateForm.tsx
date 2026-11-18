@@ -418,10 +418,15 @@ export function RealEstateForm() {
                   >
                     <option value="">Alege modalitatea</option>
                     <option value="Fonduri proprii (cash)">Fonduri proprii (cash)</option>
-                    <option value="Credit ipotecar / investiții">Credit ipotecar / bancar</option>
+                    <option value="Credit ipotecar / bancar">Credit ipotecar / bancar</option>
                     <option value="Mixt (avans cash + credit)">Mixt (avans + credit)</option>
-                    <option value="Doresc și consultanță creditare">Doresc consultanță creditare</option>
+                    <option value="Doresc și consultanță creditare">Doresc consultanță creditare (Smart Credit România)</option>
                   </select>
+                  {form.financingMethod.includes("creditare") && (
+                    <p className="mt-2 text-xs leading-relaxed text-[#9299A3]">
+                      Pentru solicitările privind creditele și finanțarea, colaborez cu Smart Credit România. În funcție de situație, solicitarea poate fi preluată și analizată împreună cu partenerul specializat.
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -592,6 +597,11 @@ export function RealEstateForm() {
                     <option value="Europa (Monaco / Coasta de Azur / Vest)">Europa (Monaco / destinații premium)</option>
                     <option value="Deschis la propuneri calificate">Deschis la oportunități calificate</option>
                   </select>
+                  {form.targetMarket === "Dubai / Emirate" && (
+                    <p className="mt-2 text-xs leading-relaxed text-[#9299A3]">
+                      Pentru proprietăți în Dubai, discutăm inițial obiectivele tale, iar activitățile de intermediere sunt gestionate prin punerea în legătură cu un broker local licențiat în acea jurisdicție.
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-[#F5F6F7]" htmlFor="budgetMax">
@@ -661,6 +671,10 @@ export function RealEstateForm() {
               {(form.budgetMax || form.askingPrice) && ` • Buget/Preț: ${form.budgetMax || form.askingPrice}`}
             </p>
           </div>
+
+          <p className="text-xs text-[#9299A3] leading-relaxed">
+            În serviciile imobiliare, rolul meu este stabilit în funcție de partea care solicită și angajează serviciile mele (cumpărător sau vânzător), obiectivele colaborării fiind clarificate transparent de la început.
+          </p>
 
           {/* PF vs PJ selector */}
           <div>

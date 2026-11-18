@@ -379,9 +379,15 @@ export function HelpDeskApp() {
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400">
                 ✓
               </div>
-              <h3 className="mt-4 text-xl font-bold text-white">Solicitarea ta a fost înregistrată</h3>
+              <h3 className="mt-4 text-xl font-bold text-white">
+                {state.flow === "aminteste"
+                  ? "Solicitarea ta de contact a fost înregistrată"
+                  : "Solicitarea ta a fost transmisă"}
+              </h3>
               <p className="mt-2 text-xs leading-relaxed text-[#C7CBD1] sm:text-sm">
-                Voi analiza datele transmise și te voi contacta în cel mai scurt timp pentru detalii și clarificări.
+                {state.flow === "aminteste"
+                  ? "Am notat scadența poliței tale. Te voi contacta personal pe canalul selectat pentru a analiza opțiunile disponibile de reînnoire."
+                  : "Voi analiza datele transmise și te voi contacta în cel mai scurt timp pentru detalii și clarificări."}
               </p>
               <p className="mt-4 inline-block rounded-lg border border-[#22262D] bg-[#171A20] px-3 py-1 font-mono text-xs text-[#9299A3]">
                 ID referință: {savedId}

@@ -15,6 +15,8 @@ import {
   FileText,
 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 interface Props {
   params: { slug: string };
 }
@@ -30,8 +32,11 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!product) return { title: "Produs inexistent" };
 
   return {
-    title: `${product.name} — Ghid Tehnic Complet de Asigurare`,
+    title: `${product.name} | Ghid polițe comerciale`,
     description: product.shortDesc,
+    alternates: {
+      canonical: `${SITE.publicUrl}/afaceri/ghid-asigurari/${product.slug}`,
+    },
   };
 }
 

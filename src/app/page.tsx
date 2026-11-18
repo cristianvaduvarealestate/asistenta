@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import {
   Shield,
   Home as HomeIcon,
@@ -16,10 +17,39 @@ import {
   Phone,
   MessageSquare,
   Mail,
-  Compass,
-  ArrowUpRight,
 } from "lucide-react";
 import { SITE } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "Consultanță imobiliară și asigurări | Cristian Văduva",
+  description:
+    "Consultanță imobiliară, soluții de protecție prin parteneriatul cu Generali și asistență pentru credite în colaborare cu Smart Credit România. Servicii oferite de Cristian Văduva.",
+  alternates: {
+    canonical: SITE.publicUrl,
+  },
+  openGraph: {
+    title: "Consultanță imobiliară și asigurări | Cristian Văduva",
+    description:
+      "Consultanță imobiliară, soluții de protecție prin parteneriatul cu Generali și asistență pentru credite în colaborare cu Smart Credit România.",
+    url: SITE.publicUrl,
+    type: "website",
+    images: [
+      {
+        url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Cristian Văduva — Consultanță Imobiliară & Partener Generali",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Consultanță imobiliară și asigurări | Cristian Văduva",
+    description:
+      "Consultanță imobiliară, soluții de protecție prin parteneriatul cu Generali și asistență pentru credite în colaborare cu Smart Credit România.",
+    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
+  },
+};
 
 type PageProps = {
   searchParams?: { [key: string]: string | string[] | undefined };
@@ -39,17 +69,17 @@ export default function HomePage({ searchParams }: PageProps) {
   const insuranceFlows = [
     {
       title: "Ofertă nouă",
-      desc: "Primești o propunere comparativă și clară pentru nevoile tale.",
+      desc: "Identificăm soluțiile de protecție potrivite din oferta Generali.",
       icon: FileText,
       href: "/asigurari?ajutor=oferta",
-      badge: "PF & PJ",
+      badge: "Partener Generali",
     },
     {
-      title: "Notificare expirare",
-      desc: "Salvarea scadențelor și notificare din timp înainte de expirare.",
+      title: "Verificare scadență",
+      desc: "Înregistrează scadența poliței, iar eu te voi contacta personal pentru a analiza reînnoirea.",
       icon: Bell,
       href: "/asigurari?ajutor=aminteste",
-      badge: "Programat",
+      badge: "Contact personal",
     },
     {
       title: "Explicare poliță",
@@ -59,8 +89,8 @@ export default function HomePage({ searchParams }: PageProps) {
       badge: "Claritate",
     },
     {
-      title: "Este asigurat?",
-      desc: "Orientare și analiză a condițiilor contractuale pentru clarificarea acoperirii.",
+      title: "Sunt asigurat?",
+      desc: "Orientare și analiză a condițiilor contractuale pentru clarificarea situației tale.",
       icon: ShieldQuestion,
       href: "/asigurari?ajutor=acoperire",
       badge: "Orientare",
@@ -74,10 +104,10 @@ export default function HomePage({ searchParams }: PageProps) {
     },
     {
       title: "Asistență daună",
-      desc: "Ghid pas cu pas și sprijin imediat când se produce un incident.",
+      desc: "Ghid pas cu pas și îndrumare pentru pregătirea dosarului de daună.",
       icon: AlertCircle,
       href: "/asigurari?ajutor=dauna",
-      badge: "Prioritar",
+      badge: "Îndrumare",
     },
   ];
 
@@ -108,7 +138,7 @@ export default function HomePage({ searchParams }: PageProps) {
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#C7CBD1] sm:text-lg">
             Spune-mi ce ai nevoie. Te ajut să înțelegi, să verifici și să găsești soluțiile potrivite,
-            fie că este vorba despre tranzacții imobiliare sau programe complete de asigurare.
+            fie că este vorba despre tranzacții imobiliare sau programe de asigurare prin parteneriatul cu Generali.
           </p>
 
           <p className="mt-2 text-xs font-medium tracking-wide text-[#9299A3]">
@@ -123,14 +153,15 @@ export default function HomePage({ searchParams }: PageProps) {
             {/* Ambient Background Visual using real photo */}
             <div className="relative mb-6 h-56 w-full overflow-hidden rounded-2xl border border-[#22262D]/80 sm:h-64">
               <Image
-                src="/images/cristian/cristian-aix-orig-sny05672.jpg"
+                src="/images/cristian/cristian-aix-sny05672.jpg"
                 alt="Cristian Văduva — Consultanță Imobiliară"
                 fill
-                sizes="(max-width: 1024px) 100vw, 600px"
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 550px"
                 className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#101216] via-[#101216]/40 to-transparent" />
-              
+
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                 <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#08090B]/80 px-3 py-1 text-[11px] font-semibold text-[#F5F6F7] backdrop-blur-md">
                   <HomeIcon className="h-3.5 w-3.5 text-[#4779B8]" />
@@ -160,7 +191,7 @@ export default function HomePage({ searchParams }: PageProps) {
               <ul className="mt-6 space-y-2.5 text-xs text-[#C7CBD1]">
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4779B8]" />
-                  <span>Reprezentarea cumpărătorului și a vânzătorului în tranzacții rezidențiale</span>
+                  <span>Reprezentare dedicată cumpărătorului sau vânzătorului, stabilită la începutul colaborării</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4779B8]" />
@@ -168,7 +199,7 @@ export default function HomePage({ searchParams }: PageProps) {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4779B8]" />
-                  <span>Investiții imobiliare & randamente (inclusiv proiecte off-plan Dubai și AiXLuxury)</span>
+                  <span>Investiții imobiliare & randamente (inclusiv proiecte Dubai prin brokeri licențiați)</span>
                 </li>
               </ul>
             </div>
@@ -189,10 +220,10 @@ export default function HomePage({ searchParams }: PageProps) {
             {/* Ambient Background Visual using real photo */}
             <div className="relative mb-6 h-56 w-full overflow-hidden rounded-2xl border border-[#22262D]/80 sm:h-64">
               <Image
-                src="/images/cristian/cristian-aix-orig-sny01904.jpg"
-                alt="Cristian Văduva — Asistență Asigurări"
+                src="/images/cristian/cristian-aix-sny01904.jpg"
+                alt="Cristian Văduva — Partener Generali Asigurări"
                 fill
-                sizes="(max-width: 1024px) 100vw, 600px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 550px"
                 className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#101216] via-[#101216]/40 to-transparent" />
@@ -203,7 +234,7 @@ export default function HomePage({ searchParams }: PageProps) {
                   <span>Persoane Fizice & Companii</span>
                 </div>
                 <span className="text-[11px] font-medium text-[#C7CBD1] backdrop-blur-xs">
-                  Orientare Imparțială
+                  Partener Generali
                 </span>
               </div>
             </div>
@@ -219,8 +250,8 @@ export default function HomePage({ searchParams }: PageProps) {
                 Am nevoie de ajutor cu o asigurare
               </p>
               <p className="mt-3 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-                Oferte comparative, verificare polițe existente, explicare clauze tehnice și franșize,
-                notificări la expirare, evaluare riscuri și asistență dedicată în caz de daună.
+                Soluții de protecție prin parteneriatul cu Generali, verificare polițe existente, explicare clauze tehnice și franșize,
+                asistență la scadență și îndrumare dedicată în caz de daună.
               </p>
 
               <ul className="mt-6 space-y-2.5 text-xs text-[#C7CBD1]">
@@ -234,7 +265,7 @@ export default function HomePage({ searchParams }: PageProps) {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#C92B35]" />
-                  <span>Ghid complet Protecția Afacerii Tale (22 categorii, 12 industrii, 26 ghiduri)</span>
+                  <span>Ghid complet Protecția Afacerii Tale (22 categorii de risc, 12 domenii economice)</span>
                 </li>
               </ul>
             </div>
@@ -259,11 +290,11 @@ export default function HomePage({ searchParams }: PageProps) {
                 Servicii Directe
               </p>
               <h2 className="mt-1 text-xl font-bold tracking-tight text-[#F5F6F7] sm:text-2xl">
-                Asistență Rapidă în Asigurări
+                Asistență & Îndrumare în Asigurări
               </h2>
             </div>
             <p className="text-xs text-[#9299A3]">
-              Alege opțiunea dorită pentru a accesa direct asistentul dedicat.
+              Alege opțiunea dorită pentru a accesa direct formularul de solicitare.
             </p>
           </div>
 
@@ -322,19 +353,19 @@ export default function HomePage({ searchParams }: PageProps) {
                     Consultanță Directă
                   </span>
                   <h3 className="mt-1.5 text-lg font-bold text-[#F5F6F7]">Cristian Văduva</h3>
-                  <p className="text-xs text-[#9299A3]">Consultant Imobiliare & Asigurări</p>
+                  <p className="text-xs text-[#9299A3]">Consultant Imobiliare & Partener Generali</p>
                 </div>
               </div>
 
               <p className="mt-5 text-xs leading-relaxed text-[#C7CBD1] sm:text-sm">
                 O abordare integrată bazată pe claritate, analiză riguroasă a datelor și respect pentru timpul clienților.
-                Fără promisiuni nerealiste și fără jargon tehnic inutil — asistență directă atât pentru tranzacții imobiliare, cât și pentru protecția completă prin asigurare a familiei sau a companiei tale.
+                Fără promisiuni nerealiste și fără jargon tehnic — asistență directă atât pentru tranzacții imobiliare, cât și pentru soluții de protecție prin parteneriatul cu Generali.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2 text-[11px] text-[#9299A3]">
                 <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Tranzacții Rezidențiale</span>
                 <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Spații Comerciale</span>
-                <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Protecție Afaceri B2B</span>
+                <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Partener Generali</span>
                 <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Investiții Dubai & AiXLuxury</span>
               </div>
             </div>
@@ -388,7 +419,7 @@ export default function HomePage({ searchParams }: PageProps) {
                   <span className="text-[10px] text-[#9299A3]">Ghiduri produse</span>
                 </div>
                 <div className="rounded-xl border border-[#22262D] bg-[#171A20] p-2.5 text-center">
-                  <span className="block text-base font-bold text-[#F5F6F7]">Gratuit</span>
+                  <span className="block text-base font-bold text-[#F5F6F7]">Informativ</span>
                   <span className="text-[10px] text-[#9299A3]">Evaluare riscuri</span>
                 </div>
               </div>
@@ -411,13 +442,13 @@ export default function HomePage({ searchParams }: PageProps) {
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div>
               <span className="rounded-full border border-[#22262D] bg-[#08090B] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#C7CBD1]">
-                Consultanță Privată
+                Consultanță Directă
               </span>
               <h3 className="mt-2 text-2xl font-bold tracking-tight text-[#F5F6F7]">
                 Ai o întrebare sau un proiect specific?
               </h3>
               <p className="mt-1 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-                Fără liste de așteptare sau filtre impersonale. Mă poți contacta direct prin telefon, WhatsApp sau formular.
+                Discutăm concret despre situația ta prin telefon, WhatsApp sau formularul dedicat.
               </p>
             </div>
 

@@ -708,7 +708,7 @@ export default function RiskEvaluationTool() {
                 Continuă cu această evaluare direct în asistent
               </h3>
               <p className="mt-3 text-sm text-slate-300">
-                Toate răspunsurile și vulnerabilitățile identificate mai sus sunt transmise securizat în asistent pentru a primi sfaturi personalizate și cotații comparative de la asigurători.
+                Toate răspunsurile și vulnerabilitățile identificate mai sus sunt transmise securizat în asistent pentru a primi îndrumare personalizată și recomandări adaptate din oferta Generali.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <Link

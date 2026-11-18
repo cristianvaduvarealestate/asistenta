@@ -51,10 +51,10 @@ export type TelegramNotificationInput = {
 };
 
 const FLOW_TITLES: Record<string, string> = {
-  oferta: "📋 SOLICITARE OFERTĂ ASIGURARE",
-  aminteste: "⏰ PROGRAMARE REMINDER POLIȚĂ",
+  oferta: "📋 SOLICITARE OFERTĂ ASIGURARE (GENERALI)",
+  aminteste: "⏰ VERIFICARE SCADENȚĂ POLIȚĂ",
   explica: "🔍 EXPLICARE POLIȚĂ / CLAUZE",
-  acoperire: "🛡️ VERIFICARE ACOPERIRE (ESTE ASIGURAT?)",
+  acoperire: "🛡️ VERIFICARE ACOPERIRE (SUNT ASIGURAT?)",
   nevoi: "🧭 IDENTIFICARE NEVOI ASIGURARE",
   dauna: "⚠️ ASISTENȚĂ DAUNĂ ASIGURARE",
   intrebare: "💬 ÎNTREBARE ASIGURARE",

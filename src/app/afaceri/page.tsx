@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import { SITE } from "@/config/site";
 import { BUSINESS_CATEGORIES } from "@/data/business/categories";
 import { BUSINESS_INDUSTRIES } from "@/data/business/industries";
 import { BUSINESS_PRODUCTS } from "@/data/business/products";
@@ -22,9 +23,34 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Protecția Afacerii Tale — Ghid Complet de Asigurări Comerciale pentru Companii",
+  title: "Protecția Afacerii Tale | Cristian Văduva",
   description:
-    "O afacere înseamnă oameni, investiții, responsabilități și ani de muncă. Descoperă ce riscuri pot afecta compania ta și cum poți construi un program de protecție adaptat activității tale.",
+    "Ghid complet de asigurări comerciale și riscuri pentru companii. Soluții de protecție pentru clădiri, utilaje, flote și răspunderi profesionale.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri`,
+  },
+  openGraph: {
+    title: "Protecția Afacerii Tale | Cristian Văduva",
+    description:
+      "Ghid complet de asigurări comerciale și riscuri pentru companii din România.",
+    url: `${SITE.publicUrl}/afaceri`,
+    type: "website",
+    images: [
+      {
+        url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Protecția Afacerii Tale — Cristian Văduva",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Protecția Afacerii Tale | Cristian Văduva",
+    description:
+      "Ghid complet de asigurări comerciale și riscuri pentru companii din România.",
+    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
+  },
 };
 
 export default function BusinessProtectionHub() {
@@ -409,7 +435,7 @@ export default function BusinessProtectionHub() {
       <div className="mt-20 rounded-3xl bg-gradient-to-b from-[#101216] to-[#08090B] border border-[#22262D] p-8 text-white sm:p-12 shadow-card">
         <div className="max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-widest text-[#C92B35]">
-            Asistență gratuită și independentă
+            Consultanță de specialitate B2B
           </span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#F5F6F7] sm:text-4xl">
             Vrei o evaluare concretă pentru afacerea ta?

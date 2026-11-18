@@ -3,10 +3,15 @@ import { Metadata } from "next";
 import { CLAIM_SCENARIOS } from "@/data/business/scenarios";
 import { ArrowLeft, ArrowRight, AlertTriangle, ShieldCheck } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Biblioteca Scenariilor de Daune Comerciale — Simulări Educaționale & Analiză Didactică",
+  title: "Scenarii de daune comerciale",
   description:
-    "20 de scenarii ilustrative și simulări educaționale de daune pentru companii din România: incendii, avarii de utilaje, atacuri cibernetice, toxiinfecții, erori profesionale, furturi și catastrofe.",
+    "20 de scenarii educative de daune pentru companii din România: incendii, avarii de utilaje, atacuri cibernetice, erori profesionale.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/scenarii-daune`,
+  },
 };
 
 export default function ScenariosIndexPage() {

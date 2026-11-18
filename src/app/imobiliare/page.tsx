@@ -1,32 +1,54 @@
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import { RealEstateForm } from "@/components/real-estate/RealEstateForm";
 import {
-  Home,
   Building2,
-  ExternalLink,
-  ShieldCheck,
-  CheckCircle2,
   Phone,
   ArrowRight,
   Compass,
   FileCheck2,
   Search,
   Key,
+  ShieldCheck,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Asistență Imobiliară | Cristian Văduva — Cumpărare, Vânzare, Închiriere & Investiții",
+  title: "Asistență Imobiliară | Cristian Văduva",
   description:
-    "Fie că vrei să cumperi, să vinzi, să închiriezi sau să investești, te ajut să identifici oportunitățile potrivite și să parcurgi procesul imobiliar cu mai multă claritate. Rezidențial, premium și investiții.",
+    "Consultanță imobiliară dedicată pentru cumpărare, vânzare, închiriere și investiții. Rol profesional clar și suport adaptat intereselor fiecărui client.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/imobiliare`,
+  },
+  openGraph: {
+    title: "Asistență Imobiliară | Cristian Văduva",
+    description:
+      "Consultanță imobiliară dedicată pentru cumpărare, vânzare, închiriere și investiții.",
+    url: `${SITE.publicUrl}/imobiliare`,
+    type: "website",
+    images: [
+      {
+        url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Asistență Imobiliară — Cristian Văduva",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Asistență Imobiliară | Cristian Văduva",
+    description:
+      "Consultanță imobiliară dedicată pentru cumpărare, vânzare, închiriere și investiții.",
+    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
+  },
 };
 
 const MAIN_CARDS = [
   {
     title: "VREAU SĂ CUMPĂR",
     badge: "Achiziții",
-    desc: "Identificăm și analizăm proprietățile potrivite criteriilor și bugetului tău, de la locuințe de familie până la oportunități premium.",
+    desc: "Identificăm și analizăm proprietățile potrivite criteriilor și bugetului tău, de la locuințe de familie până la active comerciale.",
     items: [
       "Apartamente (noi sau existente)",
       "Case și vile rezidențiale",
@@ -76,7 +98,7 @@ const MAIN_CARDS = [
       "Estimarea realistă a veniturilor și cheltuielilor",
       "Analiza randamentului (Yield / ROI) cu ipoteze explicite",
       "Portofolii rezidențiale și active comerciale",
-      "Oportunități locale (România) și internaționale (Dubai, Monaco)",
+      "Oportunități locale și internaționale (Dubai, Monaco prin parteneri licențiați)",
     ],
     cta: "Explorează opțiunile de investiție",
   },
@@ -88,11 +110,11 @@ const SERVICES = [
     title: "REPREZENTAREA CUMPĂRĂTORULUI",
     icon: Search,
     steps: [
-      "Analiza clară a obiectivelor personale sau financiare și a bugetului.",
+      "Analiza clară a obiectivelor personale sau financiare și a bugetului disponibil.",
       "Stabilirea criteriilor esențiale de căutare (zonă, compartimentare, facilități).",
-      "Identificarea proprietăților relevante din piață (inclusiv oferte off-market).",
+      "Identificarea proprietăților relevante din piață (inclusiv oferte din rețeaua profesională).",
       "Analiza comparativă a ofertelor și a alternativelor concurente.",
-      "Negocierea fermă a prețului și a condițiilor contractuale.",
+      "Negocierea fermă a prețului și a condițiilor contractuale în interesul cumpărătorului.",
       "Coordonarea etapelor tranzacției până la semnarea finală la notar.",
       "Îndrumare privind documentația cadastrală, extrasul CF și asistență la verificările notariale.",
     ],
@@ -104,19 +126,19 @@ const SERVICES = [
     steps: [
       "Analiza detaliată a proprietății, a atuurilor și a istoricului din piață.",
       "Stabilirea unei strategii optime de poziționare și preț de lansare.",
-      "Pregătire vizuală, recomandări de amenajare și prezentare impecabilă.",
-      "Fotografie și video profesional realizat cu echipament de înaltă rezoluție.",
-      "Promovare targetată pe portalurile imobiliare și în rețelele partenere.",
+      "Pregătire vizuală, recomandări de amenajare și prezentare profesională.",
+      "Fotografie și video profesional realizat pentru evidențierea calităților spațiului.",
+      "Promovare targetată pe portalurile imobiliare și în rețelele de colaborare.",
       "Filtrarea și calificarea cumpărătorilor serioși pentru a elimina vizionările inutile.",
       "Negociere profesională și asistență pentru procedurile notariale până la încasarea prețului.",
     ],
   },
   {
     letter: "C",
-    title: "CONSULTANȚĂ IMOBILIARĂ INDEPENDENTĂ",
+    title: "CONSULTANȚĂ & ANALIZĂ IMOBILIARĂ",
     icon: Compass,
     steps: [
-      "Analiză comparativă de piață bazată pe tranzacții reale încheiate, nu doar pe prețuri afișate.",
+      "Analiză de piață bazată pe tranzacții reale încheiate, nu doar pe prețuri afișate de promovare.",
       "Analiza obiectivă a punctelor forte și a minusurilor zonale (transport, infrastructură, regim urbanistic).",
       "Evaluarea oportunităților și a potențialului de creștere pe termen mediu.",
       "Analiză financiară a randamentelor din închiriere sau revânzare.",
@@ -126,17 +148,17 @@ const SERVICES = [
   },
   {
     letter: "D",
-    title: "SERVICII CONEXE FACILITATE PRIN PARTENERI",
+    title: "SERVICII FACILITATE PRIN PARTENERI",
     icon: FileCheck2,
     steps: [
-      "Credite și finanțare bancară (consilieri credite ipotecare și de investiții).",
-      "Asigurări pentru locuințe, bunuri și răspundere civilă prin platforma dedicată.",
+      "Credite și finanțare bancară în colaborare cu Smart Credit România.",
+      "Soluții de asigurare pentru locuințe, clădiri și răspunderi civile prin parteneriatul cu Generali România.",
+      "Pentru proprietăți în Dubai: consultanță inițială și punere în legătură cu un broker local licențiat în acea jurisdicție.",
+      "Pentru Monaco: orientare inițială și direcționare către profesioniști autorizați local.",
       "Cadastru, intabulare, certificate energetice și măsurători topografice.",
-      "Consultanță juridică imobiliară și redactare/verificare antecontracte prin avocați parteneri.",
+      "Consultanță juridică imobiliară și verificare antecontracte prin avocați colaboratori.",
       "Birouri notariale partenere pentru finalizarea tranzacției în siguranță.",
       "Evaluatori autorizați ANEVAR pentru credite sau rapoarte financiare.",
-      "Echipe de renovare, finisaje interioare, design și home staging.",
-      "Property management și administrare tehnică a proprietăților închiriate.",
     ],
   },
 ];
@@ -153,28 +175,28 @@ const PLATFORMS = [
     id: "aixluxury",
     name: "AiXLuxury",
     url: SITE.platforms.aixluxury.url,
-    desc: "Selecție exclusivistă de vile, penthouse-uri, proprietăți istorice și active premium în București, Monaco și Dubai.",
+    desc: "Selecție de proprietăți de lux și oportunități premium în București, Monaco și Dubai.",
     badge: "Luxury & International",
   },
   {
     id: "dubai",
     name: "Dubai Real Estate",
     url: SITE.platforms.dubai.url,
-    desc: "Oportunități de investiție, proiecte off-plan și consultanță dedicată pentru piața imobiliară dinamică din Dubai.",
+    desc: "Consultanță inițială pentru piața din Dubai, cu redirecționare către brokeri locali licențiați pentru tranzacții.",
     badge: "Piața din Dubai",
   },
   {
     id: "constructions",
     name: "Constructions",
     url: SITE.platforms.constructions.url,
-    desc: "Platformă dedicată proiectelor de construcții, dezvoltărilor rezidențiale și colaborărilor cu antreprenorii generali.",
+    desc: "Platformă dedicată proiectelor de construcții, dezvoltărilor rezidențiale și colaborărilor din domeniu.",
     badge: "Construcții & Proiecte",
   },
   {
     id: "credite",
     name: "CV Finance / Credite",
     url: SITE.platforms.credite.url,
-    desc: "Consultanță privind finanțarea bancară, credite ipotecare și structurarea soluțiilor financiare pentru achiziții imobiliare.",
+    desc: "Consultanță privind finanțarea bancară și creditele ipotecare, desfășurată în colaborare cu Smart Credit România.",
     badge: "Consultanță Finanțare",
   },
   {
@@ -220,7 +242,7 @@ export default function RealEstatePage() {
             Fie că vrei să cumperi, să vinzi, să închiriezi sau să investești, te ajut să identifici oportunitățile potrivite și să parcurgi procesul imobiliar cu mai multă claritate.
           </p>
           <p className="mt-2 text-xs text-[#9299A3] sm:text-sm">
-            Ofer servicii complete de asistență imobiliară atât pentru proprietăți rezidențiale uzuale, cât și pentru proprietăți premium, active comerciale și oportunități de investiție locale și internaționale.
+            Ofer servicii structurate de asistență imobiliară pentru proprietăți rezidențiale, spații comerciale și oportunități de investiție.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -240,10 +262,17 @@ export default function RealEstatePage() {
             </a>
           </div>
 
-          {/* Informative legal disclaimer */}
-          <div className="mt-8 rounded-2xl border border-[#22262D] bg-[#101216]/80 p-4.5 text-xs leading-relaxed text-[#C7CBD1]">
-            <p>
-              <strong className="font-semibold text-white">Notă informativă:</strong> Consultanța și intermedierea tranzacțiilor sunt asigurate de Cristian Văduva. Asistența juridică de specialitate, autentificarea actelor de proprietate și contractele de creditare sunt perfectate exclusiv prin notari publici, avocați și consilieri financiari autorizați.
+          {/* Informative transparency notice for real estate representation */}
+          <div className="mt-8 rounded-2xl border border-[#22262D] bg-[#101216]/90 p-5 text-xs leading-relaxed text-[#C7CBD1]">
+            <div className="flex items-center gap-2 text-white font-semibold mb-2">
+              <ShieldCheck className="h-4 w-4 text-[#4779B8]" />
+              <span>Transparență privind rolul profesional și reprezentarea</span>
+            </div>
+            <p className="mb-2">
+              În serviciile imobiliare, rolul meu este stabilit în funcție de partea care solicită și angajează serviciile mele: proprietarul/vânzătorul sau cumpărătorul. Obiectivele colaborării și responsabilitățile sunt clarificate de la început.
+            </p>
+            <p className="text-[#9299A3]">
+              Într-o tranzacție, rolul meu și partea pe care o reprezint sunt comunicate clar înainte de începerea colaborării. Orice situație în care există interese diferite ale părților trebuie clarificată înainte de prestarea serviciilor. Asistența juridică de specialitate și autentificarea actelor se realizează prin notari publici și avocați autorizați.
             </p>
           </div>
         </div>
@@ -303,13 +332,13 @@ export default function RealEstatePage() {
         </div>
 
         {/* Interactive Form Section */}
-        <div className="mt-24">
+        <div id="formular-imobiliar" className="mt-24">
           <div className="mb-8">
             <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
-              Solicitare rapidă & confidențială
+              Solicitare structurată & confidențială
             </span>
             <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-              Hai să stabilim proprietatea pe care o cauți
+              Hai să stabilim proprietatea pe care o cauți sau o propui
             </h2>
             <p className="mt-2 text-xs text-[#9299A3] sm:text-sm">
               Completează formularul de mai jos pentru a înțelege exact criteriile tale. Îți voi răspunde prompt cu opțiuni și îndrumări relevante.
@@ -329,7 +358,7 @@ export default function RealEstatePage() {
               Cu ce te pot ajuta în imobiliare?
             </h2>
             <p className="mt-2 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-              O abordare structurată, transparentă și fără presiune de vânzare, de la analiza inițială a pieței până la finalizarea tranzacției la notar.
+              O abordare structurată, transparentă și responsabilă, de la analiza inițială a pieței până la finalizarea tranzacției la notar.
             </p>
           </div>
 
@@ -350,10 +379,10 @@ export default function RealEstatePage() {
                     </h3>
                   </div>
 
-                  <ul className="mt-5 space-y-2.5 text-xs leading-relaxed text-[#9299A3]">
+                  <ul className="mt-6 space-y-2.5 border-t border-[#22262D] pt-5 text-xs leading-relaxed text-[#C7CBD1]">
                     {srv.steps.map((st, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4779B8]" />
+                        <span className="mt-0.5 text-[#4779B8] font-bold">•</span>
                         <span>{st}</span>
                       </li>
                     ))}
@@ -364,78 +393,38 @@ export default function RealEstatePage() {
           </div>
         </div>
 
-        {/* External Verified Platforms Section */}
+        {/* Platform Ecosystem */}
         <div className="mt-28">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
-                Ecosistem digital
-              </span>
-              <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-                Descoperă platformele mele imobiliare
-              </h2>
-            </div>
-            <p className="text-xs text-[#9299A3] sm:max-w-xs">
-              Site-uri specializate active, dedicate diverselor piețe și segmente imobiliare.
+          <div className="max-w-2xl">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
+              Ecosistem digital
+            </span>
+            <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
+              Platforme active
+            </h2>
+            <p className="mt-2 text-xs text-[#9299A3] sm:text-sm">
+              Canale digitale prin care extind accesul clienților la proprietăți și asistență de specialitate.
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PLATFORMS.map((plt) => (
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {PLATFORMS.map((pl) => (
               <a
-                key={plt.id}
-                href={plt.url}
+                key={pl.id}
+                href={pl.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col justify-between rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card transition-all duration-200 hover:border-[#4779B8]/60 hover:bg-[#12151B]"
+                className="group flex flex-col justify-between rounded-2xl border border-[#22262D] bg-[#101216] p-5.5 transition hover:border-[#4779B8]/50 hover:bg-[#171A20]"
               >
                 <div>
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full border border-[#22262D] bg-[#171A20] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#C7CBD1]">
-                      {plt.badge}
-                    </span>
-                    <ExternalLink className="h-4 w-4 text-[#9299A3] opacity-60 transition group-hover:text-white group-hover:opacity-100" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-bold text-[#F5F6F7] transition group-hover:text-white">
-                    {plt.name}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-[#9299A3]">
-                    {plt.desc}
-                  </p>
-                </div>
-
-                <div className="mt-6 border-t border-[#22262D] pt-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#4779B8] transition group-hover:text-white">
-                    <span>Vizitează platforma</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
+                  <span className="rounded-full border border-[#22262D] bg-[#171A20] px-2.5 py-0.5 text-[10px] font-semibold text-[#9299A3]">
+                    {pl.badge}
                   </span>
+                  <h3 className="mt-3 text-sm font-bold text-[#F5F6F7]">{pl.name}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-[#9299A3]">{pl.desc}</p>
                 </div>
               </a>
             ))}
-          </div>
-        </div>
-
-        {/* Integration with Insurance Banner */}
-        <div className="mt-24 rounded-3xl border border-[#22262D] bg-gradient-to-r from-[#171A20] via-[#101216] to-[#171A20] p-8 shadow-card sm:p-10">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="max-w-xl">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C92B35]">
-                Protecție integrată a activelor
-              </span>
-              <h3 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7]">
-                Ai nevoie și de asigurarea proprietății achiziționate?
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-                O tranzacție imobiliară sigură include și protejarea investiției: de la asigurarea obligatorie PAD și facultativă pentru locuință, până la asigurări pentru șantiere de construcții (CAR) și răspundere civilă.
-              </p>
-            </div>
-            <Link
-              href="/asigurari"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#F5F6F7] px-6 py-3 text-xs font-semibold text-[#08090B] shadow-md transition hover:bg-white"
-            >
-              <span>Vezi serviciile de asigurări</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </div>
       </div>

@@ -3,10 +3,15 @@ import { Metadata } from "next";
 import { BUSINESS_PRODUCTS } from "@/data/business/products";
 import { ArrowLeft, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Ghidul Produselor de Asigurare pentru Afaceri (26 Polițe Comerciale)",
+  title: "Ghidul produselor de asigurare comercială",
   description:
-    "Ghid tehnic complet al celor 26 de polițe de asigurare comercială: Property, Business Interruption, MB, EEI, RCG, Răspunderea Producătorului, D&O, Cyber, CMR, CARGO, CAR, EAR, Garanții Surety.",
+    "Ghid al celor 26 de polițe de asigurare comercială: Property, Business Interruption, MB, EEI, RCG, Răspunderea Producătorului, D&O, Cyber, CMR.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/ghid-asigurari`,
+  },
 };
 
 export default function ProductsIndexPage() {

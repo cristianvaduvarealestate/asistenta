@@ -3,10 +3,15 @@ import { Metadata } from "next";
 import { BUSINESS_CATEGORIES } from "@/data/business/categories";
 import { ArrowLeft, ArrowRight, ShieldCheck } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Cele 22 de Categorii de Asigurare pentru Companii — Protecția Afacerii Tale",
+  title: "Categorii de asigurare pentru companii",
   description:
-    "Ghid complet al celor 22 de tipuri principale de polițe de asigurare pentru companii din România: clădiri, utilaje, stocuri, răspundere, D&O, cyber și angajați.",
+    "Ghid al celor 22 de tipuri principale de polițe de asigurare pentru companii din România: clădiri, utilaje, stocuri, răspundere, D&O, cyber și angajați.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/categorii`,
+  },
 };
 
 export default function BusinessCategoriesPage() {

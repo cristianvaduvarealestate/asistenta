@@ -11,10 +11,15 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "„Ce se întâmplă dacă?” — Consecințe, Răspunderi și Soluții de Asigurare",
+  title: "Ce se întâmplă dacă? | Răspunderi și asigurări",
   description:
-    "12 întrebări critice pentru antreprenori și manageri: ce se întâmplă dacă ia foc spațiul închiriat, dacă un angajat se accidentează grav, dacă sistemele sunt criptate de ransomware sau un produs rănește un client.",
+    "12 situații critice pentru antreprenori și manageri: consecințe juridice, impact financiar și soluții de protecție.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/ce-se-intampla-daca`,
+  },
 };
 
 export default function WhatIfPage() {

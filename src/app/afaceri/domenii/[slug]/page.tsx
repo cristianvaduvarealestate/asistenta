@@ -19,6 +19,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 interface Props {
   params: { slug: string };
 }
@@ -34,8 +36,11 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!industry) return { title: "Domeniu inexistent" };
 
   return {
-    title: `${industry.name} — Ghid de Risc și Asigurare în 17 Puncte`,
+    title: `${industry.name} | Asigurări pe domenii`,
     description: industry.subtitle,
+    alternates: {
+      canonical: `${SITE.publicUrl}/afaceri/domenii/${industry.slug}`,
+    },
   };
 }
 

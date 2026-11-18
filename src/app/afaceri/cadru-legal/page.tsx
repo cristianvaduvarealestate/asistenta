@@ -16,10 +16,15 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Cadrul Legal al Asigurărilor pentru Afaceri — Obligatoriu vs. Contractual vs. Facultativ vs. Prevenție",
+  title: "Cadrul legal al asigurărilor comerciale",
   description:
-    "Ghid de conformitate juridică pentru companii din România: ce asigurări sunt obligatorii prin lege (RCA, malpraxis, profesii), ce se cere prin contracte (mall, FIDIC, bănci, CMR), ce este facultativ dar critic și ce reprezintă obligații tehnice de prevenție (ISU, PRAM, SSM).",
+    "Ghid de conformitate juridică pentru companii din România: asigurări obligatorii prin lege, cerințe contractuale și măsuri de prevenție.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/cadru-legal`,
+  },
 };
 
 export default function LegalFrameworkPage() {

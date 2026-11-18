@@ -11,10 +11,15 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Surse Oficiale Verificate & Glosar Tehnic de Asigurări Comerciale",
+  title: "Surse oficiale și glosar tehnic de asigurări",
   description:
-    "Surse legislative românești și europene verificate (ASF, Codul Civil, Legea 132/2017, GDPR, NIS 2) și glosarul termenilor tehnici de asigurare (All Risks, franșiză, sublimită, claims made).",
+    "Surse legislative românești și europene verificate (ASF, Codul Civil, Legea 132/2017, GDPR) și glosar explicativ de asigurări comerciale.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/surse-si-glosar`,
+  },
 };
 
 const GLOSSARY_TERMS = [

@@ -3,10 +3,15 @@ import { Metadata } from "next";
 import { BUSINESS_INDUSTRIES } from "@/data/business/industries";
 import { ArrowLeft, ArrowRight, Building2, CheckCircle2 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Biblioteca Domeniilor de Activitate — Asigurări pentru Companii pe Industrii",
+  title: "Asigurări pentru companii pe industrii",
   description:
-    "Ghiduri exhaustive de risc și protecție prin asigurare pentru 12 domenii economice majore din România: construcții, HoReCa, retail, producție, transport, IT, sănătate, servicii profesionale, agricultură, energie, imobiliare.",
+    "Ghiduri de risc și protecție prin asigurare pentru 12 domenii economice majore din România: construcții, HoReCa, retail, producție, transport, IT, sănătate.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/domenii`,
+  },
 };
 
 export default function IndustriesIndexPage() {

@@ -14,6 +14,8 @@ import {
   Building,
 } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 interface Props {
   params: { slug: string };
 }
@@ -29,8 +31,11 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!category) return { title: "Categorie inexistentă" };
 
   return {
-    title: `${category.title} — Ghid de Asigurare pentru Companii`,
+    title: `${category.title} | Asigurări companii`,
     description: category.shortDesc,
+    alternates: {
+      canonical: `${SITE.publicUrl}/afaceri/categorii/${category.slug}`,
+    },
   };
 }
 
@@ -154,7 +159,7 @@ export default function CategoryDetailPage({ params }: Props) {
           <h2>Întrebări esențiale pe care să le adresezi înainte de a semna</h2>
         </div>
         <p className="mt-2 text-sm text-muted">
-          Adresează aceste întrebări consultantului tău sau brokerului pentru a evita surprizele neplăcute la producerea unei daune:
+          Adresează aceste întrebări consultantului sau asigurătorului tău pentru a clarifica din timp condițiile contractuale:
         </p>
         <div className="mt-4 space-y-3">
           {category.practicalQuestions.map((q, idx) => (

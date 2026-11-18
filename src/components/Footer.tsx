@@ -18,8 +18,8 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Col 1: Identity & Signature */}
           <div className="lg:col-span-4">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#9299A3]">
-              Platformă de asistență privată
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9299A3]">
+              Platformă online de informare și consultanță
             </span>
             <h2 className="mt-2 text-xl font-bold tracking-tight text-[#F5F6F7] sm:text-2xl">
               {SITE.name}
@@ -100,12 +100,12 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-xs text-[#9299A3]">
               <li>
                 <Link href="/asigurari?ajutor=oferta" className="transition hover:text-[#F5F6F7]">
-                  Solicită ofertă (PF & PJ)
+                  Solicită ofertă Generali (PF & PJ)
                 </Link>
               </li>
               <li>
                 <Link href="/asigurari?ajutor=aminteste" className="transition hover:text-[#F5F6F7]">
-                  Notificări expirare polițe
+                  Verificare scadențe polițe
                 </Link>
               </li>
               <li>
@@ -161,7 +161,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 transition hover:text-[#F5F6F7]"
                 >
-                  <span>Dubai Real Estate (Investiții Off-Plan)</span>
+                  <span>Dubai Real Estate (Parteneri Locali)</span>
                   <ExternalLink className="h-3 w-3 opacity-50" />
                 </a>
               </li>
@@ -183,7 +183,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 transition hover:text-[#F5F6F7]"
                 >
-                  <span>CV Finance / Credite (Finanțare)</span>
+                  <span>CV Finance / Credite (Smart Credit România)</span>
                   <ExternalLink className="h-3 w-3 opacity-50" />
                 </a>
               </li>

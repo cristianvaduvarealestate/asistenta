@@ -31,12 +31,12 @@ export function guidanceFor(flow: string, payload: Record<string, unknown>): Gui
       };
     case "aminteste":
       return {
-        title: "Cum funcționează notificarea de expirare",
+        title: "Cum funcționează verificarea scadenței",
         updated: UPDATED,
         paragraphs: [
-          "Solicitarea se înregistrează cu data de expirare și ferestrele alese (30, 15, 7 sau 1 zi).",
-          "Nu verific automat expirarea după numărul de înmatriculare și nu trimit email sau SMS către tine în această versiune.",
-          "Când se apropie termenul, primesc o alertă internă și te contactez pe canalul ales (telefon sau email).",
+          "Solicitarea ta reprezintă o cerere de contact personal pentru a analiza opțiunile de reînnoire înainte de expirarea poliței.",
+          "Nu este un serviciu de notificare automată prin SMS sau email; contactarea se realizează personal pe canalul preferat (telefon sau email).",
+          "Vom analiza împreună condițiile curente și opțiunile de protecție adecvate din oferta Generali România.",
         ],
         disclaimer: DISCLAIMER,
       };
@@ -154,9 +154,9 @@ function claimGuidance(payload: Record<string, unknown>): Guidance {
   const paragraphs = [
     injured
       ? "Dacă există persoane rănite sau pericol imediat, sună 112 înainte de orice formular sau discuție despre asigurare."
-      : "Dacă situația este încă periculoasă, pune siguranța pe primul loc. 112 rămâne numărul de urgență.",
-    "Pași generali, nu procedura unui asigurător anume: asigură locul evenimentului dacă poți, documentează (foto, martori, date), anunță poliția sau alte autorități dacă legea o cere, apoi anunță asigurătorul în termenul din poliță.",
-    "Nu înlocuiesc dosarul de daună și nu decid dacă evenimentul este acoperit.",
+      : "Dacă situația este încă periculoasă, pune siguranța pe primul loc. Serviciul 112 rămâne numărul de urgență.",
+    "Te pot îndruma în pregătirea și transmiterea informațiilor necesare pentru o solicitare de daună și îți pot explica pașii procedurii. Evaluarea dosarului, decizia privind despăgubirea și termenele de soluționare aparțin asigurătorului și depind de condițiile poliței și de documentele disponibile.",
+    "În cazul unui incident acoperit de Generali, transmiterea corectă și completă a documentelor inițiale facilitează instrumentarea eficientă a dosarului de daună.",
   ];
   return {
     title: "Ce poți face acum",

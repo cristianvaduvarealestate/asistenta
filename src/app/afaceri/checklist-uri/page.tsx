@@ -3,10 +3,15 @@ import { Metadata } from "next";
 import { BUSINESS_CHECKLISTS } from "@/data/business/checklists";
 import { ArrowLeft, ArrowRight, CheckCircle2, ListChecks } from "lucide-react";
 
+import { SITE } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: "Checklist-uri de Asigurare pentru Evenimente Majore din Viața Firmei",
+  title: "Checklist-uri de asigurare pentru companii",
   description:
-    "14 checklist-uri practice pentru antreprenori: înființare firmă, închiriere spațiu mall, restaurant, achiziție utilaje, flotă, contract construcții, SEAP, extindere.",
+    "14 checklist-uri practice pentru evenimente majore din viața firmei: înființare, închiriere spațiu, achiziție utilaje, flote, contracte.",
+  alternates: {
+    canonical: `${SITE.publicUrl}/afaceri/checklist-uri`,
+  },
 };
 
 export default function ChecklistsIndexPage() {

@@ -36,9 +36,9 @@ export function FlowFields({ flow, customerType, details, onChange }: Props) {
         <Field label="Data expirării poliței" type="date" value={text(details, "expiryDate")} onChange={(v) => set("expiryDate", v)} required />
         <Select label="Canal preferat de contact" value={text(details, "deliveryChannel")} onChange={(v) => set("deliveryChannel", v)} options={["Telefon", "Email"]} />
       </div>
-      <CheckGroup label="Când dorești să primești notificarea?" values={["30 zile înainte", "15 zile înainte", "7 zile înainte", "1 zi înainte"]} selected={(v) => selected("offsetLabels", v)} onToggle={(v) => { const days = Number(v.split(" ")[0]); const current = Array.isArray(details.offsets) ? details.offsets as number[] : []; set("offsets", current.includes(days) ? current.filter((x) => x !== days) : [...current, days]); toggle("offsetLabels", v); }} />
+      <CheckGroup label="Când dorești să discutăm despre reînnoire?" values={["30 zile înainte", "15 zile înainte", "7 zile înainte", "1 zi înainte"]} selected={(v) => selected("offsetLabels", v)} onToggle={(v) => { const days = Number(v.split(" ")[0]); const current = Array.isArray(details.offsets) ? details.offsets as number[] : []; set("offsets", current.includes(days) ? current.filter((x) => x !== days) : [...current, days]); toggle("offsetLabels", v); }} />
       <p className="rounded-xl border border-[#22262D] bg-[#171A20] p-3 text-xs leading-relaxed text-[#9299A3]">
-        Data scadenței este salvată în siguranță pe server. Vei fi contactat din timp pe canalul selectat de Cristian Văduva.
+        Solicitarea reprezintă o cerere de contact și nu garantează transmiterea automată a unei notificări prin SMS sau e-mail. Te voi contacta personal pe canalul preferat, în funcție de datele furnizate și disponibilitate, pentru a analiza opțiunile de reînnoire.
       </p>
     </div>
   );
