@@ -4,6 +4,7 @@ import { SITE } from "@/config/site";
 import { CookieBanner } from "@/components/CookieBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { FloatingActionDock } from "@/components/FloatingActionDock";
 import "./globals.css";
 
 const sans = Source_Sans_3({
@@ -53,8 +54,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Sari la conținut
         </a>
         <Header />
-        <main id="continut">{children}</main>
+        <main id="continut" className="pt-20 sm:pt-24">{children}</main>
         <Footer />
+        <FloatingActionDock />
         <CookieBanner />
       </body>
     </html>

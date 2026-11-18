@@ -1,29 +1,28 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import { RealEstateForm } from "@/components/real-estate/RealEstateForm";
 import {
-  Building2,
-  Phone,
   ArrowRight,
-  Compass,
-  FileCheck2,
-  Search,
-  Key,
-  ShieldCheck,
+  Phone,
+  MessageSquare,
+  ArrowUpRight,
+  Lock,
+  CheckCircle2,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Asistență Imobiliară | Cristian Văduva",
+  title: "Consultanță Imobiliară — Cristian Văduva | De partea ta",
   description:
-    "Consultanță imobiliară dedicată pentru cumpărare, vânzare, închiriere și investiții. Rol profesional clar și suport adaptat intereselor fiecărui client.",
+    "Consultanță imobiliară onestă pentru cumpărare, vânzare, închiriere și investiții. Fără presiune, cu verificarea atentă a actelor și reprezentare exclusivă a intereselor tale.",
   alternates: {
     canonical: `${SITE.publicUrl}/imobiliare`,
   },
   openGraph: {
-    title: "Asistență Imobiliară | Cristian Văduva",
+    title: "Consultanță Imobiliară — Cristian Văduva | De partea ta",
     description:
-      "Consultanță imobiliară dedicată pentru cumpărare, vânzare, închiriere și investiții.",
+      "Consultanță imobiliară onestă pentru cumpărare, vânzare, închiriere și investiții.",
     url: `${SITE.publicUrl}/imobiliare`,
     type: "website",
     images: [
@@ -31,403 +30,396 @@ export const metadata: Metadata = {
         url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
         width: 1200,
         height: 630,
-        alt: "Asistență Imobiliară — Cristian Văduva",
+        alt: "Consultanță Imobiliară — Cristian Văduva",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Asistență Imobiliară | Cristian Văduva",
-    description:
-      "Consultanță imobiliară dedicată pentru cumpărare, vânzare, închiriere și investiții.",
-    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
-  },
 };
-
-const MAIN_CARDS = [
-  {
-    title: "VREAU SĂ CUMPĂR",
-    badge: "Achiziții",
-    desc: "Identificăm și analizăm proprietățile potrivite criteriilor și bugetului tău, de la locuințe de familie până la active comerciale.",
-    items: [
-      "Apartamente (noi sau existente)",
-      "Case și vile rezidențiale",
-      "Terenuri pentru construcție",
-      "Spații comerciale și birouri",
-      "Proprietăți premium și penthouse-uri",
-      "Proprietăți pentru investiții",
-    ],
-    cta: "Caută o proprietate",
-  },
-  {
-    title: "VREAU SĂ VÂND",
-    badge: "Vânzări",
-    desc: "Strategie completă de poziționare, promovare și negociere pentru valorificarea proprietății tale la cel mai bun preț de piață.",
-    items: [
-      "Analiza comparativă a proprietății și a pieței",
-      "Poziționare și strategie corectă de preț",
-      "Pregătirea proprietății pentru promovare (Home staging)",
-      "Fotografie și video profesional",
-      "Promovare pe portaluri și canale calificate",
-      "Calificarea potențialilor cumpărători",
-      "Negociere și asistență pe tot parcursul tranzacției",
-    ],
-    cta: "Propune proprietatea",
-  },
-  {
-    title: "VREAU SĂ ÎNCHIRIEZ",
-    badge: "Închirieri",
-    desc: "Asistență atât pentru proprietarii care doresc chiriași stabili și solvabili, cât și pentru chiriașii în căutarea spațiului ideal.",
-    items: [
-      "Închiriere rezidențială (apartamente și case)",
-      "Închiriere comercială (birouri, retail, logistic)",
-      "Identificarea și verificarea chiriașilor",
-      "Prezentarea profesionistă a proprietății",
-      "Asistență în redactarea contractului și negociere",
-      "Property management prin servicii și parteneri disponibili",
-    ],
-    cta: "Discută despre închiriere",
-  },
-  {
-    title: "CAUT O INVESTIȚIE IMOBILIARĂ",
-    badge: "Investiții",
-    desc: "Analiză de randament și selecție de active pentru generarea de venit pasiv sau apreciere de capital pe termen mediu și lung.",
-    items: [
-      "Proprietăți cu potențial investițional ridicat",
-      "Analiza prețului de intrare și a poziționării în piață",
-      "Estimarea realistă a veniturilor și cheltuielilor",
-      "Analiza randamentului (Yield / ROI) cu ipoteze explicite",
-      "Portofolii rezidențiale și active comerciale",
-      "Oportunități locale și internaționale (Dubai, Monaco prin parteneri licențiați)",
-    ],
-    cta: "Explorează opțiunile de investiție",
-  },
-];
-
-const SERVICES = [
-  {
-    letter: "A",
-    title: "REPREZENTAREA CUMPĂRĂTORULUI",
-    icon: Search,
-    steps: [
-      "Analiza clară a obiectivelor personale sau financiare și a bugetului disponibil.",
-      "Stabilirea criteriilor esențiale de căutare (zonă, compartimentare, facilități).",
-      "Identificarea proprietăților relevante din piață (inclusiv oferte din rețeaua profesională).",
-      "Analiza comparativă a ofertelor și a alternativelor concurente.",
-      "Negocierea fermă a prețului și a condițiilor contractuale în interesul cumpărătorului.",
-      "Coordonarea etapelor tranzacției până la semnarea finală la notar.",
-      "Îndrumare privind documentația cadastrală, extrasul CF și asistență la verificările notariale.",
-    ],
-  },
-  {
-    letter: "B",
-    title: "REPREZENTAREA VÂNZĂTORULUI",
-    icon: Key,
-    steps: [
-      "Analiza detaliată a proprietății, a atuurilor și a istoricului din piață.",
-      "Stabilirea unei strategii optime de poziționare și preț de lansare.",
-      "Pregătire vizuală, recomandări de amenajare și prezentare profesională.",
-      "Fotografie și video profesional realizat pentru evidențierea calităților spațiului.",
-      "Promovare targetată pe portalurile imobiliare și în rețelele de colaborare.",
-      "Filtrarea și calificarea cumpărătorilor serioși pentru a elimina vizionările inutile.",
-      "Negociere profesională și asistență pentru procedurile notariale până la încasarea prețului.",
-    ],
-  },
-  {
-    letter: "C",
-    title: "CONSULTANȚĂ & ANALIZĂ IMOBILIARĂ",
-    icon: Compass,
-    steps: [
-      "Analiză de piață bazată pe tranzacții reale încheiate, nu doar pe prețuri afișate de promovare.",
-      "Analiza obiectivă a punctelor forte și a minusurilor zonale (transport, infrastructură, regim urbanistic).",
-      "Evaluarea oportunităților și a potențialului de creștere pe termen mediu.",
-      "Analiză financiară a randamentelor din închiriere sau revânzare.",
-      "Estimarea costurilor conexe (taxe notariale, impozite, amenajare, mentenanță).",
-      "Îndrumare strategică pentru decizii informate, fără presiune de vânzare.",
-    ],
-  },
-  {
-    letter: "D",
-    title: "SERVICII FACILITATE PRIN PARTENERI",
-    icon: FileCheck2,
-    steps: [
-      "Credite și finanțare bancară în colaborare cu Smart Credit România.",
-      "Soluții de asigurare pentru locuințe, clădiri și răspunderi civile prin parteneriatul cu Generali România.",
-      "Pentru proprietăți în Dubai: consultanță inițială și punere în legătură cu un broker local licențiat în acea jurisdicție.",
-      "Pentru Monaco: orientare inițială și direcționare către profesioniști autorizați local.",
-      "Cadastru, intabulare, certificate energetice și măsurători topografice.",
-      "Consultanță juridică imobiliară și verificare antecontracte prin avocați colaboratori.",
-      "Birouri notariale partenere pentru finalizarea tranzacției în siguranță.",
-      "Evaluatori autorizați ANEVAR pentru credite sau rapoarte financiare.",
-    ],
-  },
-];
 
 const PLATFORMS = [
   {
     id: "homefind",
     name: "HomeFind",
     url: SITE.platforms.homefind.url,
-    desc: "Platformă dedicată căutării inteligente de apartamente și case rezidențiale, cu filtre clare și informații complete.",
-    badge: "Căutare Rezidențială",
+    desc: "Căutare inteligentă de apartamente și case rezidențiale, cu filtre clare și informații complete.",
+    badge: "Rezidențial",
   },
   {
     id: "aixluxury",
     name: "AiXLuxury",
     url: SITE.platforms.aixluxury.url,
-    desc: "Selecție de proprietăți de lux și oportunități premium în București, Monaco și Dubai.",
-    badge: "Luxury & International",
+    desc: "Selecție de proprietăți exclusiviste și oportunități premium în București, Monaco și Dubai.",
+    badge: "Premium & Internațional",
   },
   {
     id: "dubai",
     name: "Dubai Real Estate",
     url: SITE.platforms.dubai.url,
-    desc: "Consultanță inițială pentru piața din Dubai, cu redirecționare către brokeri locali licențiați pentru tranzacții.",
-    badge: "Piața din Dubai",
+    desc: "Consultanță inițială pentru piața din Emirate, cu redirecționare către brokeri locali licențiați.",
+    badge: "Dubai Partners",
   },
   {
     id: "constructions",
     name: "Constructions",
     url: SITE.platforms.constructions.url,
-    desc: "Platformă dedicată proiectelor de construcții, dezvoltărilor rezidențiale și colaborărilor din domeniu.",
-    badge: "Construcții & Proiecte",
+    desc: "Proiecte de construcții, dezvoltări rezidențiale și parteneriate tehnice din industrie.",
+    badge: "Proiecte & Șantiere",
   },
   {
     id: "credite",
     name: "CV Finance / Credite",
     url: SITE.platforms.credite.url,
-    desc: "Consultanță privind finanțarea bancară și creditele ipotecare, desfășurată în colaborare cu Smart Credit România.",
-    badge: "Consultanță Finanțare",
+    desc: "Consultanță privind finanțarea bancară și creditele ipotecare, în colaborare cu Smart Credit România.",
+    badge: "Finanțare Ipotecară",
   },
   {
     id: "cristianvaduva",
     name: "CristianVaduva.com",
     url: SITE.platforms.cristianvaduva.url,
-    desc: "Website-ul oficial și portofoliul personal al lui Cristian Văduva — viziune, activitate integrată și proiecte active.",
+    desc: "Website-ul oficial și portofoliul profesional integrat al lui Cristian Văduva.",
     badge: "Website Oficial",
   },
 ];
 
 export default function RealEstatePage() {
   return (
-    <div className="relative min-h-screen bg-[#08090B] pb-24 pt-8 text-[#F5F6F7]">
-      {/* Subtle ambient lighting */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[400px] overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="absolute left-1/2 top-0 h-[300px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4779B8]/8 blur-[120px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        {/* Breadcrumb navigation */}
-        <div className="flex items-center gap-2 text-xs font-medium text-[#9299A3]">
-          <Link href="/" className="transition hover:text-white">
-            Acasă
-          </Link>
-          <span>/</span>
-          <span className="text-[#F5F6F7]">Imobiliare</span>
-        </div>
-
-        {/* Hero Header */}
-        <div className="mt-8 max-w-4xl">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#4779B8]/30 bg-[#4779B8]/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#F5F6F7]">
-            <Building2 className="h-3.5 w-3.5 text-[#4779B8]" />
-            Consultanță & Reprezentare Imobiliară
-          </span>
-          <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-[#F5F6F7] sm:text-6xl">
-            Asistență Imobiliară
-          </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#C7CBD1] sm:text-xl">
-            Fie că vrei să cumperi, să vinzi, să închiriezi sau să investești, te ajut să identifici oportunitățile potrivite și să parcurgi procesul imobiliar cu mai multă claritate.
-          </p>
-          <p className="mt-2 text-xs text-[#9299A3] sm:text-sm">
-            Ofer servicii structurate de asistență imobiliară pentru proprietăți rezidențiale, spații comerciale și oportunități de investiție.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#formular-imobiliar"
-              className="inline-flex items-center gap-2 rounded-full bg-[#F5F6F7] px-6 py-3.5 text-xs font-semibold text-[#08090B] shadow-md transition hover:bg-white hover:shadow-lg"
-            >
-              <span>Completează criteriile proprietății</span>
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="inline-flex items-center gap-2 rounded-full border border-[#22262D] bg-[#101216] px-5 py-3.5 text-xs font-medium text-[#C7CBD1] transition hover:border-[#4779B8] hover:text-white"
-            >
-              <Phone className="h-4 w-4 text-[#4779B8]" />
-              <span>Discută direct: {SITE.phoneDisplay}</span>
-            </a>
+    <div className="bg-white text-[#1D1D1F]">
+      {/* ========================================================================= */}
+      {/* 1. HERO — EDITORIAL REAL ESTATE WITH AUTHENTIC PORTRAIT (UNCLIPPED) */}
+      {/* ========================================================================= */}
+      <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED]">
+        <div className="mx-auto max-w-5xl">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#86868B] mb-6">
+            <Link href="/" className="hover:text-[#1D1D1F] transition">
+              Acasă
+            </Link>
+            <span>/</span>
+            <span>Consultanță Imobiliară</span>
           </div>
 
-          {/* Informative transparency notice for real estate representation */}
-          <div className="mt-8 rounded-2xl border border-[#22262D] bg-[#101216]/90 p-5 text-xs leading-relaxed text-[#C7CBD1]">
-            <div className="flex items-center gap-2 text-white font-semibold mb-2">
-              <ShieldCheck className="h-4 w-4 text-[#4779B8]" />
-              <span>Transparență privind rolul profesional și reprezentarea</span>
-            </div>
-            <p className="mb-2">
-              În serviciile imobiliare, rolul meu este stabilit în funcție de partea care solicită și angajează serviciile mele: proprietarul/vânzătorul sau cumpărătorul. Obiectivele colaborării și responsabilitățile sunt clarificate de la început.
-            </p>
-            <p className="text-[#9299A3]">
-              Într-o tranzacție, rolul meu și partea pe care o reprezint sunt comunicate clar înainte de începerea colaborării. Orice situație în care există interese diferite ale părților trebuie clarificată înainte de prestarea serviciilor. Asistența juridică de specialitate și autentificarea actelor se realizează prin notari publici și avocați autorizați.
-            </p>
-          </div>
-        </div>
-
-        {/* 4 Main Action Cards */}
-        <div className="mt-20">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
-                Direcții de acțiune
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            {/* Left Column: Warm Human Intro */}
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+                Consultanță Personală • Cristian Văduva
+              </span>
+              <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.08]">
+                Găsim locuința potrivită. <br />
+                <span className="text-[#86868B]">Fără grabă și fără capcane.</span>
+              </h1>
+              <p className="text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+                Fie că vrei să cumperi căminul perfect pentru familia ta sau vrei să vinzi o proprietate la prețul corect, sunt de partea ta de la prima vizionare până la semnarea actelor la notar.
               </p>
-              <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-                Cum te pot ajuta în mod concret
-              </h2>
+              <p className="text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+                Verificăm fiecare act, îți spun deschis plusurile și minusurile fiecărei proprietăți și negociem ferm, exclusiv în interesul tău. Fără comision dublu.
+              </p>
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a href="#formular-imobiliar" className="apple-btn-primary">
+                  Spune-mi ce fel de proprietate cauți
+                </a>
+                <a href={`tel:${SITE.phoneTel}`} className="apple-btn-secondary inline-flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-[#86868B]" />
+                  <span>{SITE.phoneDisplay}</span>
+                </a>
+              </div>
+
+              <div className="pt-4 border-t border-[#E8E8ED] flex flex-wrap gap-y-2 gap-x-6 text-xs text-[#86868B]">
+                <span className="flex items-center gap-1.5 text-[#1D1D1F]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#1D1D1F]" />
+                  Reprezentare exclusivă
+                </span>
+                <span className="flex items-center gap-1.5 text-[#1D1D1F]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#1D1D1F]" />
+                  Fără comision dublu
+                </span>
+                <span className="flex items-center gap-1.5 text-[#1D1D1F]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#1D1D1F]" />
+                  Verificare acte la notar
+                </span>
+              </div>
+            </div>
+
+            {/* Right Column: Authentic Unclipped Portrait (3:4 Ratio) */}
+            <div className="lg:col-span-5">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full max-w-md mx-auto overflow-hidden rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">
+                <Image
+                  src="/images/cristian/cristian-skyline-terrace.webp"
+                  alt="Cristian Văduva — Consultanță Imobiliară Penthouse Terrace"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="mt-3 text-center text-xs text-[#86868B] font-mono">
+                <span>Cristian Văduva • Consultanță Imobiliară București</span>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {MAIN_CARDS.map((card, idx) => (
-              <div
-                key={idx}
-                className="group flex flex-col justify-between rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card transition-all duration-300 hover:border-[#4779B8]/60 hover:bg-[#12151B]"
-              >
-                <div>
-                  <span className="rounded-full border border-[#22262D] bg-[#171A20] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#C7CBD1]">
-                    {card.badge}
-                  </span>
-                  <h3 className="mt-4 text-xl font-bold tracking-tight text-[#F5F6F7]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-[#9299A3]">
-                    {card.desc}
-                  </p>
+      {/* ========================================================================= */}
+      {/* 2. STATUTORY MANDATE NOTICE */}
+      {/* ========================================================================= */}
+      <section className="py-6 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] border-b border-[#E8E8ED]">
+        <div className="mx-auto max-w-5xl flex items-start gap-3 text-xs text-[#86868B] leading-relaxed">
+          <Lock className="h-4 w-4 shrink-0 text-[#1D1D1F] mt-0.5" />
+          <p>
+            <strong className="text-[#1D1D1F]">Transparență totală:</strong> În orice tranzacție reprezint exclusiv partea care mă angajează (cumpărătorul sau vânzătorul). Nu percep niciodată comision dublu și nu încerc să mulțumesc ambele părți pe ascuns. Verificarea juridică a actelor și autentificarea contractului se fac doar la notari publici autorizați.
+          </p>
+        </div>
+      </section>
 
-                  <ul className="mt-6 space-y-2.5 border-t border-[#22262D] pt-5 text-xs text-[#C7CBD1]">
-                    {card.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2.5">
-                        <span className="mt-0.5 text-[#4779B8] font-bold">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+      {/* ========================================================================= */}
+      {/* 3. FOUR DISTINCT DESTINATIONS WITH AUTHENTIC PHOTOGRAPHY (PROPER RATIOS) */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED] bg-white">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-2xl mb-16">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Cum lucrăm împreună
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
+              Te sprijin la fiecare pas.
+            </h2>
+          </div>
+
+          <div className="space-y-20">
+            {/* 1. CUMPĂRARE */}
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-center border-b border-[#E8E8ED] pb-16">
+              <div className="lg:col-span-6 space-y-4">
+                <span className="font-mono text-xs text-[#86868B]">01 • ACHIZIȚIE</span>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
+                  Vrei să cumperi o proprietate?
+                </h3>
+                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                  Căutăm activ în piață cele mai bune oferte reale, eliminăm proprietățile cu probleme de acte și negociem doar în favoarea ta.
+                </p>
+                <div className="space-y-2 text-xs sm:text-sm text-[#1D1D1F] bg-[#F5F5F7] p-5 rounded-2xl">
+                  <p>• Apartamente bine compartimentate și case primitoare în cartiere bune.</p>
+                  <p>• Verificarea cărții funciare, a sarcinilor și a calității construcției.</p>
+                  <p>• Prezență la vizionări, negociere și asistență la notar până la primirea cheilor.</p>
                 </div>
-
-                <div className="mt-8 pt-4">
-                  <a
-                    href="#formular-imobiliar"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#4779B8] transition group-hover:text-white"
-                  >
-                    <span>{card.cta}</span>
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                <div>
+                  <a href="#formular-imobiliar" className="apple-btn-secondary !text-xs !py-2 !px-4">
+                    Spune-mi ce cauți →
                   </a>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Interactive Form Section */}
-        <div id="formular-imobiliar" className="mt-24">
-          <div className="mb-8">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
-              Solicitare structurată & confidențială
-            </span>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-              Hai să stabilim proprietatea pe care o cauți sau o propui
-            </h2>
-            <p className="mt-2 text-xs text-[#9299A3] sm:text-sm">
-              Completează formularul de mai jos pentru a înțelege exact criteriile tale. Îți voi răspunde prompt cu opțiuni și îndrumări relevante.
-            </p>
-          </div>
-
-          <RealEstateForm />
-        </div>
-
-        {/* Detailed Services Section */}
-        <div className="mt-28">
-          <div className="max-w-2xl">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9299A3]">
-              Metodologie de lucru
-            </span>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-              Cu ce te pot ajuta în imobiliare?
-            </h2>
-            <p className="mt-2 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-              O abordare structurată, transparentă și responsabilă, de la analiza inițială a pieței până la finalizarea tranzacției la notar.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-            {SERVICES.map((srv) => {
-              const Icon = srv.icon;
-              return (
-                <div
-                  key={srv.letter}
-                  className="rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-[#22262D] bg-[#171A20] text-sm font-bold text-[#4779B8]">
-                      {srv.letter}
-                    </span>
-                    <h3 className="text-sm font-bold tracking-tight text-[#F5F6F7]">
-                      {srv.title}
-                    </h3>
-                  </div>
-
-                  <ul className="mt-6 space-y-2.5 border-t border-[#22262D] pt-5 text-xs leading-relaxed text-[#C7CBD1]">
-                    {srv.steps.map((st, i) => (
-                      <li key={i} className="flex items-start gap-2.5">
-                        <span className="mt-0.5 text-[#4779B8] font-bold">•</span>
-                        <span>{st}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="lg:col-span-6">
+                <div className="relative aspect-[3/4] sm:aspect-[4/5] max-w-md mx-auto w-full overflow-hidden rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED]">
+                  <Image
+                    src="/images/cristian/cristian-residences-vest.webp"
+                    alt="Cristian Văduva — Achiziții imobiliare și vizionări"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover object-top"
+                  />
                 </div>
-              );
-            })}
+                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
+                  <span>Vizionări directe & asistență la notariat</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. VÂNZARE */}
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-center border-b border-[#E8E8ED] pb-16">
+              <div className="lg:col-span-6 order-2 lg:order-1">
+                <div className="relative aspect-[3/4] sm:aspect-[4/5] max-w-md mx-auto w-full overflow-hidden rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED]">
+                  <Image
+                    src="/images/cristian/cv-historic-architecture.webp"
+                    alt="Cristian Văduva — Reprezentare vânzător"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
+                  <span>Preț corect & cumpărători calificați</span>
+                </div>
+              </div>
+              <div className="lg:col-span-6 order-1 lg:order-2 space-y-4">
+                <span className="font-mono text-xs text-[#86868B]">02 • VÂNZARE</span>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
+                  Vrei să vinzi o proprietate?
+                </h3>
+                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                  Stabilim un preț corect și realist pe baza tranzacțiilor recente, pregătim proprietatea pentru prezentare și aducem doar cumpărători serioși.
+                </p>
+                <div className="space-y-2 text-xs sm:text-sm text-[#1D1D1F] bg-[#F5F5F7] p-5 rounded-2xl">
+                  <p>• Estimare sinceră a valorii, fără evaluări exagerate doar pentru a semna contractul.</p>
+                  <p>• Fotografii de calitate și promovare targetată către cumpărători reali.</p>
+                  <p>• Gestionarea vizionărilor și a ofertelor fără stres pentru tine.</p>
+                </div>
+                <div>
+                  <a href="#formular-imobiliar" className="apple-btn-secondary !text-xs !py-2 !px-4">
+                    Propune proprietatea spre vânzare →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. ÎNCHIRIERE */}
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-center border-b border-[#E8E8ED] pb-16">
+              <div className="lg:col-span-6 space-y-4">
+                <span className="font-mono text-xs text-[#86868B]">03 • ÎNCHIRIERE</span>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
+                  Închirieri sigure și fără bătăi de cap.
+                </h3>
+                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                  Te ajut să găsești chiriași serioși și stabili pentru locuința ta, sau spațiul optim de birouri pentru afacerea ta.
+                </p>
+                <div className="space-y-2 text-xs sm:text-sm text-[#1D1D1F] bg-[#F5F5F7] p-5 rounded-2xl">
+                  <p>• Închirieri de apartamente și case pentru familii sau expați.</p>
+                  <p>• Spații de birouri și spații comerciale potrivite activității tale.</p>
+                  <p>• Verificarea profilului chiriașilor și contracte clare înregistrate fiscal.</p>
+                </div>
+                <div>
+                  <a href="#formular-imobiliar" className="apple-btn-secondary !text-xs !py-2 !px-4">
+                    Discută termenii de închiriere →
+                  </a>
+                </div>
+              </div>
+              <div className="lg:col-span-6">
+                <div className="relative aspect-[3/4] sm:aspect-[4/5] max-w-md mx-auto w-full overflow-hidden rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED]">
+                  <Image
+                    src="/images/cristian/cv-residence-interior.webp"
+                    alt="Cristian Văduva — Închirieri reședințe și birouri"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
+                  <span>Reședințe de familie & spații de birouri</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 4. INVESTIȚII */}
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-6 order-2 lg:order-1">
+                <div className="relative aspect-[3/4] sm:aspect-[4/5] max-w-md mx-auto w-full overflow-hidden rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED]">
+                  <Image
+                    src="/images/cristian/cv-sunset-terrace.webp"
+                    alt="Cristian Văduva — Oportunități imobiliare de durată"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
+                  <span>Proprietăți cu potențial pe termen lung</span>
+                </div>
+              </div>
+              <div className="lg:col-span-6 order-1 lg:order-2 space-y-4">
+                <span className="font-mono text-xs text-[#86868B]">04 • INVESTIȚII</span>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
+                  Investiții calculate pe termen lung.
+                </h3>
+                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                  Dacă vrei să plasezi economiile într-o proprietate generatoare de chirie sau cu apreciere în timp, calculăm randamentul net real, dincolo de promisiuni optimiste.
+                </p>
+                <div className="grid grid-cols-3 gap-3 text-center">
+                  <div className="bg-[#F5F5F7] p-4 rounded-2xl">
+                    <span className="block text-[11px] text-[#86868B] font-mono">București</span>
+                    <span className="text-lg sm:text-xl font-semibold text-[#1D1D1F] block mt-0.5">6% - 8%</span>
+                    <span className="text-[10px] text-[#86868B] block mt-0.5">Randament net</span>
+                  </div>
+                  <div className="bg-[#F5F5F7] p-4 rounded-2xl">
+                    <span className="block text-[11px] text-[#86868B] font-mono">Dubai</span>
+                    <span className="text-lg sm:text-xl font-semibold text-[#1D1D1F] block mt-0.5">7% - 9%</span>
+                    <span className="text-[10px] text-[#86868B] block mt-0.5">Parteneri locali</span>
+                  </div>
+                  <div className="bg-[#F5F5F7] p-4 rounded-2xl">
+                    <span className="block text-[11px] text-[#86868B] font-mono">Monaco</span>
+                    <span className="text-lg sm:text-xl font-semibold text-[#1D1D1F] block mt-0.5">Capital</span>
+                    <span className="text-[10px] text-[#86868B] block mt-0.5">Apreciere valoare</span>
+                  </div>
+                </div>
+                <div>
+                  <a href="#formular-imobiliar" className="apple-btn-secondary !text-xs !py-2 !px-4">
+                    Discută o investiție →
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Platform Ecosystem */}
-        <div className="mt-28">
-          <div className="max-w-2xl">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
-              Ecosistem digital
+      {/* ========================================================================= */}
+      {/* 4. REAL ESTATE FORM PAVILION WITH PERSONAL ADVISOR BADGE */}
+      {/* ========================================================================= */}
+      <section id="formular-imobiliar" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] border-b border-[#E8E8ED]">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-10 text-center">
+            {/* Authentic Advisor Avatar */}
+            <div className="mx-auto mb-4 h-16 w-16 overflow-hidden rounded-full border-2 border-white shadow-sm relative bg-white">
+              <Image
+                src="/images/cristian/cv-avatar-vest.webp"
+                alt="Cristian Văduva"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Direct către Cristian Văduva
             </span>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-              Platforme active
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
+              Spune-mi ce proprietate ai în minte
             </h2>
-            <p className="mt-2 text-xs text-[#9299A3] sm:text-sm">
-              Canale digitale prin care extind accesul clienților la proprietăți și asistență de specialitate.
+            <p className="mt-3 text-sm text-[#86868B]">
+              Completează câteva detalii și revin personal către tine cu opțiuni concrete și sfaturi practice.
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-3xl border border-[#D2D2D7] bg-white p-6 sm:p-10 shadow-apple">
+            <RealEstateForm />
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. VERIFIED ECOSYSTEM PLATFORMS */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Platforme Conectate
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
+              Platforme active din ecosistem
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PLATFORMS.map((pl) => (
               <a
                 key={pl.id}
                 href={pl.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col justify-between rounded-2xl border border-[#22262D] bg-[#101216] p-5.5 transition hover:border-[#4779B8]/50 hover:bg-[#171A20]"
+                className="group flex flex-col justify-between rounded-2xl border border-[#E8E8ED] bg-[#F5F5F7] p-6 transition hover:border-[#86868B] hover:bg-white"
               >
                 <div>
-                  <span className="rounded-full border border-[#22262D] bg-[#171A20] px-2.5 py-0.5 text-[10px] font-semibold text-[#9299A3]">
-                    {pl.badge}
-                  </span>
-                  <h3 className="mt-3 text-sm font-bold text-[#F5F6F7]">{pl.name}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-[#9299A3]">{pl.desc}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-medium text-[#86868B]">
+                      {pl.badge}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 text-[#86868B] group-hover:text-[#1D1D1F] transition-colors" />
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold text-[#1D1D1F]">{pl.name}</h3>
+                  <p className="mt-1 text-xs text-[#86868B] leading-relaxed">{pl.desc}</p>
                 </div>
               </a>
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

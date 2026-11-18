@@ -3,38 +3,38 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #08090B;
+  background-color: #FFFFFF;
 }
 
 body {
-  @apply bg-[#08090B] text-[#F5F6F7] antialiased selection:bg-[#4779B8]/35 selection:text-white;
+  @apply bg-white text-[#1D1D1F] antialiased selection:bg-[#1D1D1F] selection:text-white;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.015em;
 }
 
-/* Custom subtle dark scrollbar */
+/* Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090B;
+  background: #F5F5F7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #22262D;
+  background: #D2D2D7;
   border-radius: 9999px;
-  border: 2px solid #08090B;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3A404A;
+  background: #86868B;
 }
 
 :focus-visible {
-  outline: 2px solid #4779B8;
+  outline: 2px solid #1D1D1F;
   outline-offset: 2px;
 }
 
@@ -52,5 +52,170 @@ body {
 }
 
 .skip-link {
-  @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:border focus:border-[#22262D] focus:bg-[#101216] focus:px-4 focus:py-2 focus:text-sm focus:text-white focus:shadow-2xl;
+  @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:border focus:border-[#D2D2D7] focus:bg-white focus:px-4 focus:py-2 focus:text-xs focus:font-medium focus:text-[#1D1D1F] focus:shadow-md;
+}
+
+/* ==========================================================================
+   APPLE DESIGN PHILOSOPHY: ENVIRONMENTS & SURFACES
+   ========================================================================== */
+
+.env-white {
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+}
+
+.env-grey {
+  background-color: #F5F5F7;
+  color: #1D1D1F;
+}
+
+.env-dark {
+  background-color: #1D1D1F;
+  color: #FFFFFF;
+}
+
+/* Compatibility aliases */
+.env-plum,
+.env-royal,
+.env-forest,
+.world-office,
+.world-midnight,
+.world-insurance,
+.world-teal {
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+}
+
+.env-porcelain,
+.env-lavender,
+.env-architectural,
+.world-realestate,
+.world-sand,
+.world-pearl {
+  background-color: #F5F5F7;
+  color: #1D1D1F;
+}
+
+.env-ink {
+  background-color: #1D1D1F;
+  color: #FFFFFF;
+}
+
+/* Navigation bar */
+.apple-nav {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Cards & containers */
+.apple-card-white {
+  background-color: #FFFFFF;
+  border: 1px solid #E8E8ED;
+  border-radius: 24px;
+}
+
+.apple-card-grey {
+  background-color: #F5F5F7;
+  border: 1px solid #E8E8ED;
+  border-radius: 24px;
+}
+
+.apple-card-dark {
+  background-color: #1D1D1F;
+  color: #FFFFFF;
+  border-radius: 24px;
+}
+
+/* ==========================================================================
+   APPLE BUTTONS (Pill-shaped, disciplined black/white)
+   ========================================================================== */
+
+.apple-btn-primary {
+  @apply inline-flex items-center justify-center rounded-full font-medium transition-all duration-200;
+  background-color: #1D1D1F;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.apple-btn-primary:hover {
+  background-color: #000000;
+  opacity: 0.92;
+}
+
+.apple-btn-secondary {
+  @apply inline-flex items-center justify-center rounded-full font-medium transition-all duration-200;
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+  border: 1px solid #D2D2D7;
+  padding: 12px 24px;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.apple-btn-secondary:hover {
+  background-color: #F5F5F7;
+  border-color: #86868B;
+}
+
+.apple-btn-dark {
+  @apply inline-flex items-center justify-center rounded-full font-medium transition-all duration-200;
+  background-color: #FFFFFF;
+  color: #1D1D1F;
+  padding: 12px 24px;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.apple-btn-dark:hover {
+  background-color: #F5F5F7;
+  opacity: 0.95;
+}
+
+/* Legacy button fallbacks */
+.atelier-btn-primary,
+.atelier-btn-lime,
+.atelier-btn-coral,
+.atelier-btn-jade,
+.royal-btn-primary,
+.royal-btn-emerald {
+  @apply apple-btn-primary;
+}
+
+.atelier-btn-secondary,
+.royal-btn-secondary {
+  @apply apple-btn-secondary;
+}
+
+/* ==========================================================================
+   APPLE TYPOGRAPHY (Clear, confident, human)
+   ========================================================================== */
+
+.apple-display {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.apple-headline {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.apple-subhead {
+  color: #86868B;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.font-editorial-quote {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
 }

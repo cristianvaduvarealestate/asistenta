@@ -236,48 +236,67 @@ export default function LegalPage({
   if (!item) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-      <p className="text-xs font-semibold uppercase tracking-widest text-brand">
-        Document de informare
-      </p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-        {item.title}
-      </h1>
-      <p className="mt-5 text-lg leading-relaxed text-muted">{item.intro}</p>
-      <p className="mt-5 text-sm text-muted">
-        Ultima actualizare: {legalConfig.lastUpdatedLabel}
-      </p>
+    <div className="bg-[#F5F5F7] min-h-[85vh] py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED]">
+      <article className="mx-auto max-w-4xl rounded-3xl border border-[#D2D2D7] bg-white p-6 sm:p-12 lg:p-16 shadow-apple">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E8E8ED] pb-6">
+          <span className="text-xs font-mono uppercase tracking-tight text-[#86868B]">
+            Informare & Transparență
+          </span>
+          <span className="text-xs text-[#86868B]">
+            Ultima actualizare: {legalConfig.lastUpdatedLabel}
+          </span>
+        </div>
 
-      <div className="mt-10 space-y-9">
-        {item.sections.map((section) => (
-          <section key={section.heading}>
-            <h2 className="text-xl font-semibold text-ink">{section.heading}</h2>
-            {section.body.map((paragraph) => (
-              <p key={paragraph} className="mt-3 leading-relaxed text-muted">
-                {paragraph}
-              </p>
-            ))}
-          </section>
-        ))}
-      </div>
+        <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-6">
+          {item.title}
+        </h1>
 
-      <nav
-        className="mt-12 border-t border-line pt-6 text-sm text-muted"
-        aria-label="Documente legale"
-      >
-        <p className="font-medium text-ink">Documente și informări</p>
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-          {Object.entries(documents).map(([slug, document]) => (
-            <Link
-              className="underline underline-offset-2 hover:text-ink"
-              key={slug}
-              href={`/${slug}`}
-            >
-              {document.title}
-            </Link>
+        <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#86868B]">
+          {item.intro}
+        </p>
+
+        <div className="mt-12 space-y-10 border-t border-[#E8E8ED] pt-10">
+          {item.sections.map((section) => (
+            <section key={section.heading} className="space-y-3">
+              <h2 className="text-base font-semibold text-[#1D1D1F]">
+                {section.heading}
+              </h2>
+              {section.body.map((paragraph) => (
+                <p key={paragraph} className="text-sm leading-relaxed text-[#86868B]">
+                  {paragraph}
+                </p>
+              ))}
+            </section>
           ))}
         </div>
-      </nav>
-    </article>
+
+        <nav
+          className="mt-14 border-t border-[#E8E8ED] pt-8"
+          aria-label="Documente legale"
+        >
+          <p className="text-xs font-semibold text-[#1D1D1F] mb-4">
+            Documente & Informări Legale:
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {Object.entries(documents).map(([slug, document]) => {
+              const isCurrent = slug === params.document;
+              return (
+                <Link
+                  className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-all ${
+                    isCurrent
+                      ? "border-[#1D1D1F] bg-[#1D1D1F] text-white"
+                      : "border-[#D2D2D7] bg-white text-[#86868B] hover:text-[#1D1D1F] hover:border-[#86868B]"
+                  }`}
+                  key={slug}
+                  href={`/${slug}`}
+                >
+                  {document.title}
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
+      </article>
+    </div>
   );
 }

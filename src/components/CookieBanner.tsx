@@ -19,16 +19,16 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-labelledby="cookie-title"
-      className="fixed bottom-0 inset-x-0 z-40 border-t border-[#22262D] bg-[#101216]/95 p-4 shadow-2xl backdrop-blur-xl"
+      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 rounded-2xl border border-[#D2D2D7] bg-white/95 p-5 shadow-apple backdrop-blur-xl animate-in fade-in slide-in-from-bottom-2 duration-200"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3">
         <div>
-          <p id="cookie-title" className="text-xs font-bold uppercase tracking-wider text-[#C7CBD1]">
-            Informare Cookies
+          <p id="cookie-title" className="text-xs font-semibold text-[#1D1D1F]">
+            Confidențialitate & Cookies
           </p>
-          <p className="mt-0.5 max-w-2xl text-xs leading-relaxed text-[#9299A3]">
-            Folosim exclusiv stocare tehnică strict necesară funcționării sigure a platformei. Nu instalăm cookie-uri de urmărire publicitară. Detalii în{" "}
-            <Link className="text-[#C7CBD1] underline hover:text-white" href="/cookies">
+          <p className="mt-1 text-xs leading-relaxed text-[#86868B]">
+            Acest website utilizează exclusiv stocare tehnică strict necesară bunei funcționări. Nu instalăm cookie-uri publicitare sau de urmărire a activității. Detalii în{" "}
+            <Link className="text-[#1D1D1F] underline hover:opacity-70" href="/cookies">
               politica de cookies
             </Link>
             .
@@ -36,7 +36,7 @@ export function CookieBanner() {
         </div>
         <button
           type="button"
-          className="rounded-full bg-[#F5F6F7] px-4 py-2 text-xs font-semibold text-[#08090B] shadow-md transition-all hover:bg-white hover:shadow-lg sm:shrink-0"
+          className="self-end apple-btn-primary !py-1.5 !px-4 !text-xs"
           onClick={() => {
             localStorage.setItem(KEY, "necessary-only");
             setVisible(false);

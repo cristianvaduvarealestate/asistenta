@@ -16,6 +16,21 @@ artifacts/
 # OpenNext & Cloudflare Worker build artifacts
 .open-next
 .wrangler
+tmp/
+
+# Temporary scratch and download data
+scripts/*.json
+scripts/download-*.mjs
+scripts/scrape-photos.mjs
+scripts/filter-*.mjs
+scripts/inspect-*.mjs
+scripts/create-*.mjs
+scripts/check-*.mjs
+scripts/screenshot-*.mjs
+scripts/analyze-*.mjs
+scripts/build-personal-library.mjs
+scripts/verify-*.mjs
+
 
 # Environment files
 .env*

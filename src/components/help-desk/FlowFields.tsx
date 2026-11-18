@@ -37,7 +37,7 @@ export function FlowFields({ flow, customerType, details, onChange }: Props) {
         <Select label="Canal preferat de contact" value={text(details, "deliveryChannel")} onChange={(v) => set("deliveryChannel", v)} options={["Telefon", "Email"]} />
       </div>
       <CheckGroup label="Când dorești să discutăm despre reînnoire?" values={["30 zile înainte", "15 zile înainte", "7 zile înainte", "1 zi înainte"]} selected={(v) => selected("offsetLabels", v)} onToggle={(v) => { const days = Number(v.split(" ")[0]); const current = Array.isArray(details.offsets) ? details.offsets as number[] : []; set("offsets", current.includes(days) ? current.filter((x) => x !== days) : [...current, days]); toggle("offsetLabels", v); }} />
-      <p className="rounded-xl border border-[#22262D] bg-[#171A20] p-3 text-xs leading-relaxed text-[#9299A3]">
+      <p className="rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-3 text-xs leading-relaxed text-[#86868B]">
         Solicitarea reprezintă o cerere de contact și nu garantează transmiterea automată a unei notificări prin SMS sau e-mail. Te voi contacta personal pe canalul preferat, în funcție de datele furnizate și disponibilitate, pentru a analiza opțiunile de reînnoire.
       </p>
     </div>
@@ -52,7 +52,7 @@ export function FlowFields({ flow, customerType, details, onChange }: Props) {
 
   if (flow === "acoperire") return (
     <div className="grid gap-6">
-      <p className="text-xs text-[#9299A3]">Exemple frecvente: {COVERAGE_EXAMPLES.join(" • ")}</p>
+      <p className="text-xs text-[#86868B]">Exemple frecvente: {COVERAGE_EXAMPLES.join(" • ")}</p>
       <TextArea label="Ce incident sau situație concretă dorești să analizăm?" value={text(details, "situation")} onChange={(v) => { set("situation", v); set("message", v); }} required />
       <RadioGroup label="Ai acces la polița de asigurare și condițiile contractuale?" values={["Da", "Nu", "Nu știu"]} value={text(details, "hasPolicy")} onChange={(v) => set("hasPolicy", v)} />
     </div>
@@ -92,14 +92,14 @@ export function FlowFields({ flow, customerType, details, onChange }: Props) {
 function Field({ label, value, onChange, type = "text", required }: { label: string; value: string; onChange: (v: string) => void; type?: string; required?: boolean }) {
   return (
     <div>
-      <label className="block text-xs font-semibold uppercase tracking-wider text-[#C7CBD1]">
+      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B]">
         {label}{required && <span className="text-[#C92B35]"> *</span>}
         <input
           type={type}
           required={required}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="mt-2 min-h-11 w-full rounded-xl border border-[#22262D] bg-[#171A20] px-3.5 text-sm text-[#F5F6F7] transition focus:border-[#4779B8] focus:outline-none"
+          className="mt-2 min-h-11 w-full rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] px-3.5 text-sm text-[#1D1D1F] transition focus:border-[#1D1D1F] focus:outline-none"
         />
       </label>
     </div>
@@ -108,14 +108,14 @@ function Field({ label, value, onChange, type = "text", required }: { label: str
 
 function TextArea({ label, value, onChange, required }: { label: string; value: string; onChange: (v: string) => void; required?: boolean }) {
   return (
-    <label className="block text-xs font-semibold uppercase tracking-wider text-[#C7CBD1]">
+    <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B]">
       {label}{required && <span className="text-[#C92B35]"> *</span>}
       <textarea
         required={required}
         rows={4}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-2 w-full rounded-xl border border-[#22262D] bg-[#171A20] p-3 text-sm font-normal text-[#F5F6F7] transition focus:border-[#4779B8] focus:outline-none"
+        className="mt-2 w-full rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] p-3 text-sm font-normal text-[#1D1D1F] transition focus:border-[#1D1D1F] focus:outline-none"
       />
     </label>
   );
@@ -123,17 +123,17 @@ function TextArea({ label, value, onChange, required }: { label: string; value: 
 
 function Select({ label, value, onChange, options, required }: { label: string; value: string; onChange: (v: string) => void; options: string[]; required?: boolean }) {
   return (
-    <label className="block text-xs font-semibold uppercase tracking-wider text-[#C7CBD1]">
+    <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B]">
       {label}{required && <span className="text-[#C92B35]"> *</span>}
       <select
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-2 min-h-11 w-full rounded-xl border border-[#22262D] bg-[#171A20] px-3 text-sm font-normal text-[#F5F6F7] transition focus:border-[#4779B8] focus:outline-none"
+        className="mt-2 min-h-11 w-full rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] px-3 text-sm font-normal text-[#1D1D1F] transition focus:border-[#1D1D1F] focus:outline-none"
       >
-        <option value="" className="bg-[#101216] text-[#9299A3]">Alege o opțiune</option>
+        <option value="" className="bg-white text-[#1D1D1F] text-[#86868B]">Alege o opțiune</option>
         {options.map((o) => (
-          <option key={o} value={o} className="bg-[#101216] text-[#F5F6F7]">{o}</option>
+          <option key={o} value={o} className="bg-white text-[#1D1D1F] text-[#1D1D1F]">{o}</option>
         ))}
       </select>
     </label>
@@ -143,7 +143,7 @@ function Select({ label, value, onChange, options, required }: { label: string; 
 function CheckGroup({ label, values, selected, onToggle }: { label: string; values: string[]; selected: (v: string) => boolean; onToggle: (v: string) => void }) {
   return (
     <fieldset>
-      <legend className="text-xs font-semibold uppercase tracking-wider text-[#C7CBD1]">{label}</legend>
+      <legend className="text-xs font-semibold uppercase tracking-wider text-[#86868B]">{label}</legend>
       <div className="mt-3 flex flex-wrap gap-2">
         {values.map((v) => {
           const isSel = selected(v);
@@ -155,8 +155,8 @@ function CheckGroup({ label, values, selected, onToggle }: { label: string; valu
               onClick={() => onToggle(v)}
               className={`min-h-11 rounded-xl border px-3.5 text-xs font-medium transition-all ${
                 isSel
-                  ? "border-[#4779B8] bg-[#4779B8]/20 text-white shadow-sm"
-                  : "border-[#22262D] bg-[#171A20] text-[#C7CBD1] hover:border-[#4779B8]/50 hover:text-white"
+                  ? "border-[#1D1D1F] bg-[#F5F5F7] text-white shadow-sm"
+                  : "border-[#D2D2D7] bg-[#F5F5F7] text-[#86868B] hover:border-[#1D1D1F]/50 hover:text-white"
               }`}
             >
               {v}
@@ -171,7 +171,7 @@ function CheckGroup({ label, values, selected, onToggle }: { label: string; valu
 function RadioGroup({ label, values, value, onChange }: { label: string; values: string[]; value: string; onChange: (v: string) => void }) {
   return (
     <fieldset>
-      <legend className="text-xs font-semibold uppercase tracking-wider text-[#C7CBD1]">{label}</legend>
+      <legend className="text-xs font-semibold uppercase tracking-wider text-[#86868B]">{label}</legend>
       <div className="mt-3 flex flex-wrap gap-2">
         {values.map((v) => {
           const isSel = value === v;
@@ -183,8 +183,8 @@ function RadioGroup({ label, values, value, onChange }: { label: string; values:
               onClick={() => onChange(v)}
               className={`min-h-11 rounded-xl border px-4 text-xs font-medium transition-all ${
                 isSel
-                  ? "border-[#4779B8] bg-[#4779B8]/20 text-white shadow-sm"
-                  : "border-[#22262D] bg-[#171A20] text-[#C7CBD1] hover:border-[#4779B8]/50 hover:text-white"
+                  ? "border-[#1D1D1F] bg-[#F5F5F7] text-white shadow-sm"
+                  : "border-[#D2D2D7] bg-[#F5F5F7] text-[#86868B] hover:border-[#1D1D1F]/50 hover:text-white"
               }`}
             >
               {v}

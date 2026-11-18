@@ -225,16 +225,16 @@ export function HelpDeskApp() {
       </p>
 
       {/* Business Section Entry Banner */}
-      <div className="mt-8 rounded-2xl border border-[#22262D] bg-gradient-to-r from-[#171A20] to-[#101216] p-5 sm:p-6 shadow-card">
+      <div className="mt-8 rounded-2xl border border-[#D2D2D7] bg-gradient-to-r from-[#0B2621] to-[#180D20] p-5 sm:p-6 shadow-card">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <span className="inline-flex items-center rounded-full border border-[#C92B35]/30 bg-[#C92B35]/10 px-2.5 py-0.5 text-xs font-semibold text-[#F5F6F7]">
+            <span className="inline-flex items-center rounded-full border border-[#C92B35]/30 bg-[#C92B35]/10 px-2.5 py-0.5 text-xs font-semibold text-[#1D1D1F]">
               Secțiune pentru antreprenori & companii
             </span>
-            <h2 className="mt-2 text-xl font-bold tracking-tight text-[#F5F6F7] sm:text-2xl">
+            <h2 className="mt-2 text-xl font-bold tracking-tight text-[#1D1D1F] sm:text-2xl">
               Protecția Afacerii Tale
             </h2>
-            <p className="mt-1 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
+            <p className="mt-1 text-xs leading-relaxed text-[#86868B] sm:text-sm">
               Ghid complet de risc pe 12 industrii, 26 de polițe comerciale, scenarii de daune și instrument de diagnostic.
             </p>
           </div>
@@ -263,14 +263,14 @@ export function HelpDeskApp() {
           ref={panelRef}
           tabIndex={-1}
           aria-labelledby="flow-title"
-          className="mt-8 rounded-3xl border border-[#22262D] bg-[#101216] p-6 sm:p-10 shadow-card"
+          className="mt-8 rounded-3xl border border-[#D2D2D7] bg-white text-[#1D1D1F] p-6 sm:p-10 shadow-card"
         >
-          <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#22262D] pb-5">
+          <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#D2D2D7] pb-5">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#1D1D1F]">
                 {selectedCard?.title || "Întrebare"}
               </p>
-              <h2 id="flow-title" className="mt-1.5 text-2xl font-bold tracking-tight text-[#F5F6F7]">
+              <h2 id="flow-title" className="mt-1.5 text-2xl font-bold tracking-tight text-[#1D1D1F]">
                 {step === "type" && "Pentru cine cauți asistență?"}
                 {step === "details" && "Detalii despre situație"}
                 {step === "guidance" && guidance?.title}
@@ -278,7 +278,7 @@ export function HelpDeskApp() {
                 {step === "done" && "Solicitarea ta a fost înregistrată"}
               </h2>
             </div>
-            <button type="button" className="text-xs font-medium text-[#9299A3] hover:text-white" onClick={backToCards}>
+            <button type="button" className="text-xs font-medium text-[#86868B] hover:text-white" onClick={backToCards}>
               Înapoi la categorii
             </button>
           </div>
@@ -384,12 +384,12 @@ export function HelpDeskApp() {
                   ? "Solicitarea ta de contact a fost înregistrată"
                   : "Solicitarea ta a fost transmisă"}
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-[#C7CBD1] sm:text-sm">
+              <p className="mt-2 text-xs leading-relaxed text-[#86868B] sm:text-sm">
                 {state.flow === "aminteste"
                   ? "Am notat scadența poliței tale. Te voi contacta personal pe canalul selectat pentru a analiza opțiunile disponibile de reînnoire."
                   : "Voi analiza datele transmise și te voi contacta în cel mai scurt timp pentru detalii și clarificări."}
               </p>
-              <p className="mt-4 inline-block rounded-lg border border-[#22262D] bg-[#171A20] px-3 py-1 font-mono text-xs text-[#9299A3]">
+              <p className="mt-4 inline-block rounded-lg border border-[#D2D2D7] bg-[#F5F5F7] px-3 py-1 font-mono text-xs text-[#86868B]">
                 ID referință: {savedId}
               </p>
               <div className="mt-6">
@@ -406,11 +406,11 @@ export function HelpDeskApp() {
         </section>
       )}
 
-      <section className="mt-16 rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card sm:p-10" aria-labelledby="alta-intrebare">
-        <h2 id="alta-intrebare" className="text-xl font-bold tracking-tight text-[#F5F6F7] sm:text-2xl">
+      <section className="mt-16 rounded-3xl border border-[#D2D2D7] bg-white text-[#1D1D1F] p-7 shadow-card sm:p-10" aria-labelledby="alta-intrebare">
+        <h2 id="alta-intrebare" className="text-xl font-bold tracking-tight text-[#1D1D1F] sm:text-2xl">
           Ai o altă întrebare specifică?
         </h2>
-        <p className="mt-1 text-xs text-[#9299A3] sm:text-sm">
+        <p className="mt-1 text-xs text-[#86868B] sm:text-sm">
           Scrie liber despre situația ta și te ajut să identifici varianta corectă.
         </p>
         <form
@@ -436,7 +436,7 @@ export function HelpDeskApp() {
             value={state.freeQuestion}
             onChange={(e) => setState((s) => ({ ...s, freeQuestion: e.target.value }))}
             placeholder="Scrie aici detaliile situației tale..."
-            className="w-full rounded-2xl border border-[#22262D] bg-[#171A20] p-4 text-sm text-[#F5F6F7] placeholder:text-[#9299A3] transition focus:border-[#4779B8] focus:outline-none"
+            className="w-full rounded-2xl border border-[#D2D2D7] bg-[#F5F5F7] p-4 text-sm text-[#1D1D1F] placeholder:text-[#86868B] transition focus:border-[#1D1D1F] focus:outline-none"
           />
           <button
             type="submit"
@@ -445,17 +445,17 @@ export function HelpDeskApp() {
             Trimite întrebarea directă
           </button>
         </form>
-        <p className="mt-4 text-xs leading-relaxed text-[#9299A3]">
+        <p className="mt-4 text-xs leading-relaxed text-[#86868B]">
           Serviciul de consultanță și orientare este gratuit. Plătești prima de asigurare exclusiv dacă alegi emiterea unei polițe.
         </p>
       </section>
 
-      <section className="mt-16 border-t border-[#22262D] pt-8 max-w-2xl">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-[#F5F6F7]">Despre serviciu</h2>
-        <p className="mt-2 text-xs leading-relaxed text-[#9299A3]">
+      <section className="mt-16 border-t border-[#D2D2D7] pt-8 max-w-2xl">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-[#1D1D1F]">Despre serviciu</h2>
+        <p className="mt-2 text-xs leading-relaxed text-[#86868B]">
           {SITE.name} este un punct de contact independent prin care poți solicita asistență de specialitate pentru oferte de asigurări, tranzacții imobiliare, notificări și analize de risc.
         </p>
-        <p className="mt-2 text-xs font-medium text-[#C7CBD1]">{SITE.brandLine}</p>
+        <p className="mt-2 text-xs font-medium text-[#86868B]">{SITE.brandLine}</p>
       </section>
     </div>
   );
@@ -478,13 +478,13 @@ function HelpCardButton({
       aria-pressed={selected}
       className={`min-h-[132px] rounded-2xl border p-5 text-left transition-all ${
         selected
-          ? "border-[#4779B8] bg-[#4779B8]/15 shadow-glow-blue"
-          : "border-[#22262D] bg-[#101216] hover:border-[#4779B8]/50 hover:bg-[#171A20]"
+          ? "border-[#1D1D1F] bg-[#F5F5F7] shadow-glow-blue"
+          : "border-[#D2D2D7] bg-white text-[#1D1D1F] hover:border-[#1D1D1F]/50 hover:bg-[#F5F5F7]"
       }`}
     >
-      <Icon className="h-5 w-5 text-[#4779B8]" aria-hidden />
-      <span className="mt-3 block text-sm font-semibold text-[#F5F6F7]">{card.title}</span>
-      <span className="mt-1 block text-xs leading-relaxed text-[#9299A3]">{card.description}</span>
+      <Icon className="h-5 w-5 text-[#1D1D1F]" aria-hidden />
+      <span className="mt-3 block text-sm font-semibold text-[#1D1D1F]">{card.title}</span>
+      <span className="mt-1 block text-xs leading-relaxed text-[#86868B]">{card.description}</span>
     </button>
   );
 }
@@ -506,12 +506,12 @@ function Choice({
       onClick={onClick}
       className={`rounded-2xl border p-5 text-left transition-all ${
         selected
-          ? "border-[#4779B8] bg-[#4779B8]/15 text-white"
-          : "border-[#22262D] bg-[#171A20] text-[#F5F6F7] hover:border-[#4779B8]/50"
+          ? "border-[#1D1D1F] bg-[#F5F5F7] text-white"
+          : "border-[#D2D2D7] bg-[#F5F5F7] text-[#1D1D1F] hover:border-[#1D1D1F]/50"
       }`}
     >
       <span className="block font-semibold text-white">{label}</span>
-      <span className="mt-1 block text-xs text-[#9299A3]">{hint}</span>
+      <span className="mt-1 block text-xs text-[#86868B]">{hint}</span>
     </button>
   );
 }
@@ -532,7 +532,7 @@ function NavRow({
       <button
         type="button"
         onClick={onBack}
-        className="rounded-full border border-[#22262D] bg-[#171A20] px-4 py-2 text-xs font-medium text-[#C7CBD1] hover:text-white"
+        className="rounded-full border border-[#D2D2D7] bg-[#F5F5F7] px-4 py-2 text-xs font-medium text-[#86868B] hover:text-white"
       >
         Înapoi
       </button>

@@ -1,20 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { SITE } from "@/config/site";
-import { Menu, X, Phone, Shield, Home, ArrowRight, Building2 } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
   const navLinks = [
-    { href: "/", label: "Acasă" },
+    { href: "/", label: "Prezentare" },
     { href: "/imobiliare", label: "Imobiliare" },
     { href: "/asigurari", label: "Asigurări" },
-    { href: "/afaceri", label: "Protecția Afacerii (B2B)" },
+    { href: "/afaceri", label: "Companii" },
     { href: "/despre-mine", label: "Despre mine" },
   ];
 
@@ -24,33 +43,44 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#22262D]/90 bg-[#08090B]/85 backdrop-blur-xl transition-all">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 sm:py-4">
-        {/* Brand Logo */}
-        <Link href="/" className="group flex flex-col transition">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#9299A3] transition-colors group-hover:text-[#C7CBD1]">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/85 backdrop-blur-xl border-b border-[#D2D2D7]/60 shadow-[0_1px_4px_rgba(0,0,0,0.03)] py-3"
+          : "bg-white/70 backdrop-blur-lg border-b border-[#E8E8ED]/60 py-3.5"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Apple-like Minimal Wordmark with Authentic Personal Avatar */}
+        <Link href="/" className="group flex items-center gap-2.5 transition">
+          <div className="relative h-7 w-7 overflow-hidden rounded-full border border-[#D2D2D7] bg-[#F5F5F7] shrink-0">
+            <Image
+              src="/images/cristian/cv-avatar-vest.webp"
+              alt="Cristian Văduva"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <span className="text-[15px] font-semibold tracking-tight text-[#1D1D1F] transition-opacity group-hover:opacity-70">
             Cristian Văduva
           </span>
-          <span className="text-sm font-bold tracking-tight text-[#F5F6F7] transition-colors sm:text-base">
-            {SITE.name}
-          </span>
-          <span className="hidden text-[10px] tracking-wide text-[#9299A3] sm:inline">
-            {SITE.tagline}
+          <span className="hidden sm:inline-block text-[11px] font-normal text-[#86868B] border-l border-[#D2D2D7] pl-2.5">
+            Imobiliare & Generali
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav aria-label="Navigare principală" className="hidden items-center gap-1 lg:flex">
+        <nav aria-label="Navigare principală" className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wide transition-all ${
+                className={`text-[13px] tracking-tight transition-colors duration-150 ${
                   active
-                    ? "border border-[#22262D] bg-[#171A20] text-[#F5F6F7] shadow-sm"
-                    : "text-[#9299A3] hover:bg-[#101216] hover:text-[#F5F6F7]"
+                    ? "text-[#1D1D1F] font-semibold"
+                    : "text-[#86868B] hover:text-[#1D1D1F]"
                 }`}
               >
                 {link.label}
@@ -59,53 +89,60 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Button & Contact */}
+        {/* Minimal Pill CTA */}
         <div className="hidden items-center gap-3 sm:flex">
           <a
             href={`tel:${SITE.phoneTel}`}
-            className="inline-flex items-center gap-2 rounded-full border border-[#22262D] bg-[#101216]/90 px-3.5 py-2 text-xs font-medium text-[#C7CBD1] shadow-sm transition-all hover:border-[#4779B8]/60 hover:bg-[#171A20] hover:text-white"
+            className="text-[13px] tracking-tight text-[#86868B] hover:text-[#1D1D1F] transition-colors"
           >
-            <Phone className="h-3.5 w-3.5 text-[#4779B8]" />
-            <span>{SITE.phoneDisplay}</span>
+            {SITE.phoneDisplay}
           </a>
+
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#F5F6F7] px-4 py-2 text-xs font-semibold text-[#08090B] shadow-[0_0_20px_-4px_rgba(255,255,255,0.2)] transition-all hover:bg-white hover:shadow-[0_0_25px_-2px_rgba(255,255,255,0.35)]"
+            className="apple-btn-primary !py-1.5 !px-4 !text-[13px]"
           >
-            <span>Contactează-mă</span>
+            Contact
           </Link>
         </div>
 
-        {/* Mobile Action & Menu Button */}
+        {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 lg:hidden">
-          <a
-            href={`tel:${SITE.phoneTel}`}
-            className="inline-flex items-center justify-center rounded-full border border-[#22262D] bg-[#101216] p-2 text-[#C7CBD1] transition-all hover:border-[#4779B8] hover:text-white"
-            aria-label="Apelează telefon"
+          <Link
+            href="/contact"
+            className="apple-btn-primary !py-1.5 !px-3.5 !text-xs"
           >
-            <Phone className="h-4 w-4 text-[#4779B8]" />
-          </a>
+            Contact
+          </Link>
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex items-center justify-center rounded-full border border-[#22262D] bg-[#101216] p-2 text-[#F5F6F7] transition-all hover:bg-[#171A20]"
-            aria-label={mobileMenuOpen ? "Închide meniul" : "Deschide meniul"}
-            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(true)}
+            className="p-1.5 text-[#1D1D1F] transition-opacity hover:opacity-70"
+            aria-label="Deschide meniul"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <Menu className="h-5 w-5" />
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Apple-like Clean Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="border-b border-[#22262D] bg-[#08090B]/95 px-4 py-5 shadow-2xl backdrop-blur-2xl lg:hidden">
-          <div className="mb-3 px-3">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9299A3]">
-              Navigare
-            </p>
+        <div className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-6 lg:hidden animate-in fade-in duration-200">
+          <div className="flex items-center justify-between border-b border-[#E8E8ED] pb-4">
+            <span className="text-base font-semibold tracking-tight text-[#1D1D1F]">
+              Cristian Văduva
+            </span>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-1.5 text-[#1D1D1F] transition-opacity hover:opacity-70"
+              aria-label="Închide meniul"
+            >
+              <X className="h-6 w-6" />
+            </button>
           </div>
-          <nav aria-label="Meniu mobil" className="flex flex-col gap-1">
+
+          <nav aria-label="Meniu mobil" className="my-auto flex flex-col space-y-5 py-8">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
@@ -113,59 +150,35 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-all ${
-                    active
-                      ? "border border-[#22262D] bg-[#171A20] text-white font-semibold"
-                      : "text-[#C7CBD1] hover:bg-[#101216] hover:text-white"
-                  }`}
+                  className="flex items-center justify-between py-2 border-b border-[#F5F5F7]"
                 >
-                  <span>{link.label}</span>
-                  <ArrowRight className="h-4 w-4 text-[#9299A3]" />
+                  <span
+                    className={`text-2xl tracking-tight transition-colors ${
+                      active ? "text-[#1D1D1F] font-semibold" : "text-[#86868B]"
+                    }`}
+                  >
+                    {link.label}
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#86868B]" />
                 </Link>
               );
             })}
           </nav>
 
-          <div className="mt-5 border-t border-[#22262D] pt-4">
-            <div className="grid grid-cols-2 gap-2">
-              <Link
-                href="/imobiliare"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex flex-col rounded-xl border border-[#22262D] bg-[#101216] p-3 text-left transition hover:border-[#4779B8]/50 hover:bg-[#171A20]"
-              >
-                <Home className="h-4 w-4 text-[#4779B8]" />
-                <span className="mt-2 text-xs font-semibold text-white">Imobiliare</span>
-                <span className="text-[10px] text-[#9299A3]">Tranzacții & Investiții</span>
-              </Link>
-              <Link
-                href="/asigurari"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex flex-col rounded-xl border border-[#22262D] bg-[#101216] p-3 text-left transition hover:border-[#C92B35]/50 hover:bg-[#171A20]"
-              >
-                <Shield className="h-4 w-4 text-[#C92B35]" />
-                <span className="mt-2 text-xs font-semibold text-white">Asigurări</span>
-                <span className="text-[10px] text-[#9299A3]">PF & Companii B2B</span>
-              </Link>
-            </div>
-
-            <div className="mt-4 flex flex-col gap-2 pt-1">
-              <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-xl bg-[#F5F6F7] py-3 text-xs font-semibold text-[#08090B] shadow-md transition hover:bg-white"
-              >
-                <span>Deschide formularul de contact</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-              <div className="mt-2 flex items-center justify-between px-1 text-xs text-[#9299A3]">
-                <a href={`tel:${SITE.phoneTel}`} className="font-medium text-[#C7CBD1] hover:text-white">
-                  {SITE.phoneDisplay}
-                </a>
-                <a href={`mailto:${SITE.email}`} className="text-[#9299A3] hover:text-[#C7CBD1]">
-                  {SITE.email}
-                </a>
-              </div>
-            </div>
+          <div className="border-t border-[#E8E8ED] pt-6 flex flex-col gap-3">
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="apple-btn-primary w-full text-center"
+            >
+              Contact direct
+            </Link>
+            <a
+              href={`tel:${SITE.phoneTel}`}
+              className="apple-btn-secondary w-full text-center"
+            >
+              Apelează {SITE.phoneDisplay}
+            </a>
           </div>
         </div>
       )}

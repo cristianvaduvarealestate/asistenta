@@ -1,36 +1,20 @@
-import { redirect } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import {
-  Shield,
-  Home as HomeIcon,
-  ArrowRight,
-  FileText,
-  Bell,
-  BookOpen,
-  ShieldQuestion,
-  ScanSearch,
-  AlertCircle,
-  Building2,
-  CheckCircle2,
-  Phone,
-  MessageSquare,
-  Mail,
-} from "lucide-react";
 import { SITE } from "@/config/site";
+import { ArrowRight, Phone, MessageSquare, HeartHandshake } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Consultanță imobiliară și asigurări | Cristian Văduva",
+  title: "Cristian Văduva — Asistență Imobiliară & Partener Generali",
   description:
-    "Consultanță imobiliară, soluții de protecție prin parteneriatul cu Generali și asistență pentru credite în colaborare cu Smart Credit România. Servicii oferite de Cristian Văduva.",
+    "Ajutor sincer și consultanță dedicată pentru decizii imobiliare și asigurări prin parteneriatul cu Generali România. Discutăm deschis și găsim împreună varianta potrivită pentru tine.",
   alternates: {
     canonical: SITE.publicUrl,
   },
   openGraph: {
-    title: "Consultanță imobiliară și asigurări | Cristian Văduva",
+    title: "Cristian Văduva — Asistență Imobiliară & Partener Generali",
     description:
-      "Consultanță imobiliară, soluții de protecție prin parteneriatul cu Generali și asistență pentru credite în colaborare cu Smart Credit România.",
+      "Ajutor sincer și consultanță dedicată pentru decizii imobiliare și asigurări prin parteneriatul cu Generali România.",
     url: SITE.publicUrl,
     type: "website",
     images: [
@@ -38,450 +22,456 @@ export const metadata: Metadata = {
         url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
         width: 1200,
         height: 630,
-        alt: "Cristian Văduva — Consultanță Imobiliară & Partener Generali",
+        alt: "Cristian Văduva",
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Consultanță imobiliară și asigurări | Cristian Văduva",
-    description:
-      "Consultanță imobiliară, soluții de protecție prin parteneriatul cu Generali și asistență pentru credite în colaborare cu Smart Credit România.",
-    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
-  },
 };
 
-type PageProps = {
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-export default function HomePage({ searchParams }: PageProps) {
-  // Handover seamless pentru linkuri de asistență vechi
-  if (searchParams?.ajutor) {
-    const params = new URLSearchParams();
-    for (const [k, v] of Object.entries(searchParams)) {
-      if (typeof v === "string") params.set(k, v);
-      else if (Array.isArray(v)) v.forEach((val) => params.append(k, val));
-    }
-    redirect(`/asigurari?${params.toString()}`);
-  }
-
-  const insuranceFlows = [
+export default function HomePage() {
+  const operations = [
     {
-      title: "Ofertă nouă",
-      desc: "Identificăm soluțiile de protecție potrivite din oferta Generali.",
-      icon: FileText,
+      num: "01",
+      title: "Vreau o ofertă de asigurare",
+      category: "Generali România",
+      desc: "Pentru mașină (CASCO & RCA), locuință, sănătate sau pentru firma ta. Îți explic opțiunile pe înțelesul tău.",
       href: "/asigurari?ajutor=oferta",
-      badge: "Partener Generali",
     },
     {
-      title: "Verificare scadență",
-      desc: "Înregistrează scadența poliței, iar eu te voi contacta personal pentru a analiza reînnoirea.",
-      icon: Bell,
+      num: "02",
+      title: "Vreau să verific când îmi expiră o poliță",
+      category: "Fără întrerupere",
+      desc: "Îmi lași data de scadență și vorbim din timp, ca să nu rămâi descoperit și să reînnoim în condiții bune.",
       href: "/asigurari?ajutor=aminteste",
-      badge: "Contact personal",
     },
     {
-      title: "Explicare poliță",
-      desc: "Traduc termenii complecși, clauzele și franșizele pe înțelesul tău.",
-      icon: BookOpen,
+      num: "03",
+      title: "Nu înțeleg o clauză sau o franșiză",
+      category: "Lămuriri deschise",
+      desc: "Trimite-mi contractul sau întreabă-mă direct. Îți traduc termenii complicați în cuvinte simple și clare.",
       href: "/asigurari?ajutor=explica",
-      badge: "Claritate",
     },
     {
-      title: "Sunt asigurat?",
-      desc: "Orientare și analiză a condițiilor contractuale pentru clarificarea situației tale.",
-      icon: ShieldQuestion,
-      href: "/asigurari?ajutor=acoperire",
-      badge: "Orientare",
-    },
-    {
-      title: "Ce ar trebui să asigur?",
-      desc: "Identificăm riscurile reale ale familiei sau afacerii tale.",
-      icon: ScanSearch,
-      href: "/asigurari?ajutor=nevoi",
-      badge: "Evaluare",
-    },
-    {
-      title: "Asistență daună",
-      desc: "Ghid pas cu pas și îndrumare pentru pregătirea dosarului de daună.",
-      icon: AlertCircle,
+      num: "04",
+      title: "Am o daună și am nevoie de îndrumare",
+      category: "Ajutor direct",
+      desc: "Îți spun pas cu pas ce trebuie să faci, ce acte pregătești și cum deschizi corect dosarul la Generali.",
       href: "/asigurari?ajutor=dauna",
-      badge: "Îndrumare",
+    },
+    {
+      num: "05",
+      title: "Caut o locuință sau vreau să vând",
+      category: "Consultanță imobiliară",
+      desc: "Spune-mi ce cauți sau ce proprietate vrei să valorifici. Discutăm deschis și stabilim cel mai bun plan.",
+      href: "/imobiliare#formular-imobiliar",
+    },
+    {
+      num: "06",
+      title: "Am o firmă și vreau să știu ce riscuri am",
+      category: "Companii & IMM",
+      desc: "Ghid simplu pe industrii: clădiri, stocuri, utilaje, flote auto și răspundere civilă pentru afacerea ta.",
+      href: "/afaceri",
     },
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#08090B] pb-24 pt-8 text-[#F5F6F7] sm:pt-14">
-      {/* Subtle Top Radial Ambient Lighting */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[600px] overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="absolute left-1/2 top-0 h-[450px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4779B8]/10 blur-[130px]" />
-        <div className="absolute right-1/4 top-32 h-[300px] w-[500px] rounded-full bg-[#C92B35]/5 blur-[120px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        {/* HERO SECTION */}
-        <section className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#22262D] bg-[#101216]/80 px-4 py-1.5 text-xs font-medium tracking-wide text-[#C7CBD1] shadow-glass backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4779B8]" />
-            <span>{SITE.name}</span>
-            <span className="text-[#9299A3]">•</span>
-            <span className="text-[#9299A3]">{SITE.tagline}</span>
+    <div className="bg-white text-[#1D1D1F]">
+      {/* ========================================================================= */}
+      {/* 1. HERO — WARM, HUMAN, WELCOMING */}
+      {/* ========================================================================= */}
+      <section className="relative pt-20 pb-24 sm:pt-28 sm:pb-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED]">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#D2D2D7] bg-[#F5F5F7] px-3.5 py-1 text-xs font-medium text-[#424245] mb-5">
+            <HeartHandshake className="h-3.5 w-3.5 text-[#1D1D1F]" />
+            <span>Consultanță Imobiliară & Partener Oficial Generali România</span>
           </div>
 
-          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-[#F5F6F7] sm:text-6xl lg:text-7xl">
-            Cu ce te pot ajuta?
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.1]">
+            Hai să găsim împreună <br />
+            <span className="text-[#86868B]">drumul potrivit pentru tine.</span>
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#C7CBD1] sm:text-lg">
-            Spune-mi ce ai nevoie. Te ajut să înțelegi, să verifici și să găsești soluțiile potrivite,
-            fie că este vorba despre tranzacții imobiliare sau programe de asigurare prin parteneriatul cu Generali.
+          <p className="mt-6 mx-auto max-w-2xl text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+            Când cauți o locuință, vrei să vinzi o proprietate sau ai nevoie de o asigurare bună, cel mai important este să ai pe cineva de încredere alături. Sunt aici să te ascult, să-ți explic opțiunile pe înțelesul tău și să te ajut să iei decizia corectă, fără grabă și fără presiune.
           </p>
 
-          <p className="mt-2 text-xs font-medium tracking-wide text-[#9299A3]">
-            {SITE.brandLine}
-          </p>
-        </section>
+          {/* Clean Apple Pill Buttons with Friendly Human Labels */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href={`tel:${SITE.phoneTel}`} className="apple-btn-primary inline-flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              <span>Hai să vorbim direct</span>
+            </a>
+            <Link href="/imobiliare" className="apple-btn-secondary">
+              Caut o proprietate
+            </Link>
+            <Link href="/asigurari" className="apple-btn-secondary">
+              Întreabă despre asigurări
+            </Link>
+          </div>
+        </div>
 
-        {/* TWO CINEMATIC PRIMARY CARDS (IMOBILIARE & ASIGURĂRI) */}
-        <section className="mt-14 grid gap-8 lg:grid-cols-2">
-          {/* TRACK 1: IMOBILIARE */}
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card transition-all duration-300 hover:border-[#4779B8]/60 hover:shadow-[0_20px_50px_-15px_rgba(71,121,184,0.18)] sm:p-10">
-            {/* Ambient Background Visual using real photo */}
-            <div className="relative mb-6 h-56 w-full overflow-hidden rounded-2xl border border-[#22262D]/80 sm:h-64">
-              <Image
-                src="/images/cristian/cristian-aix-sny05672.jpg"
-                alt="Cristian Văduva — Consultanță Imobiliară"
-                fill
-                priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 550px"
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#101216] via-[#101216]/40 to-transparent" />
+        {/* Hero Photographic Showcase — NATURAL 4:3 RATIO (NO CLIPPING) */}
+        <div className="mt-14 mx-auto max-w-3xl">
+          <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">
+            <Image
+              src="/images/cristian/cristian-hero-vest.webp"
+              alt="Cristian Văduva — Consultanță personală, imobiliare și asigurări Generali"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 768px"
+              className="object-cover object-center"
+            />
+          </div>
+          <div className="mt-3 flex items-center justify-between text-xs text-[#86868B] px-2 font-mono">
+            <span>Cristian Văduva • Aici să te ajut</span>
+            <span>București & colaborări deschise</span>
+          </div>
+        </div>
+      </section>
 
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#08090B]/80 px-3 py-1 text-[11px] font-semibold text-[#F5F6F7] backdrop-blur-md">
-                  <HomeIcon className="h-3.5 w-3.5 text-[#4779B8]" />
-                  <span>Tranzacții & Investiții</span>
-                </div>
-                <span className="text-[11px] font-medium text-[#C7CBD1] backdrop-blur-xs">
-                  Rezidențial & Comercial
-                </span>
-              </div>
-            </div>
-
-            <div className="flex-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#4779B8]">
-                Direcția 01
-              </p>
-              <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-                Imobiliare
-              </h2>
-              <p className="mt-1 text-sm font-medium text-[#C7CBD1]">
-                Am nevoie de ajutor cu o proprietate
-              </p>
-              <p className="mt-3 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-                Vrei să cumperi, să vinzi, să închiriezi sau să investești într-o proprietate.
-                Consultanță obiectivă bazată pe tranzacții reale, selecție riguroasă și acces la proprietăți premium locale și internaționale.
-              </p>
-
-              <ul className="mt-6 space-y-2.5 text-xs text-[#C7CBD1]">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4779B8]" />
-                  <span>Reprezentare dedicată cumpărătorului sau vânzătorului, stabilită la începutul colaborării</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4779B8]" />
-                  <span>Închiriere spații comerciale, birouri și proprietăți rezidențiale</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4779B8]" />
-                  <span>Investiții imobiliare & randamente (inclusiv proiecte Dubai prin brokeri licențiați)</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="mt-8 border-t border-[#22262D] pt-6">
-              <Link
-                href="/imobiliare"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#F5F6F7] px-6 py-3.5 text-sm font-semibold text-[#08090B] shadow-md transition-all duration-200 hover:bg-white hover:shadow-[0_0_25px_-3px_rgba(255,255,255,0.3)]"
-              >
-                <span>Intră la Imobiliare</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      {/* ========================================================================= */}
+      {/* 2. SECTION: IMOBILIARE — WARM, HUMAN, DEDICATED */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED] bg-[#F5F5F7]">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-2xl">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Locuințe & Proprietăți
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2 leading-tight">
+              Sunt de partea ta. <br />
+              <span className="text-[#86868B]">Fără comisioane ascunse și fără interese împărțite.</span>
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-[#86868B] leading-relaxed">
+              Când cumperi sau vinzi o casă, ai nevoie de cineva care să reprezinte doar interesele tale. Verific actele cu atenție, negociem cinstit și sunt lângă tine la fiecare pas, de la prima vizionare până la semnarea actelor la notar. Nu iau niciodată comision dublu.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/imobiliare" className="apple-btn-primary">
+                Vezi cum te pot ajuta la imobiliare
+              </Link>
+              <Link href="/imobiliare#formular-imobiliar" className="apple-btn-secondary">
+                Spune-mi ce cauți
               </Link>
             </div>
           </div>
 
-          {/* TRACK 2: ASIGURĂRI */}
-          <div className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card transition-all duration-300 hover:border-[#C92B35]/60 hover:shadow-[0_20px_50px_-15px_rgba(201,43,53,0.18)] sm:p-10">
-            {/* Ambient Background Visual using real photo */}
-            <div className="relative mb-6 h-56 w-full overflow-hidden rounded-2xl border border-[#22262D]/80 sm:h-64">
-              <Image
-                src="/images/cristian/cristian-aix-sny01904.jpg"
-                alt="Cristian Văduva — Partener Generali Asigurări"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 550px"
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#101216] via-[#101216]/40 to-transparent" />
-
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#08090B]/80 px-3 py-1 text-[11px] font-semibold text-[#F5F6F7] backdrop-blur-md">
-                  <Shield className="h-3.5 w-3.5 text-[#C92B35]" />
-                  <span>Persoane Fizice & Companii</span>
-                </div>
-                <span className="text-[11px] font-medium text-[#C7CBD1] backdrop-blur-xs">
-                  Partener Generali
-                </span>
+          {/* Vertical Photographs in Natural 3:4 Containers (No Squishing, No Heads Cut Off) */}
+          <div className="mt-14 grid gap-8 sm:grid-cols-2">
+            <div className="space-y-3">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+                <Image
+                  src="/images/cristian/cristian-skyline-terrace.webp"
+                  alt="Cristian Văduva pe terasă, analizând cartierele din București"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="px-2">
+                <h3 className="text-sm font-semibold text-[#1D1D1F]">Căutăm împreună zona potrivită</h3>
+                <p className="text-xs text-[#86868B] mt-0.5">Analizăm cartierul, accesul și facilitățile reale</p>
               </div>
             </div>
 
-            <div className="flex-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C92B35]">
-                Direcția 02
-              </p>
-              <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-[#F5F6F7] sm:text-3xl">
-                Asigurări
-              </h2>
-              <p className="mt-1 text-sm font-medium text-[#C7CBD1]">
-                Am nevoie de ajutor cu o asigurare
-              </p>
-              <p className="mt-3 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-                Soluții de protecție prin parteneriatul cu Generali, verificare polițe existente, explicare clauze tehnice și franșize,
-                asistență la scadență și îndrumare dedicată în caz de daună.
-              </p>
+            <div className="space-y-3">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+                <Image
+                  src="/images/cristian/cristian-residences-vest.webp"
+                  alt="Cristian Văduva la vizionarea unor case și apartamente"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="px-2">
+                <h3 className="text-sm font-semibold text-[#1D1D1F]">Mergem împreună la vizionări</h3>
+                <p className="text-xs text-[#86868B] mt-0.5">Verificăm calitatea construcției și actele de proprietate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <ul className="mt-6 space-y-2.5 text-xs text-[#C7CBD1]">
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#C92B35]" />
-                  <span>Persoane Fizice: Auto (CASCO/RCA), Locuință (PAD/Facultativă), Sănătate, Călătorie</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#C92B35]" />
-                  <span>Companii & IMM: Clădiri, Utilaje, Flote, Răspundere Profesională, D&O, Cyber Risk</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#C92B35]" />
-                  <span>Ghid complet Protecția Afacerii Tale (22 categorii de risc, 12 domenii economice)</span>
-                </li>
-              </ul>
+      {/* ========================================================================= */}
+      {/* 3. SECTION: ASIGURĂRI — CLEAR, FRIENDLY, ACCESSIBLE */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#1D1D1F] text-white">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-2xl">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Asigurări Generali România
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white mt-2 leading-tight">
+              Asigurări explicate simplu. <br />
+              <span className="text-[#86868B]">Să știi exact pe ce te bazezi.</span>
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-[#86868B] leading-relaxed">
+              O asigurare bună este cea pe care o înțelegi dinainte, nu cea plină de clauze mărunte pe care le descoperi abia la nevoie. Ca partener oficial Generali România, îți explic deschis ce acoperă fiecare poliță, ce înseamnă fiecare franșiză și te ajut personal dacă apare o daună.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/asigurari" className="apple-btn-dark">
+                Vezi opțiunile de asigurare
+              </Link>
+              <a href={`tel:${SITE.phoneTel}`} className="apple-btn-secondary !text-white !border-[#424245] hover:!bg-[#2A2A2D]">
+                Sună pentru o întrebare
+              </a>
+            </div>
+          </div>
+
+          {/* Asymmetrical Natural Photo Composition */}
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:items-end">
+            <div className="space-y-3">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-black border border-[#424245]">
+                <Image
+                  src="/images/cristian/cv-summit-suit.webp"
+                  alt="Cristian Văduva — Parteneriat oficial cu Generali România"
+                  fill
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover object-top opacity-95"
+                />
+              </div>
+              <div className="px-2">
+                <h3 className="text-sm font-semibold text-white">Parteneriat oficial Generali</h3>
+                <p className="text-xs text-[#86868B] mt-0.5">Garanția unei companii solide, cu sprijinul meu direct</p>
+              </div>
             </div>
 
-            <div className="mt-8 border-t border-[#22262D] pt-6">
-              <Link
-                href="/asigurari"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#F5F6F7] px-6 py-3.5 text-sm font-semibold text-[#08090B] shadow-md transition-all duration-200 hover:bg-white hover:shadow-[0_0_25px_-3px_rgba(255,255,255,0.3)]"
-              >
-                <span>Intră la Asigurări</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <div className="space-y-3">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-black border border-[#424245]">
+                <Image
+                  src="/images/cristian/cv-executive-white-tie.webp"
+                  alt="Cristian Văduva la birou, explicând condițiile unei polițe"
+                  fill
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover object-center opacity-95"
+                />
+              </div>
+              <div className="px-2">
+                <h3 className="text-sm font-semibold text-white">Fiecare franșiză explicată pe loc</h3>
+                <p className="text-xs text-[#86868B] mt-0.5">Știi din prima zi cum funcționează despăgubirea</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. SECTION: DESPRE MINE — HUMAN, RELATABLE */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED] bg-white">
+        <div className="mx-auto max-w-5xl grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-[#F5F5F7] border border-[#E8E8ED] shadow-sm">
+              <Image
+                src="/images/cristian/cv-palace-stairs.webp"
+                alt="Cristian Văduva — Despre mine, onestitate și respect"
+                fill
+                loading="eager"
+                sizes="(max-width: 1024px) 100vw, 480px"
+                className="object-cover object-top"
+              />
+            </div>
+            <div className="mt-3 flex items-center justify-between text-xs text-[#86868B] px-2 font-mono">
+              <span>Cristian Văduva</span>
+              <span>Discuții deschise, fără formalism</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7 space-y-6">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Cine sunt
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-tight">
+              Oamenii înainte de cifre. <br />
+              <span className="text-[#86868B]">Un parteneriat bazat pe încredere sinceră.</span>
+            </h2>
+            <blockquote className="text-lg sm:text-xl text-[#1D1D1F] font-normal leading-relaxed border-l-2 border-[#1D1D1F] pl-4">
+              „Cea mai bună decizie nu se ia sub presiune. Se ia atunci când ai toate informațiile pe masă, când cineva îți răspunde sincer la întrebări și când simți că ești pe mâini bune.”
+            </blockquote>
+            <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+              Lucrez simplu și corect: când te asist la o achiziție sau vânzare imobiliară, reprezint doar partea ta, fără compromisuri. Când discutăm despre asigurări, îți ofer variante clare prin Generali România și îți spun deschis avantajele și limitele fiecărei opțiuni. Fără roluri inventate, fără promisiuni nerealiste.
+            </p>
+            <div className="pt-2">
+              <Link href="/despre-mine" className="apple-btn-secondary">
+                Află mai multe despre felul în care lucrez
               </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* SECONDARY ZONE: QUICK INSURANCE ACCESS TILES */}
-        <section className="mt-16 sm:mt-24">
-          <div className="flex flex-col items-start justify-between gap-2 border-b border-[#22262D] pb-4 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9299A3]">
-                Servicii Directe
-              </p>
-              <h2 className="mt-1 text-xl font-bold tracking-tight text-[#F5F6F7] sm:text-2xl">
-                Asistență & Îndrumare în Asigurări
-              </h2>
+      {/* ========================================================================= */}
+      {/* 5. EDITORIAL PHOTO STRIP — DEDICATED VERTICAL CONTAINERS (NO CLIPPING) */}
+      {/* ========================================================================= */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] border-b border-[#E8E8ED]">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-10 text-center sm:text-left">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Momente din activitatea de zi cu zi
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F] mt-1">
+              Prezent acolo unde se iau deciziile.
+            </h3>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-3">
+            <div className="space-y-3">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+                <Image
+                  src="/images/cristian/cv-historic-architecture.webp"
+                  alt="Cristian Văduva în centrul istoric"
+                  fill
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 320px"
+                  className="object-cover object-[50%_35%]"
+                />
+              </div>
+              <div className="px-2">
+                <h4 className="text-sm font-semibold text-[#1D1D1F]">Locuințe cu poveste</h4>
+                <p className="text-xs text-[#86868B] mt-0.5">Clădiri istorice și apartamente cu personalitate</p>
+              </div>
             </div>
-            <p className="text-xs text-[#9299A3]">
-              Alege opțiunea dorită pentru a accesa direct formularul de solicitare.
+
+            <div className="space-y-3">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+                <Image
+                  src="/images/cristian/cv-skytower-glass.webp"
+                  alt="Cristian Văduva la SkyTower"
+                  fill
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 320px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="px-2">
+                <h4 className="text-sm font-semibold text-[#1D1D1F]">Cartiere moderne</h4>
+                <p className="text-xs text-[#86868B] mt-0.5">Dezvoltări noi și oportunități pentru viitor</p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+                <Image
+                  src="/images/cristian/cv-rooftop-lounge.webp"
+                  alt="Cristian Văduva în discuție personală"
+                  fill
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 320px"
+                  className="object-cover object-center"
+                />
+              </div>
+              <div className="px-2">
+                <h4 className="text-sm font-semibold text-[#1D1D1F]">Discuții liniștite</h4>
+                <p className="text-xs text-[#86868B] mt-0.5">Timp dedicat pentru a înțelege exact ce îți dorești</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 6. SECTION: DIRECT ASSISTANCE INDEX — FRIENDLY ACTIONS */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-[#E8E8ED]">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              Cum te pot ajuta
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
+              Spune-mi de unde vrei să începem.
+            </h2>
+            <p className="mt-3 text-sm text-[#86868B]">
+              Alege situația care se potrivește nevoii tale sau trimite-mi un mesaj direct.
             </p>
           </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {insuranceFlows.map((flow) => {
-              const Icon = flow.icon;
-              return (
-                <Link
-                  key={flow.title}
-                  href={flow.href}
-                  className="group flex flex-col justify-between rounded-2xl border border-[#22262D] bg-[#101216] p-5.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#4779B8]/50 hover:bg-[#171A20]"
-                >
+          <div className="divide-y divide-[#D2D2D7]">
+            {operations.map((op) => (
+              <Link
+                key={op.num}
+                href={op.href}
+                className="group flex flex-col sm:flex-row sm:items-center justify-between py-6 px-3 transition-colors hover:bg-[#F5F5F7] rounded-2xl"
+              >
+                <div className="flex items-baseline gap-5">
+                  <span className="font-mono text-sm text-[#86868B]">{op.num}</span>
                   <div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#22262D] bg-[#171A20] text-[#F5F6F7] transition-colors group-hover:border-[#4779B8]/40 group-hover:bg-[#4779B8]/20 group-hover:text-white">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <span className="rounded-full border border-[#22262D] bg-[#171A20] px-2.5 py-0.5 text-[10px] font-medium text-[#C7CBD1]">
-                        {flow.badge}
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-lg sm:text-xl font-semibold text-[#1D1D1F] group-hover:text-black">
+                        {op.title}
+                      </h3>
+                      <span className="text-[11px] font-medium text-[#86868B] border border-[#D2D2D7] rounded-full px-2.5 py-0.5">
+                        {op.category}
                       </span>
                     </div>
-                    <h3 className="mt-4 text-sm font-semibold text-[#F5F6F7] transition-colors group-hover:text-white">
-                      {flow.title}
-                    </h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-[#9299A3]">
-                      {flow.desc}
+                    <p className="mt-1 text-xs sm:text-sm text-[#86868B] max-w-xl">
+                      {op.desc}
                     </p>
                   </div>
-                  <div className="mt-4 flex items-center text-xs font-medium text-[#4779B8] transition-colors group-hover:text-white">
-                    <span>Deschide solicitarea</span>
-                    <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* SPOTLIGHT SECTION: DESPRE CRISTIAN VĂDUVA & B2B HUB */}
-        <section className="mt-16 grid gap-8 lg:grid-cols-2 sm:mt-24">
-          {/* DESPRE CRISTIAN VĂDUVA */}
-          <div className="flex flex-col justify-between rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card sm:p-9">
-            <div>
-              <div className="flex items-center gap-4">
-                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border border-[#22262D] shadow-md">
-                  <Image
-                    src="/images/cristian/cristian-vaduva-portrait.jpg"
-                    alt="Cristian Văduva"
-                    fill
-                    sizes="80px"
-                    className="object-cover object-top"
-                  />
                 </div>
-                <div>
-                  <span className="rounded-full border border-[#22262D] bg-[#171A20] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#C7CBD1]">
-                    Consultanță Directă
-                  </span>
-                  <h3 className="mt-1.5 text-lg font-bold text-[#F5F6F7]">Cristian Văduva</h3>
-                  <p className="text-xs text-[#9299A3]">Consultant Imobiliare & Partener Generali</p>
+
+                <div className="mt-3 sm:mt-0 flex items-center gap-1 text-xs font-medium text-[#1D1D1F] group-hover:translate-x-1 transition-transform">
+                  <span className="hidden sm:inline">Deschide</span>
+                  <ArrowRight className="h-4 w-4" />
                 </div>
-              </div>
-
-              <p className="mt-5 text-xs leading-relaxed text-[#C7CBD1] sm:text-sm">
-                O abordare integrată bazată pe claritate, analiză riguroasă a datelor și respect pentru timpul clienților.
-                Fără promisiuni nerealiste și fără jargon tehnic — asistență directă atât pentru tranzacții imobiliare, cât și pentru soluții de protecție prin parteneriatul cu Generali.
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2 text-[11px] text-[#9299A3]">
-                <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Tranzacții Rezidențiale</span>
-                <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Spații Comerciale</span>
-                <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Partener Generali</span>
-                <span className="rounded-lg border border-[#22262D] bg-[#171A20] px-2.5 py-1">Investiții Dubai & AiXLuxury</span>
-              </div>
-            </div>
-
-            <div className="mt-8 border-t border-[#22262D] pt-5">
-              <Link
-                href="/despre-mine"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F5F6F7] transition-colors hover:text-[#4779B8]"
-              >
-                <span>Descoperă profilul complet și principiile de lucru</span>
-                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 7. SECTION: DIRECT CONTACT — PERSONAL INVITATION */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7]">
+        <div className="mx-auto max-w-5xl text-center">
+          <div className="mx-auto mb-6 h-20 w-20 overflow-hidden rounded-full border-2 border-white shadow-sm relative bg-white">
+            <Image
+              src="/images/cristian/cv-avatar-vest.webp"
+              alt="Cristian Văduva"
+              fill
+              className="object-cover"
+            />
           </div>
 
-          {/* SECȚIUNEA PROTECȚIA AFACERII B2B */}
-          <div className="flex flex-col justify-between rounded-3xl border border-[#22262D] bg-[#101216] p-7 shadow-card sm:p-9">
-            <div>
-              <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#22262D] bg-[#171A20] text-[#C92B35]">
-                  <Building2 className="h-6 w-6" />
-                </div>
-                <span className="rounded-full border border-[#22262D] bg-[#171A20] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#C7CBD1]">
-                  Companii & IMM-uri
-                </span>
-              </div>
+          <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            Discută direct cu Cristian Văduva
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
+            Nu trebuie să știi exact ce îți trebuie. <br />
+            <span className="text-[#86868B]">Vorbim și clarificăm totul.</span>
+          </h2>
+          <p className="mt-4 mx-auto max-w-xl text-base text-[#86868B]">
+            Răspund personal la fiecare apel și mesaj. Fără intermediari și fără robot telefonic.
+          </p>
 
-              <h3 className="mt-4 text-xl font-bold text-[#F5F6F7]">
-                Protecția Afacerii Tale
-              </h3>
-              <p className="mt-1 text-xs font-medium text-[#C7CBD1]">
-                Ghid complet și structurat pentru riscurile comerciale din România
-              </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={`tel:${SITE.phoneTel}`}
+              className="apple-btn-primary inline-flex items-center gap-2"
+            >
+              <Phone className="h-4 w-4" />
+              <span>Sună-mă: {SITE.phoneDisplay}</span>
+            </a>
 
-              <p className="mt-3.5 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-                O afacere înseamnă oameni, investiții, patrimoniu și responsabilități continue.
-                Am structurat un catalog amplu care explică concret riscurile operaționale, clauzele contractuale și soluțiile de protecție pentru 12 domenii economice majore.
-              </p>
+            <a
+              href={SITE.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apple-btn-secondary inline-flex items-center gap-2"
+            >
+              <MessageSquare className="h-4 w-4 text-[#86868B]" />
+              <span>Scrie-mi pe WhatsApp</span>
+            </a>
 
-              <div className="mt-5 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
-                <div className="rounded-xl border border-[#22262D] bg-[#171A20] p-2.5 text-center">
-                  <span className="block text-base font-bold text-[#F5F6F7]">22</span>
-                  <span className="text-[10px] text-[#9299A3]">Categorii risc</span>
-                </div>
-                <div className="rounded-xl border border-[#22262D] bg-[#171A20] p-2.5 text-center">
-                  <span className="block text-base font-bold text-[#F5F6F7]">12</span>
-                  <span className="text-[10px] text-[#9299A3]">Domenii CAEN</span>
-                </div>
-                <div className="rounded-xl border border-[#22262D] bg-[#171A20] p-2.5 text-center">
-                  <span className="block text-base font-bold text-[#F5F6F7]">26</span>
-                  <span className="text-[10px] text-[#9299A3]">Ghiduri produse</span>
-                </div>
-                <div className="rounded-xl border border-[#22262D] bg-[#171A20] p-2.5 text-center">
-                  <span className="block text-base font-bold text-[#F5F6F7]">Informativ</span>
-                  <span className="text-[10px] text-[#9299A3]">Evaluare riscuri</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 border-t border-[#22262D] pt-5">
-              <Link
-                href="/afaceri"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F5F6F7] transition-colors hover:text-[#C92B35]"
-              >
-                <span>Accesează hub-ul Protecția Afacerii Tale</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
+            <Link href="/contact" className="apple-btn-secondary">
+              Trimite un mesaj scris
+            </Link>
           </div>
-        </section>
-
-        {/* TRUST & DIRECT CONTACT BAR */}
-        <section className="mt-16 rounded-3xl border border-[#22262D] bg-gradient-to-r from-[#101216] via-[#171A20] to-[#101216] p-7 shadow-glass sm:mt-24 sm:p-10">
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div>
-              <span className="rounded-full border border-[#22262D] bg-[#08090B] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#C7CBD1]">
-                Consultanță Directă
-              </span>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight text-[#F5F6F7]">
-                Ai o întrebare sau un proiect specific?
-              </h3>
-              <p className="mt-1 text-xs leading-relaxed text-[#9299A3] sm:text-sm">
-                Discutăm concret despre situația ta prin telefon, WhatsApp sau formularul dedicat.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={SITE.contact.phoneTel}
-                className="inline-flex items-center gap-2 rounded-full border border-[#22262D] bg-[#08090B] px-4 py-2.5 text-xs font-medium text-[#C7CBD1] transition-all hover:border-[#4779B8] hover:text-white"
-              >
-                <Phone className="h-3.5 w-3.5 text-[#4779B8]" />
-                <span>{SITE.contact.phone}</span>
-              </a>
-
-              <a
-                href={SITE.contact.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-600/40 bg-emerald-950/40 px-4 py-2.5 text-xs font-medium text-emerald-300 transition-all hover:border-emerald-500 hover:bg-emerald-900/40 hover:text-white"
-              >
-                <MessageSquare className="h-3.5 w-3.5 text-emerald-400" />
-                <span>Discută pe WhatsApp</span>
-              </a>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[#F5F6F7] px-5 py-2.5 text-xs font-semibold text-[#08090B] shadow-md transition-all hover:bg-white hover:shadow-lg"
-              >
-                <Mail className="h-3.5 w-3.5" />
-                <span>Trimite mesaj</span>
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
