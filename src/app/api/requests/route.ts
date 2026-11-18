@@ -121,7 +121,8 @@ export async function POST(req: NextRequest) {
       id: saved.id,
       message: "Solicitarea ta a fost înregistrată.",
     });
-  } catch {
+  } catch (err) {
+    console.error("[API/requests error]:", err);
     return NextResponse.json(
       { ok: false, error: "Nu am putut înregistra solicitarea. Reîncearcă." },
       { status: 500 }

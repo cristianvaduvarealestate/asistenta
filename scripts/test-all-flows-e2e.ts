@@ -1,5 +1,6 @@
 import { saveRequestAndNotify } from "../src/lib/requests";
-import { getDb } from "../src/lib/db";
+import Database from "better-sqlite3";
+import { getDbPath } from "../src/lib/db";
 import { isValidEmail, isValidPhone, isFlowId } from "../src/lib/validation";
 
 interface TestResult {
@@ -13,7 +14,7 @@ interface TestResult {
 async function runAllFlowTests(): Promise<void> {
   console.log("=== ÎNCEPERE TESTARE COMPLETĂ FLUXURI: ASIGURĂRI (PF & PJ) + IMOBILIARE ===");
   const results: TestResult[] = [];
-  const db = getDb();
+  const db = new Database(getDbPath());
 
   // 1. FLUXURI ASIGURĂRI PERSOANE FIZICE (PF) - 6 FLUXURI
   const pfFlows = [

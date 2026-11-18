@@ -1,4 +1,4 @@
-import { getDb, type NotificationJobRow, type RequestRow } from "./db";
+import { getDb, type D1DatabaseLike, type NotificationJobRow, type RequestRow } from "./db";
 import { sendConsultantTelegram, sendReminderDueTelegram } from "./telegram";
 
 const FLOW_LABELS: Record<string, string> = {
@@ -15,10 +15,14 @@ function backoffMs(attempts: number): number {
   return Math.min(30 * 60 * 1000, 2 ** Math.min(attempts, 8) * 1000);
 }
 
-export async function processDueJobs(limit = 20): Promise<{ processed: number; sent: number; failed: number; manual: number }> {
-  const database = getDb();
+export async function processDueJobs(
+  limit = 20,
+  dbOverride?: D1DatabaseLike
+): Promise<{ processed: number; sent: number; failed: number; manual: number }> {
+  const database = getDb(dbOverride);
   const now = new Date().toISOString();
-  const jobs = database
+
+  const jobsRes = await database
     .prepare(
       `SELECT * FROM notification_jobs
        WHERE status IN ('pending', 'scheduled', 'failed')
@@ -26,20 +30,26 @@ export async function processDueJobs(limit = 20): Promise<{ processed: number; s
        ORDER BY scheduled_at ASC
        LIMIT ?`
     )
-    .all(now, limit) as NotificationJobRow[];
+    .bind(now, limit)
+    .all<NotificationJobRow>();
+
+  const jobs = (jobsRes.results || []) as NotificationJobRow[];
 
   let sent = 0;
   let failed = 0;
   let manual = 0;
 
   for (const job of jobs) {
-    const request = database.prepare("SELECT * FROM requests WHERE id = ?").get(job.request_id) as
-      | RequestRow
-      | undefined;
+    const request = await database
+      .prepare("SELECT * FROM requests WHERE id = ?")
+      .bind(job.request_id)
+      .first<RequestRow>();
+
     if (!request) {
-      database
+      await database
         .prepare("UPDATE notification_jobs SET status = 'cancelled', last_error = ? WHERE id = ?")
-        .run("request_missing", job.id);
+        .bind("request_missing", job.id)
+        .run();
       continue;
     }
 
@@ -56,28 +66,32 @@ export async function processDueJobs(limit = 20): Promise<{ processed: number; s
         message: request.message || undefined,
         createdAt: request.created_at,
       });
+
       if (result.ok) {
-        database
+        await database
           .prepare(
             "UPDATE notification_jobs SET status = 'sent', sent_at = ?, attempts = attempts + 1, last_error = NULL WHERE id = ?"
           )
-          .run(new Date().toISOString(), job.id);
+          .bind(new Date().toISOString(), job.id)
+          .run();
         sent += 1;
       } else {
         const attempts = job.attempts + 1;
         if (attempts >= 8) {
-          database
+          await database
             .prepare("UPDATE notification_jobs SET status = 'needs_manual', attempts = ?, last_error = ? WHERE id = ?")
-            .run(attempts, result.reason || "telegram_failed", job.id);
+            .bind(attempts, result.reason || "telegram_failed", job.id)
+            .run();
           manual += 1;
           continue;
         }
         const next = new Date(Date.now() + backoffMs(attempts)).toISOString();
-        database
+        await database
           .prepare(
             "UPDATE notification_jobs SET status = 'failed', attempts = ?, last_error = ?, scheduled_at = ? WHERE id = ?"
           )
-          .run(attempts, result.reason || "unknown", next, job.id);
+          .bind(attempts, result.reason || "unknown", next, job.id)
+          .run();
         failed += 1;
       }
       continue;
@@ -85,12 +99,17 @@ export async function processDueJobs(limit = 20): Promise<{ processed: number; s
 
     if (job.purpose === "reminder_due") {
       const reminder = job.reminder_id
-        ? (database.prepare("SELECT * FROM reminders WHERE id = ?").get(job.reminder_id) as
-            | { policy_type: string; expiry_date: string; status: string }
-            | undefined)
+        ? await database
+            .prepare("SELECT * FROM reminders WHERE id = ?")
+            .bind(job.reminder_id)
+            .first<{ policy_type: string; expiry_date: string; status: string }>()
         : undefined;
+
       if (!reminder || reminder.status === "disabled") {
-        database.prepare("UPDATE notification_jobs SET status = 'cancelled' WHERE id = ?").run(job.id);
+        await database
+          .prepare("UPDATE notification_jobs SET status = 'cancelled' WHERE id = ?")
+          .bind(job.id)
+          .run();
         continue;
       }
 
@@ -106,31 +125,34 @@ export async function processDueJobs(limit = 20): Promise<{ processed: number; s
 
       const attempts = job.attempts + 1;
       if (alert.ok || alert.reason === "credentials_not_configured") {
-        database
+        await database
           .prepare(
             "UPDATE notification_jobs SET status = 'needs_manual', attempts = ?, last_error = ?, sent_at = ? WHERE id = ?"
           )
-          .run(
+          .bind(
             attempts,
             alert.ok ? "awaiting_manual_client_contact" : "telegram_unconfigured_manual_queue",
             new Date().toISOString(),
             job.id
-          );
+          )
+          .run();
         manual += 1;
       } else {
         const next = new Date(Date.now() + backoffMs(attempts)).toISOString();
         if (attempts >= 8) {
-          database
+          await database
             .prepare("UPDATE notification_jobs SET status = 'needs_manual', attempts = ?, last_error = ? WHERE id = ?")
-            .run(attempts, alert.reason || "telegram_failed", job.id);
+            .bind(attempts, alert.reason || "telegram_failed", job.id)
+            .run();
           manual += 1;
           continue;
         }
-        database
+        await database
           .prepare(
             "UPDATE notification_jobs SET status = 'failed', attempts = ?, last_error = ?, scheduled_at = ? WHERE id = ?"
           )
-          .run(attempts, alert.reason || "unknown", next, job.id);
+          .bind(attempts, alert.reason || "unknown", next, job.id)
+          .run();
         failed += 1;
       }
     }
@@ -139,15 +161,20 @@ export async function processDueJobs(limit = 20): Promise<{ processed: number; s
   return { processed: jobs.length, sent, failed, manual };
 }
 
-export async function retryJob(jobId: string): Promise<boolean> {
-  const database = getDb();
-  const job = database.prepare("SELECT * FROM notification_jobs WHERE id = ?").get(jobId) as
-    | NotificationJobRow
-    | undefined;
+export async function retryJob(jobId: string, dbOverride?: D1DatabaseLike): Promise<boolean> {
+  const database = getDb(dbOverride);
+  const job = await database
+    .prepare("SELECT * FROM notification_jobs WHERE id = ?")
+    .bind(jobId)
+    .first<NotificationJobRow>();
+
   if (!job) return false;
-  database
+
+  await database
     .prepare("UPDATE notification_jobs SET status = 'pending', scheduled_at = ? WHERE id = ?")
-    .run(new Date().toISOString(), jobId);
-  await processDueJobs(5);
+    .bind(new Date().toISOString(), jobId)
+    .run();
+
+  await processDueJobs(5, dbOverride);
   return true;
 }

@@ -1,11 +1,21 @@
 import { cookies } from "next/headers";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { signPayload, verifySignedPayload, timingSafeEqualUtf8 } from "./session-helpers";
 
 const COOKIE = "ihd_admin";
 const MAX_AGE = 60 * 60 * 12;
 
 function secret(): string {
-  const s = process.env.SESSION_SECRET?.trim();
+  let s = process.env.SESSION_SECRET?.trim();
+  if (!s || s.length < 16) {
+    try {
+      const ctx = getCloudflareContext();
+      const val = (ctx?.env as any)?.SESSION_SECRET;
+      if (typeof val === "string" && val.trim().length >= 16) {
+        s = val.trim();
+      }
+    } catch {}
+  }
   if (!s || s.length < 16) {
     throw new Error("SESSION_SECRET missing");
   }

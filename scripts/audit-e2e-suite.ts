@@ -11,7 +11,7 @@ import {
   daysBefore,
   type FlowId,
 } from "../src/lib/validation";
-import { getDb, type RequestRow, type NotificationJobRow } from "../src/lib/db";
+import { getDbPath, type RequestRow, type NotificationJobRow } from "../src/lib/db";
 import { saveRequest, saveRequestAndNotify, type IncomingRequest } from "../src/lib/requests";
 import { processDueJobs, retryJob } from "../src/lib/jobs";
 import {
@@ -90,7 +90,7 @@ async function runAudit() {
   ];
 
   try {
-    const db = getDb();
+    const db = new Database(getDbPath());
     for (const testCase of flowsToTest) {
       const isReminder = testCase.flow === "aminteste";
       const reqInput: IncomingRequest = {
@@ -119,7 +119,7 @@ async function runAudit() {
         idempotencyKey: `audit_key_${testCase.flow}_${testCase.type}_${Date.now()}`,
       };
 
-      const saved = saveRequest(reqInput);
+      const saved = await saveRequest(reqInput);
       assert.ok(saved.id.startsWith("req_"), "ID-ul trebuie să aibă prefixul req_");
 
       // Verify row in SQLite
@@ -164,7 +164,7 @@ async function runAudit() {
   // -------------------------------------------------------------
   console.log("\n--- Suite 3: Idempotency & Prevenirea Duplicatelor ---");
   try {
-    const db = getDb();
+    const db = new Database(getDbPath());
     const testKey = `idempotency_test_${Date.now()}`;
     const reqData: IncomingRequest = {
       flow: "oferta",
@@ -178,8 +178,8 @@ async function runAudit() {
       idempotencyKey: testKey,
     };
 
-    const first = saveRequest(reqData);
-    const second = saveRequest(reqData);
+    const first = await saveRequest(reqData);
+    const second = await saveRequest(reqData);
     assert.equal(first.id, second.id, "A doua salvare cu aceeași cheie de idempotență trebuie să returneze exact același ID");
 
     const count = db.prepare("SELECT COUNT(*) as c FROM requests WHERE idempotency_key = ?").get(testKey) as { c: number };
@@ -230,7 +230,7 @@ async function runAudit() {
   // -------------------------------------------------------------
   console.log("\n--- Suite 5: Toleranță la erori externe (Telegram failure) ---");
   try {
-    const db = getDb();
+    const db = new Database(getDbPath());
     const reqWithFailedTelegram: IncomingRequest = {
       flow: "dauna",
       customerType: "pf",
@@ -305,7 +305,7 @@ async function runAudit() {
   // -------------------------------------------------------------
   console.log("\n--- Suite 7: Procesare Joburi, Retry & Reminder Due ---");
   try {
-    const db = getDb();
+    const db = new Database(getDbPath());
     // Inserăm un job due
     const testReqId = newId("jobtest");
     const testJobId = newId("job");
@@ -412,7 +412,7 @@ async function runAudit() {
   // -------------------------------------------------------------
   console.log("\n--- Suite 10: Operațiuni Administrative (Status, Note, Reminder update) ---");
   try {
-    const db = getDb();
+    const db = new Database(getDbPath());
     const reqId = newId("admin_op");
     db.prepare(`
       INSERT INTO requests (id, created_at, customer_type, full_name, phone, email, flow, privacy_notice_version, privacy_ack, status)

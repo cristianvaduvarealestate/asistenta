@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import Database from "better-sqlite3";
-import { getDb, getDbPath, closeDb } from "../src/lib/db";
+import { getDbPath, closeDb } from "../src/lib/db";
 import { saveRequest } from "../src/lib/requests";
 
 async function runVpsReadinessTests() {
@@ -20,8 +20,10 @@ async function runVpsReadinessTests() {
     process.env.SQLITE_DB_PATH = customDbPath;
     assert.equal(getDbPath(), customDbPath, "getDbPath() trebuie să returneze calea din SQLITE_DB_PATH");
 
-    // getDb() creează automat directorul și aplică migrările
-    const customDb = getDb();
+    // Creare instanță Database și aplicare migrări
+    const customDb = new Database(customDbPath);
+    const sql = fs.readFileSync(path.join(process.cwd(), "migrations", "001_init.sql"), "utf8");
+    customDb.exec(sql);
     assert.ok(fs.existsSync(testDir), "Directorul părinte trebuie să fie creat automat");
     assert.ok(fs.existsSync(customDbPath), "Fișierul SQLite trebuie să existe la calea configurată");
 
@@ -43,7 +45,7 @@ async function runVpsReadinessTests() {
   // ---------------------------------------------------------------------------
   console.log("\n--- Test 2: Pornire, Oprire controlată și Persistență ---");
   try {
-    const saved = saveRequest({
+    const saved = await saveRequest({
       flow: "oferta",
       customerType: "pf",
       fullName: "VPS Persistence User",
@@ -61,7 +63,7 @@ async function runVpsReadinessTests() {
     closeDb();
 
     // Redeschidere și verificare persistență
-    const reopened = getDb();
+    const reopened = new Database(customDbPath);
     const row = reopened.prepare("SELECT full_name, category FROM requests WHERE id = ?").get(saved.id) as { full_name: string; category: string } | undefined;
     assert.ok(row, "Înregistrarea trebuie să persiste după oprirea și repornirea bazei");
     assert.equal(row?.full_name, "VPS Persistence User");
@@ -115,7 +117,7 @@ async function runVpsReadinessTests() {
   console.log("\n--- Test 4: Backup atomic în timp ce aplicația este activă ---");
   const backupTestPath = path.join(testDir, "live-backup.sqlite");
   try {
-    const liveDb = getDb();
+    const liveDb = new Database(customDbPath);
     // Pornim backup-ul atomic online (db.backup)
     await liveDb.backup(backupTestPath);
 

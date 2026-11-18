@@ -1,3 +1,5 @@
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+
 function escapeTelegramHtml(str: string): string {
   return str
     .replace(/&/g, "&amp;")
@@ -21,8 +23,15 @@ export type TelegramPayload = {
 };
 
 function getCredentials(): { token?: string; chatId?: string } {
-  const token = process.env.TELEGRAM_BOT_TOKEN?.trim();
-  const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
+  let token = process.env.TELEGRAM_BOT_TOKEN?.trim();
+  let chatId = process.env.TELEGRAM_CHAT_ID?.trim();
+  if (!token || !chatId) {
+    try {
+      const ctx = getCloudflareContext();
+      if (!token) token = (ctx?.env as any)?.TELEGRAM_BOT_TOKEN?.trim();
+      if (!chatId) chatId = (ctx?.env as any)?.TELEGRAM_CHAT_ID?.trim();
+    } catch {}
+  }
   return { token, chatId };
 }
 

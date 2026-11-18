@@ -1,5 +1,15 @@
-import { createHmac, timingSafeEqual } from "crypto";
-import { scryptSync } from "crypto";
+import { createHmac, timingSafeEqual, scryptSync } from "node:crypto";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+
+function getEnv(key: string): string | undefined {
+  if (process.env[key]?.trim()) return process.env[key]!.trim();
+  try {
+    const ctx = getCloudflareContext();
+    const val = (ctx?.env as any)?.[key];
+    if (typeof val === "string" && val.trim()) return val.trim();
+  } catch {}
+  return undefined;
+}
 
 export function signPayload(payload: string, secret: string): string {
   const sig = createHmac("sha256", secret).update(payload).digest("base64url");
@@ -27,15 +37,15 @@ export function timingSafeEqualUtf8(a: string, b: string): boolean {
 }
 
 export function verifyAdminCredentials(username: string, password: string): boolean {
-  const expectedUser = process.env.ADMIN_USERNAME?.trim();
+  const expectedUser = getEnv("ADMIN_USERNAME");
   if (!expectedUser || !timingSafeEqualUtf8(username, expectedUser)) return false;
 
-  const plain = process.env.ADMIN_PASSWORD?.trim();
+  const plain = getEnv("ADMIN_PASSWORD");
   if (plain) {
     return timingSafeEqualUtf8(password, plain);
   }
 
-  const hash = process.env.ADMIN_PASSWORD_HASH?.trim();
+  const hash = getEnv("ADMIN_PASSWORD_HASH");
   if (!hash) return false;
   const [salt, derived] = hash.split(":");
   if (!salt || !derived) return false;

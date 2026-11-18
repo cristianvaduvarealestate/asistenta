@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "asistenta-cristianvaduva-com",
+  "main": "src/worker.ts",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "ADMIN_USERNAME": "cristian",
+    "PUBLIC_SITE_URL": "https://asistenta.cristianvaduva.com",
+    "RETENTION_DAYS": "730"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "asistenta-db",
+      "database_id": "197c9ab9-dac8-4864-92a8-fc9555c060a8",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/15 * * * *"
+    ]
+  }
+}

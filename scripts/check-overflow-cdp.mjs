@@ -20,7 +20,7 @@ const PAGES = [
   { name: "Protectia Afacerii", path: "/afaceri" },
 ];
 
-const BASE_URL = "http://127.0.0.1:3010";
+const BASE_URL = process.env.TEST_URL || "http://127.0.0.1:8787";
 
 class CDPClient {
   constructor(wsUrl) {
