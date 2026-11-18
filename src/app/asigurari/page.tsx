@@ -13,6 +13,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { SITE } from "@/config/site";
+import { FAQSection } from "@/components/FAQSection";
 
 export const metadata: Metadata = {
   title: "Asigurări Generali — Cristian Văduva | Partener Oficial",
@@ -117,10 +118,6 @@ export default function AsigurariPage() {
                 className="object-cover object-center"
               />
             </div>
-            <div className="mt-3 flex items-center justify-between text-xs text-[#86868B] px-2 font-mono">
-              <span>Cristian Văduva • Parteneriat oficial Generali România</span>
-              <span>Consultanță sinceră • Fără jargon</span>
-            </div>
           </div>
         </div>
       </section>
@@ -189,9 +186,6 @@ export default function AsigurariPage() {
                 className="object-cover object-top"
               />
             </div>
-            <div className="mt-3 text-center text-xs text-[#86868B] font-mono">
-              <span>Cristian Văduva • Relații bazate pe încredere</span>
-            </div>
           </div>
 
           <div className="lg:col-span-7 space-y-6">
@@ -259,7 +253,12 @@ export default function AsigurariPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. DIRECT CONTACT & URGENCY GUIDANCE */}
+      {/* 6. FAQ — ÎNTREBĂRI FRECVENTE */}
+      {/* ========================================================================= */}
+      <FAQSection />
+
+      {/* ========================================================================= */}
+      {/* 7. DIRECT CONTACT & URGENCY GUIDANCE */}
       {/* ========================================================================= */}
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7]">
         <div className="mx-auto max-w-5xl text-center">

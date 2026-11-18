@@ -147,7 +147,7 @@ export async function POST(req: NextRequest) {
       {
         ok: false,
         error:
-          "Serviciul întâmpină o problemă tehnică temporară. Te rugăm să ne contactezi direct la 0767 110 439 (apel telefonic sau WhatsApp).",
+          "Serviciul întâmpină o problemă tehnică temporară. Te rugăm să mă contactezi direct telefonic la 0767 110 439 sau pe WhatsApp la +43 650 953 6345.",
       },
       { status: 503 }
     );

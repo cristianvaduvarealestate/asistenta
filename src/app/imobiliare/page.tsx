@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import { RealEstateForm } from "@/components/real-estate/RealEstateForm";
+import { FAQSection } from "@/components/FAQSection";
 import {
   ArrowRight,
   Phone,
@@ -152,9 +153,6 @@ export default function RealEstatePage() {
                   className="object-cover object-top"
                 />
               </div>
-              <div className="mt-3 text-center text-xs text-[#86868B] font-mono">
-                <span>Cristian Văduva • Consultanță Imobiliară București</span>
-              </div>
             </div>
           </div>
         </div>
@@ -218,9 +216,6 @@ export default function RealEstatePage() {
                     className="object-cover object-top"
                   />
                 </div>
-                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
-                  <span>Vizionări directe & asistență la notariat</span>
-                </div>
               </div>
             </div>
 
@@ -235,9 +230,6 @@ export default function RealEstatePage() {
                     sizes="(max-width: 1024px) 100vw, 420px"
                     className="object-cover object-top"
                   />
-                </div>
-                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
-                  <span>Preț corect & cumpărători calificați</span>
                 </div>
               </div>
               <div className="lg:col-span-6 order-1 lg:order-2 space-y-4">
@@ -292,9 +284,6 @@ export default function RealEstatePage() {
                     className="object-cover object-center"
                   />
                 </div>
-                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
-                  <span>Reședințe de familie & spații de birouri</span>
-                </div>
               </div>
             </div>
 
@@ -309,9 +298,6 @@ export default function RealEstatePage() {
                     sizes="(max-width: 1024px) 100vw, 420px"
                     className="object-cover object-top"
                   />
-                </div>
-                <div className="mt-2 text-center text-xs text-[#86868B] font-mono">
-                  <span>Proprietăți cu potențial pe termen lung</span>
                 </div>
               </div>
               <div className="lg:col-span-6 order-1 lg:order-2 space-y-4">
@@ -381,6 +367,11 @@ export default function RealEstatePage() {
           </div>
         </div>
       </section>
+
+      {/* ========================================================================= */}
+      {/* 5. FAQ — ÎNTREBĂRI FRECVENTE */}
+      {/* ========================================================================= */}
+      <FAQSection />
 
       {/* ========================================================================= */}
       {/* 5. VERIFIED ECOSYSTEM PLATFORMS */}

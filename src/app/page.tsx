@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import { ArrowRight, Phone, MessageSquare, HeartHandshake } from "lucide-react";
+import { FAQSection } from "@/components/FAQSection";
 
 export const metadata: Metadata = {
   title: "Cristian Văduva — Asistență Imobiliară & Partener Generali",
@@ -121,10 +122,6 @@ export default function HomePage() {
               sizes="(max-width: 1024px) 100vw, 768px"
               className="object-cover object-center"
             />
-          </div>
-          <div className="mt-3 flex items-center justify-between text-xs text-[#86868B] px-2 font-mono">
-            <span>Cristian Văduva • Aici să te ajut</span>
-            <span>București & colaborări deschise</span>
           </div>
         </div>
       </section>
@@ -273,10 +270,6 @@ export default function HomePage() {
                 className="object-cover object-top"
               />
             </div>
-            <div className="mt-3 flex items-center justify-between text-xs text-[#86868B] px-2 font-mono">
-              <span>Cristian Văduva</span>
-              <span>Discuții deschise, fără formalism</span>
-            </div>
           </div>
 
           <div className="lg:col-span-7 space-y-6">
@@ -317,55 +310,37 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-3">
-            <div className="space-y-3">
-              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
-                <Image
-                  src="/images/cristian/cv-historic-architecture.webp"
-                  alt="Cristian Văduva în centrul istoric"
-                  fill
-                  loading="eager"
-                  sizes="(max-width: 768px) 100vw, 320px"
-                  className="object-cover object-[50%_35%]"
-                />
-              </div>
-              <div className="px-2">
-                <h4 className="text-sm font-semibold text-[#1D1D1F]">Locuințe cu poveste</h4>
-                <p className="text-xs text-[#86868B] mt-0.5">Clădiri istorice și apartamente cu personalitate</p>
-              </div>
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+              <Image
+                src="/images/cristian/cv-historic-architecture.webp"
+                alt="Cristian Văduva în centrul istoric"
+                fill
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, 320px"
+                className="object-cover object-[50%_35%]"
+              />
             </div>
 
-            <div className="space-y-3">
-              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
-                <Image
-                  src="/images/cristian/cv-skytower-glass.webp"
-                  alt="Cristian Văduva la SkyTower"
-                  fill
-                  loading="eager"
-                  sizes="(max-width: 768px) 100vw, 320px"
-                  className="object-cover object-top"
-                />
-              </div>
-              <div className="px-2">
-                <h4 className="text-sm font-semibold text-[#1D1D1F]">Cartiere moderne</h4>
-                <p className="text-xs text-[#86868B] mt-0.5">Dezvoltări noi și oportunități pentru viitor</p>
-              </div>
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+              <Image
+                src="/images/cristian/cv-skytower-glass.webp"
+                alt="Cristian Văduva la SkyTower"
+                fill
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, 320px"
+                className="object-cover object-top"
+              />
             </div>
 
-            <div className="space-y-3">
-              <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
-                <Image
-                  src="/images/cristian/cv-rooftop-lounge.webp"
-                  alt="Cristian Văduva în discuție personală"
-                  fill
-                  loading="eager"
-                  sizes="(max-width: 768px) 100vw, 320px"
-                  className="object-cover object-center"
-                />
-              </div>
-              <div className="px-2">
-                <h4 className="text-sm font-semibold text-[#1D1D1F]">Discuții liniștite</h4>
-                <p className="text-xs text-[#86868B] mt-0.5">Timp dedicat pentru a înțelege exact ce îți dorești</p>
-              </div>
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] shadow-sm">
+              <Image
+                src="/images/cristian/cv-rooftop-lounge.webp"
+                alt="Cristian Văduva în discuție personală"
+                fill
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, 320px"
+                className="object-cover object-center"
+              />
             </div>
           </div>
         </div>
@@ -423,7 +398,12 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. SECTION: DIRECT CONTACT — PERSONAL INVITATION */}
+      {/* 7. SECTION: FAQ — INTREBARI FRECVENTE */}
+      {/* ========================================================================= */}
+      <FAQSection />
+
+      {/* ========================================================================= */}
+      {/* 8. SECTION: DIRECT CONTACT — PERSONAL INVITATION */}
       {/* ========================================================================= */}
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7]">
         <div className="mx-auto max-w-5xl text-center">

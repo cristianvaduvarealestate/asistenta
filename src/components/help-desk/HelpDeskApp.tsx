@@ -224,23 +224,23 @@ export function HelpDeskApp() {
         Spune-mi ce ai nevoie. Te ajut să înțelegi ce trebuie să verifici și care sunt următorii pași.
       </p>
 
-      {/* Business Section Entry Banner */}
-      <div className="mt-8 rounded-2xl border border-[#D2D2D7] bg-gradient-to-r from-[#0B2621] to-[#180D20] p-5 sm:p-6 shadow-card">
+      {/* Business Section Entry Banner — High Contrast Apple Dark Style */}
+      <div className="mt-8 rounded-2xl border border-[#38383A] bg-[#1D1D1F] p-5 sm:p-7 shadow-apple">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <span className="inline-flex items-center rounded-full border border-[#C92B35]/30 bg-[#C92B35]/10 px-2.5 py-0.5 text-xs font-semibold text-[#1D1D1F]">
+          <div className="space-y-2">
+            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-medium tracking-tight text-white/90">
               Secțiune pentru antreprenori & companii
             </span>
-            <h2 className="mt-2 text-xl font-bold tracking-tight text-[#1D1D1F] sm:text-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
               Protecția Afacerii Tale
             </h2>
-            <p className="mt-1 text-xs leading-relaxed text-[#86868B] sm:text-sm">
+            <p className="text-xs sm:text-sm leading-relaxed text-[#A1A1A6] max-w-2xl">
               Ghid complet de risc pe 12 industrii, 26 de polițe comerciale, scenarii de daune și instrument de diagnostic.
             </p>
           </div>
           <Link
             href="/afaceri"
-            className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#F5F6F7] px-5 py-2.5 text-xs font-semibold text-[#08090B] transition hover:bg-white hover:shadow-md"
+            className="inline-flex shrink-0 items-center justify-center rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#1D1D1F] transition hover:bg-[#F5F5F7] hover:shadow-md"
           >
             Explorează ghidul de business →
           </Link>

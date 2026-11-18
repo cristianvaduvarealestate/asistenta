@@ -1,0 +1,4 @@
+Contact: mailto:cristianvaduva@duck.com
+Preferred-Languages: ro, en
+Canonical: https://asistenta.cristianvaduva.com/.well-known/security.txt
+Expires: 2027-11-19T00:00:00.000Z

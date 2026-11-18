@@ -172,7 +172,7 @@ const documents: Record<string, Document> = {
           "Cristian Văduva — Consultant Imobiliare & Partener Generali",
           "Telefon: " + SITE.phoneDisplay,
           "Email: " + SITE.email,
-          "WhatsApp: " + SITE.phoneDisplay,
+          "WhatsApp: " + SITE.whatsappDisplay,
         ],
       },
       {

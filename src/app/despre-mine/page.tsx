@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import { Phone, MessageSquare, Lock, Heart, ShieldCheck, UserCheck } from "lucide-react";
+import { FAQSection } from "@/components/FAQSection";
 
 export const metadata: Metadata = {
   title: "Despre Cristian Văduva — Cine sunt și cum te pot ajuta",
@@ -131,9 +132,6 @@ export default function DespreMinePage() {
                   className="object-cover object-top"
                 />
               </div>
-              <div className="mt-3 text-center text-xs text-[#86868B] font-mono">
-                <span>Cristian Văduva • București</span>
-              </div>
             </div>
           </div>
         </div>
@@ -144,7 +142,7 @@ export default function DespreMinePage() {
       {/* ========================================================================= */}
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED] bg-[#F5F5F7]">
         <div className="mx-auto max-w-5xl grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-5">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED]">
               <Image
                 src="/images/cristian/cv-palace-stairs.webp"
@@ -153,10 +151,6 @@ export default function DespreMinePage() {
                 sizes="(max-width: 1024px) 100vw, 480px"
                 className="object-cover object-top"
               />
-            </div>
-            <div className="flex items-center justify-between text-xs text-[#86868B] px-2 font-mono">
-              <span>Respect pentru timpul tău</span>
-              <span>Discuții deschise</span>
             </div>
           </div>
 
@@ -296,7 +290,7 @@ export default function DespreMinePage() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {editorialGallery.map((item, i) => (
-              <div key={i} className="group space-y-3">
+              <div key={i} className="group">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-white border border-[#E8E8ED] transition-transform duration-300 group-hover:shadow-md">
                   <Image
                     src={item.src}
@@ -306,10 +300,6 @@ export default function DespreMinePage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 320px"
                     className="object-cover object-top transition duration-500 group-hover:scale-102"
                   />
-                </div>
-                <div className="px-2">
-                  <h4 className="text-sm font-semibold text-[#1D1D1F]">{item.caption}</h4>
-                  <p className="text-xs text-[#86868B] mt-0.5">{item.sub}</p>
                 </div>
               </div>
             ))}
@@ -345,7 +335,12 @@ export default function DespreMinePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. DIRECT CONTACT */}
+      {/* 6. FAQ — ÎNTREBĂRI FRECVENTE */}
+      {/* ========================================================================= */}
+      <FAQSection />
+
+      {/* ========================================================================= */}
+      {/* 7. DIRECT CONTACT */}
       {/* ========================================================================= */}
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-5xl text-center">
