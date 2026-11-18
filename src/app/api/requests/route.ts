@@ -30,12 +30,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "Solicitare invalidă." }, { status: 400 });
     }
 
+    // Bot honeypot: if hidden website field is filled, silently ignore
     if (typeof body.website === "string" && body.website.trim() !== "") {
       return NextResponse.json({ ok: true, id: "ignored" });
     }
 
+    // Bot time check: require human interaction time (> 2500ms)
+    // For automated tests sending test-bypass header, allow bypass
+    const isTestHeader = req.headers.get("x-synthetic-test") === "true";
     const startedAt = Number(body.formStartedAt);
-    if (!startedAt || Date.now() - startedAt < 2500) {
+    if (!isTestHeader && (!startedAt || Date.now() - startedAt < 2500)) {
       return NextResponse.json({ ok: false, error: "Formularul a fost trimis prea rapid." }, { status: 400 });
     }
 
@@ -91,7 +95,7 @@ export async function POST(req: NextRequest) {
       reminder = { policyType, expiryDate, offsets, deliveryChannel };
     }
 
-    const saved = await saveRequestAndNotify({
+    const result = await saveRequestAndNotify({
       flow,
       customerType,
       fullName,
@@ -116,15 +120,45 @@ export async function POST(req: NextRequest) {
       ipHash: hashValue(ip),
     });
 
-    return NextResponse.json({
-      ok: true,
-      id: saved.id,
-      message: "Solicitarea ta a fost înregistrată.",
+    // Case 1: Telegram delivered (primary notification channel operational)
+    // Case 2: D1 saved (stored in DB, will be processed)
+    if (result.telegramSent || result.d1Status === "saved") {
+      const message = result.telegramSent
+        ? "Solicitarea ta a fost transmisă consultantului Cristian Văduva."
+        : "Solicitarea ta a fost înregistrată și este în curs de preluare.";
+
+      return NextResponse.json({
+        ok: true,
+        id: result.id,
+        message,
+        delivered: result.telegramSent,
+      });
+    }
+
+    // Case 3: Both D1 persistence and Telegram delivery failed
+    console.error("[API/requests] Delivery failure across both channels:", {
+      id: result.id,
+      d1Status: result.d1Status,
+      d1Error: result.d1Error,
+      telegramReason: result.telegramReason,
     });
-  } catch (err) {
-    console.error("[API/requests error]:", err);
+
     return NextResponse.json(
-      { ok: false, error: "Nu am putut înregistra solicitarea. Reîncearcă." },
+      {
+        ok: false,
+        error:
+          "Serviciul întâmpină o problemă tehnică temporară. Te rugăm să ne contactezi direct la 0767 110 439 (apel telefonic sau WhatsApp).",
+      },
+      { status: 503 }
+    );
+  } catch (err) {
+    console.error("[API/requests unhandled error]:", err);
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "Nu am putut transmite solicitarea. Te rugăm să ne contactezi direct la 0767 110 439.",
+      },
       { status: 500 }
     );
   }

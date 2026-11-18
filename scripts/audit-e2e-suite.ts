@@ -341,7 +341,10 @@ async function runAudit() {
   // -------------------------------------------------------------
   console.log("\n--- Suite 8: Securitate Admin (Autentificare, Token, Sesiuni, Criptografie) ---");
   try {
-    const secret = process.env.SESSION_SECRET || "e7b4c920f7814a5db98e4125b03ef7a29910d6824c1f";
+    process.env.ADMIN_USERNAME = process.env.ADMIN_USERNAME || "cristian";
+    process.env.ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "TestAdmin123!@#";
+    process.env.SESSION_SECRET = process.env.SESSION_SECRET || "e7b4c920f7814a5db98e4125b03ef7a29910d6824c1f";
+    const secret = process.env.SESSION_SECRET;
 
     // 1. Password hashing with scrypt
     const pass = "SuperSecretPassword123!";
