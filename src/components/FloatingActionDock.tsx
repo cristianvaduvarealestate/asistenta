@@ -62,7 +62,7 @@ export function FloatingActionDock() {
       {isOpen && (
         <div className="flex flex-col gap-1.5 rounded-2xl border border-[#D2D2D7] bg-white p-2.5 shadow-apple animate-in fade-in slide-in-from-bottom-2 duration-150 min-w-[220px]">
           <div className="px-2 py-1 border-b border-[#F5F5F7] mb-1">
-            <span className="block text-[11px] font-semibold text-[#86868B] uppercase tracking-wider">
+            <span className="block text-[11px] font-semibold text-[#6E6E73] uppercase tracking-wider">
               Contact Rapid
             </span>
           </div>
@@ -77,7 +77,7 @@ export function FloatingActionDock() {
               <MessageSquare className="h-4 w-4 text-[#1D1D1F]" />
               <span>WhatsApp</span>
             </div>
-            <span className="font-mono text-[10px] text-[#86868B]">{SITE.whatsappDisplay}</span>
+            <span className="font-mono text-[10px] text-[#6E6E73]">{SITE.whatsappDisplay}</span>
           </a>
 
           <a
@@ -88,7 +88,7 @@ export function FloatingActionDock() {
               <Phone className="h-4 w-4 text-[#1D1D1F]" />
               <span>Telefon direct</span>
             </div>
-            <span className="font-mono text-[10px] text-[#86868B]">{SITE.phoneDisplay}</span>
+            <span className="font-mono text-[10px] text-[#6E6E73]">{SITE.phoneDisplay}</span>
           </a>
 
           <Link
@@ -96,7 +96,7 @@ export function FloatingActionDock() {
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
           >
-            <Shield className="h-4 w-4 text-[#86868B]" />
+            <Shield className="h-4 w-4 text-[#6E6E73]" />
             <span>Asigurări Generali</span>
           </Link>
 
@@ -112,18 +112,23 @@ export function FloatingActionDock() {
       )}
 
       {/* Main Floating Trigger Pill */}
-      <div className="flex items-center rounded-full border border-[#D2D2D7] bg-white p-1 shadow-apple transition hover:border-[#86868B]">
+      <div className="flex items-center rounded-full border border-[#D2D2D7] bg-white p-1 shadow-apple transition hover:border-[#6E6E73]">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
-          aria-label={isOpen ? "Închide opțiunile de contact" : "Deschide opțiunile de contact"}
+          aria-label={
+            isOpen
+              ? "Închide opțiunile de contact"
+              : "Cristian Văduva — Opțiuni de contact rapid"
+          }
           className="flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-medium text-[#1D1D1F] hover:text-black transition-colors"
         >
           <div className="relative h-6 w-6 overflow-hidden rounded-full border border-[#D2D2D7] bg-[#F5F5F7] shrink-0">
             <Image
               src="/images/cristian/cv-avatar-vest.webp"
-              alt="Cristian Văduva"
+              alt=""
+              aria-hidden="true"
               fill
               className="object-cover"
             />
@@ -131,7 +136,7 @@ export function FloatingActionDock() {
           <span className="hidden sm:inline text-xs">
             {isOpen ? "Închide" : "Cristian Văduva"}
           </span>
-          {isOpen ? <X className="h-3.5 w-3.5" /> : <ChevronUp className="h-3.5 w-3.5 text-[#86868B]" />}
+          {isOpen ? <X className="h-3.5 w-3.5" /> : <ChevronUp className="h-3.5 w-3.5 text-[#6E6E73]" />}
         </button>
 
         <a

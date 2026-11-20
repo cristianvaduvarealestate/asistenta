@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { SITE } from "@/config/site";
 import { RealEstateForm } from "@/components/real-estate/RealEstateForm";
 import { FAQSection } from "@/components/FAQSection";
+import { REAL_ESTATE_FAQS } from "@/data/faqs/real-estate";
 import {
   ArrowRight,
   Phone,
@@ -31,9 +32,16 @@ export const metadata: Metadata = {
         url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
         width: 1200,
         height: 630,
-        alt: "Consultanță Imobiliară — Cristian Văduva",
+        alt: "Consultanță Imobiliară — Cristian Văduva | De partea ta",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Consultanță Imobiliară — Cristian Văduva | De partea ta",
+    description:
+      "Consultanță imobiliară onestă pentru cumpărare, vânzare, închiriere și investiții. Fără presiune, cu verificarea atentă a actelor.",
+    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
   },
 };
 
@@ -90,7 +98,7 @@ export default function RealEstatePage() {
       {/* ========================================================================= */}
       <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED]">
         <div className="mx-auto max-w-5xl">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#86868B] mb-6">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#6E6E73] mb-6">
             <Link href="/" className="hover:text-[#1D1D1F] transition">
               Acasă
             </Link>
@@ -101,17 +109,17 @@ export default function RealEstatePage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Column: Warm Human Intro */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
                 Consultanță Personală • Cristian Văduva
               </span>
               <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.08]">
                 Găsim locuința potrivită. <br />
-                <span className="text-[#86868B]">Fără grabă și fără capcane.</span>
+                <span className="text-[#6E6E73]">Fără grabă și fără capcane.</span>
               </h1>
-              <p className="text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+              <p className="text-base sm:text-lg text-[#6E6E73] font-normal leading-relaxed">
                 Fie că vrei să cumperi căminul perfect pentru familia ta sau vrei să vinzi o proprietate la prețul corect, sunt de partea ta de la prima vizionare până la semnarea actelor la notar.
               </p>
-              <p className="text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+              <p className="text-base sm:text-lg text-[#6E6E73] font-normal leading-relaxed">
                 Verificăm fiecare act, îți spun deschis plusurile și minusurile fiecărei proprietăți și negociem ferm, exclusiv în interesul tău. Fără comision dublu.
               </p>
 
@@ -120,12 +128,12 @@ export default function RealEstatePage() {
                   Spune-mi ce fel de proprietate cauți
                 </a>
                 <a href={`tel:${SITE.phoneTel}`} className="apple-btn-secondary inline-flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-[#86868B]" />
+                  <Phone className="h-4 w-4 text-[#6E6E73]" />
                   <span>{SITE.phoneDisplay}</span>
                 </a>
               </div>
 
-              <div className="pt-4 border-t border-[#E8E8ED] flex flex-wrap gap-y-2 gap-x-6 text-xs text-[#86868B]">
+              <div className="pt-4 border-t border-[#E8E8ED] flex flex-wrap gap-y-2 gap-x-6 text-xs text-[#6E6E73]">
                 <span className="flex items-center gap-1.5 text-[#1D1D1F]">
                   <CheckCircle2 className="h-3.5 w-3.5 text-[#1D1D1F]" />
                   Reprezentare exclusivă
@@ -162,7 +170,7 @@ export default function RealEstatePage() {
       {/* 2. STATUTORY MANDATE NOTICE */}
       {/* ========================================================================= */}
       <section className="py-6 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] border-b border-[#E8E8ED]">
-        <div className="mx-auto max-w-5xl flex items-start gap-3 text-xs text-[#86868B] leading-relaxed">
+        <div className="mx-auto max-w-5xl flex items-start gap-3 text-xs text-[#6E6E73] leading-relaxed">
           <Lock className="h-4 w-4 shrink-0 text-[#1D1D1F] mt-0.5" />
           <p>
             <strong className="text-[#1D1D1F]">Transparență totală:</strong> În orice tranzacție reprezint exclusiv partea care mă angajează (cumpărătorul sau vânzătorul). Nu percep niciodată comision dublu și nu încerc să mulțumesc ambele părți pe ascuns. Verificarea juridică a actelor și autentificarea contractului se fac doar la notari publici autorizați.
@@ -176,7 +184,7 @@ export default function RealEstatePage() {
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED] bg-white">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-2xl mb-16">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Cum lucrăm împreună
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
@@ -188,11 +196,11 @@ export default function RealEstatePage() {
             {/* 1. CUMPĂRARE */}
             <div className="grid gap-8 lg:grid-cols-12 lg:items-center border-b border-[#E8E8ED] pb-16">
               <div className="lg:col-span-6 space-y-4">
-                <span className="font-mono text-xs text-[#86868B]">01 • ACHIZIȚIE</span>
+                <span className="font-mono text-xs text-[#6E6E73]">01 • ACHIZIȚIE</span>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
                   Vrei să cumperi o proprietate?
                 </h3>
-                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
                   Căutăm activ în piață cele mai bune oferte reale, eliminăm proprietățile cu probleme de acte și negociem doar în favoarea ta.
                 </p>
                 <div className="space-y-2 text-xs sm:text-sm text-[#1D1D1F] bg-[#F5F5F7] p-5 rounded-2xl">
@@ -233,11 +241,11 @@ export default function RealEstatePage() {
                 </div>
               </div>
               <div className="lg:col-span-6 order-1 lg:order-2 space-y-4">
-                <span className="font-mono text-xs text-[#86868B]">02 • VÂNZARE</span>
+                <span className="font-mono text-xs text-[#6E6E73]">02 • VÂNZARE</span>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
                   Vrei să vinzi o proprietate?
                 </h3>
-                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
                   Stabilim un preț corect și realist pe baza tranzacțiilor recente, pregătim proprietatea pentru prezentare și aducem doar cumpărători serioși.
                 </p>
                 <div className="space-y-2 text-xs sm:text-sm text-[#1D1D1F] bg-[#F5F5F7] p-5 rounded-2xl">
@@ -256,11 +264,11 @@ export default function RealEstatePage() {
             {/* 3. ÎNCHIRIERE */}
             <div className="grid gap-8 lg:grid-cols-12 lg:items-center border-b border-[#E8E8ED] pb-16">
               <div className="lg:col-span-6 space-y-4">
-                <span className="font-mono text-xs text-[#86868B]">03 • ÎNCHIRIERE</span>
+                <span className="font-mono text-xs text-[#6E6E73]">03 • ÎNCHIRIERE</span>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
                   Închirieri sigure și fără bătăi de cap.
                 </h3>
-                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
                   Te ajut să găsești chiriași serioși și stabili pentru locuința ta, sau spațiul optim de birouri pentru afacerea ta.
                 </p>
                 <div className="space-y-2 text-xs sm:text-sm text-[#1D1D1F] bg-[#F5F5F7] p-5 rounded-2xl">
@@ -301,28 +309,28 @@ export default function RealEstatePage() {
                 </div>
               </div>
               <div className="lg:col-span-6 order-1 lg:order-2 space-y-4">
-                <span className="font-mono text-xs text-[#86868B]">04 • INVESTIȚII</span>
+                <span className="font-mono text-xs text-[#6E6E73]">04 • INVESTIȚII</span>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
                   Investiții calculate pe termen lung.
                 </h3>
-                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
                   Dacă vrei să plasezi economiile într-o proprietate generatoare de chirie sau cu apreciere în timp, calculăm randamentul net real, dincolo de promisiuni optimiste.
                 </p>
                 <div className="grid grid-cols-3 gap-3 text-center">
                   <div className="bg-[#F5F5F7] p-4 rounded-2xl">
-                    <span className="block text-[11px] text-[#86868B] font-mono">București</span>
+                    <span className="block text-[11px] text-[#6E6E73] font-mono">București</span>
                     <span className="text-lg sm:text-xl font-semibold text-[#1D1D1F] block mt-0.5">6% - 8%</span>
-                    <span className="text-[10px] text-[#86868B] block mt-0.5">Randament net</span>
+                    <span className="text-[10px] text-[#6E6E73] block mt-0.5">Randament net</span>
                   </div>
                   <div className="bg-[#F5F5F7] p-4 rounded-2xl">
-                    <span className="block text-[11px] text-[#86868B] font-mono">Dubai</span>
+                    <span className="block text-[11px] text-[#6E6E73] font-mono">Dubai</span>
                     <span className="text-lg sm:text-xl font-semibold text-[#1D1D1F] block mt-0.5">7% - 9%</span>
-                    <span className="text-[10px] text-[#86868B] block mt-0.5">Parteneri locali</span>
+                    <span className="text-[10px] text-[#6E6E73] block mt-0.5">Parteneri locali</span>
                   </div>
                   <div className="bg-[#F5F5F7] p-4 rounded-2xl">
-                    <span className="block text-[11px] text-[#86868B] font-mono">Monaco</span>
+                    <span className="block text-[11px] text-[#6E6E73] font-mono">Monaco</span>
                     <span className="text-lg sm:text-xl font-semibold text-[#1D1D1F] block mt-0.5">Capital</span>
-                    <span className="text-[10px] text-[#86868B] block mt-0.5">Apreciere valoare</span>
+                    <span className="text-[10px] text-[#6E6E73] block mt-0.5">Apreciere valoare</span>
                   </div>
                 </div>
                 <div>
@@ -351,13 +359,13 @@ export default function RealEstatePage() {
                 className="object-cover"
               />
             </div>
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Direct către Cristian Văduva
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
               Spune-mi ce proprietate ai în minte
             </h2>
-            <p className="mt-3 text-sm text-[#86868B]">
+            <p className="mt-3 text-sm text-[#6E6E73]">
               Completează câteva detalii și revin personal către tine cu opțiuni concrete și sfaturi practice.
             </p>
           </div>
@@ -379,7 +387,7 @@ export default function RealEstatePage() {
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-2xl mb-12">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Platforme Conectate
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
@@ -394,23 +402,33 @@ export default function RealEstatePage() {
                 href={pl.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col justify-between rounded-2xl border border-[#E8E8ED] bg-[#F5F5F7] p-6 transition hover:border-[#86868B] hover:bg-white"
+                className="group flex flex-col justify-between rounded-2xl border border-[#E8E8ED] bg-[#F5F5F7] p-6 transition hover:border-[#6E6E73] hover:bg-white"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-medium text-[#86868B]">
+                    <span className="text-[11px] font-medium text-[#6E6E73]">
                       {pl.badge}
                     </span>
-                    <ArrowUpRight className="h-4 w-4 text-[#86868B] group-hover:text-[#1D1D1F] transition-colors" />
+                    <ArrowUpRight className="h-4 w-4 text-[#6E6E73] group-hover:text-[#1D1D1F] transition-colors" />
                   </div>
                   <h3 className="mt-3 text-lg font-semibold text-[#1D1D1F]">{pl.name}</h3>
-                  <p className="mt-1 text-xs text-[#86868B] leading-relaxed">{pl.desc}</p>
+                  <p className="mt-1 text-xs text-[#6E6E73] leading-relaxed">{pl.desc}</p>
                 </div>
               </a>
             ))}
           </div>
         </div>
       </section>
+      {/* ========================================================================= */}
+      {/* 6. FAQ — ÎNTREBĂRI FRECVENTE IMOBILIARE */}
+      {/* ========================================================================= */}
+      <FAQSection
+        items={REAL_ESTATE_FAQS}
+        badge="Întrebări Frecvente Imobiliare"
+        heading="Claritate și siguranță în tranzacțiile imobiliare."
+        subheading="Răspunsuri transparente despre reprezentarea exclusivă, verificarea actelor și onorarii cinstite."
+      />
+
     </div>
   );
 }

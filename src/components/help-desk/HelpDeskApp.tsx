@@ -278,7 +278,7 @@ export function HelpDeskApp() {
                 {step === "done" && "Solicitarea ta a fost înregistrată"}
               </h2>
             </div>
-            <button type="button" className="text-xs font-medium text-[#86868B] hover:text-white" onClick={backToCards}>
+            <button type="button" className="text-xs font-medium text-[#6E6E73] hover:text-white" onClick={backToCards}>
               Înapoi la categorii
             </button>
           </div>
@@ -384,12 +384,12 @@ export function HelpDeskApp() {
                   ? "Solicitarea ta de contact a fost înregistrată"
                   : "Solicitarea ta a fost transmisă"}
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-[#86868B] sm:text-sm">
+              <p className="mt-2 text-xs leading-relaxed text-[#6E6E73] sm:text-sm">
                 {state.flow === "aminteste"
                   ? "Am notat scadența poliței tale. Te voi contacta personal pe canalul selectat pentru a analiza opțiunile disponibile de reînnoire."
                   : "Voi analiza datele transmise și te voi contacta în cel mai scurt timp pentru detalii și clarificări."}
               </p>
-              <p className="mt-4 inline-block rounded-lg border border-[#D2D2D7] bg-[#F5F5F7] px-3 py-1 font-mono text-xs text-[#86868B]">
+              <p className="mt-4 inline-block rounded-lg border border-[#D2D2D7] bg-[#F5F5F7] px-3 py-1 font-mono text-xs text-[#6E6E73]">
                 ID referință: {savedId}
               </p>
               <div className="mt-6">
@@ -410,7 +410,7 @@ export function HelpDeskApp() {
         <h2 id="alta-intrebare" className="text-xl font-bold tracking-tight text-[#1D1D1F] sm:text-2xl">
           Ai o altă întrebare specifică?
         </h2>
-        <p className="mt-1 text-xs text-[#86868B] sm:text-sm">
+        <p className="mt-1 text-xs text-[#6E6E73] sm:text-sm">
           Scrie liber despre situația ta și te ajut să identifici varianta corectă.
         </p>
         <form
@@ -436,7 +436,7 @@ export function HelpDeskApp() {
             value={state.freeQuestion}
             onChange={(e) => setState((s) => ({ ...s, freeQuestion: e.target.value }))}
             placeholder="Scrie aici detaliile situației tale..."
-            className="w-full rounded-2xl border border-[#D2D2D7] bg-[#F5F5F7] p-4 text-sm text-[#1D1D1F] placeholder:text-[#86868B] transition focus:border-[#1D1D1F] focus:outline-none"
+            className="w-full rounded-2xl border border-[#D2D2D7] bg-[#F5F5F7] p-4 text-sm text-[#1D1D1F] placeholder:text-[#6E6E73] transition focus:border-[#1D1D1F] focus:outline-none"
           />
           <button
             type="submit"
@@ -445,17 +445,17 @@ export function HelpDeskApp() {
             Trimite întrebarea directă
           </button>
         </form>
-        <p className="mt-4 text-xs leading-relaxed text-[#86868B]">
+        <p className="mt-4 text-xs leading-relaxed text-[#6E6E73]">
           Serviciul de consultanță și orientare este gratuit. Plătești prima de asigurare exclusiv dacă alegi emiterea unei polițe.
         </p>
       </section>
 
       <section className="mt-16 border-t border-[#D2D2D7] pt-8 max-w-2xl">
         <h2 className="text-xs font-bold uppercase tracking-wider text-[#1D1D1F]">Despre serviciu</h2>
-        <p className="mt-2 text-xs leading-relaxed text-[#86868B]">
+        <p className="mt-2 text-xs leading-relaxed text-[#6E6E73]">
           {SITE.name} este un punct de contact independent prin care poți solicita asistență de specialitate pentru oferte de asigurări, tranzacții imobiliare, notificări și analize de risc.
         </p>
-        <p className="mt-2 text-xs font-medium text-[#86868B]">{SITE.brandLine}</p>
+        <p className="mt-2 text-xs font-medium text-[#6E6E73]">{SITE.brandLine}</p>
       </section>
     </div>
   );
@@ -484,7 +484,7 @@ function HelpCardButton({
     >
       <Icon className="h-5 w-5 text-[#1D1D1F]" aria-hidden />
       <span className="mt-3 block text-sm font-semibold text-[#1D1D1F]">{card.title}</span>
-      <span className="mt-1 block text-xs leading-relaxed text-[#86868B]">{card.description}</span>
+      <span className="mt-1 block text-xs leading-relaxed text-[#6E6E73]">{card.description}</span>
     </button>
   );
 }
@@ -511,7 +511,7 @@ function Choice({
       }`}
     >
       <span className="block font-semibold text-white">{label}</span>
-      <span className="mt-1 block text-xs text-[#86868B]">{hint}</span>
+      <span className="mt-1 block text-xs text-[#6E6E73]">{hint}</span>
     </button>
   );
 }
@@ -532,7 +532,7 @@ function NavRow({
       <button
         type="button"
         onClick={onBack}
-        className="rounded-full border border-[#D2D2D7] bg-[#F5F5F7] px-4 py-2 text-xs font-medium text-[#86868B] hover:text-white"
+        className="rounded-full border border-[#D2D2D7] bg-[#F5F5F7] px-4 py-2 text-xs font-medium text-[#6E6E73] hover:text-white"
       >
         Înapoi
       </button>

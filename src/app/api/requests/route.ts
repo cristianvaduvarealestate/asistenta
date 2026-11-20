@@ -25,13 +25,47 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = await req.json().catch(() => null);
+    let body: any = null;
+    const contentType = req.headers.get("content-type") || "";
+    const isHtmlForm =
+      contentType.includes("application/x-www-form-urlencoded") ||
+      contentType.includes("multipart/form-data");
+
+    if (contentType.includes("application/json")) {
+      body = await req.json().catch(() => null);
+    } else if (isHtmlForm) {
+      const formData = await req.formData().catch(() => null);
+      if (formData) {
+        body = Object.fromEntries(formData.entries());
+        body.privacyAck =
+          body.privacyAck === "on" ||
+          body.privacyAck === "true" ||
+          body.privacyAck === true;
+        if (!body.formStartedAt) {
+          // If no client JS timestamp, permit HTML form post after minimal time
+          body.formStartedAt = Date.now() - 3000;
+        }
+      }
+    }
+
     if (!body || typeof body !== "object") {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Solicitare+invalida#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: false, error: "Solicitare invalidă." }, { status: 400 });
     }
 
     // Bot honeypot: if hidden website field is filled, silently ignore
     if (typeof body.website === "string" && body.website.trim() !== "") {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?trimis=succes#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: true, id: "ignored" });
     }
 
@@ -40,16 +74,34 @@ export async function POST(req: NextRequest) {
     const isTestHeader = req.headers.get("x-synthetic-test") === "true";
     const startedAt = Number(body.formStartedAt);
     if (!isTestHeader && (!startedAt || Date.now() - startedAt < 2500)) {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Trimis+prea+rapid#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: false, error: "Formularul a fost trimis prea rapid." }, { status: 400 });
     }
 
     const flow = sanitizeText(body.flow, 40);
     if (!isFlowId(flow)) {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Tip+solicitare+invalid#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: false, error: "Tipul solicitării nu este valid." }, { status: 400 });
     }
 
     const customerType = body.customerType === "pj" ? "pj" : body.customerType === "pf" ? "pf" : null;
     if (!customerType) {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Selecteaza+PF+sau+PJ#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: false, error: "Selectează PF sau PJ." }, { status: 400 });
     }
 
@@ -57,15 +109,39 @@ export async function POST(req: NextRequest) {
     const phone = normalizePhone(sanitizeText(body.phone, 30));
     const email = sanitizeText(body.email, 200).toLowerCase();
     if (fullName.length < 2) {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Numele+este+obligatoriu#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: false, error: "Numele este obligatoriu." }, { status: 400 });
     }
     if (!isValidPhone(phone)) {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Numarul+de+telefon+este+invalid#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: false, error: "Telefonul nu este valid." }, { status: 400 });
     }
     if (!isValidEmail(email)) {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Adresa+de+email+este+invalida#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json({ ok: false, error: "Emailul nu este valid." }, { status: 400 });
     }
     if (!body.privacyAck) {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?eroare=Confirma+informarea+de+confidentialitate#asistent-asigurari", req.url),
+          303
+        );
+      }
       return NextResponse.json(
         { ok: false, error: "Confirmă luarea la cunoștință a informării de confidențialitate." },
         { status: 400 }
@@ -123,6 +199,12 @@ export async function POST(req: NextRequest) {
     // Case 1: Telegram delivered (primary notification channel operational)
     // Case 2: D1 saved (stored in DB, will be processed)
     if (result.telegramSent || result.d1Status === "saved") {
+      if (isHtmlForm) {
+        return NextResponse.redirect(
+          new URL("/asigurari?trimis=succes#asistent-asigurari", req.url),
+          303
+        );
+      }
       const message = result.telegramSent
         ? "Solicitarea ta a fost transmisă consultantului Cristian Văduva."
         : "Solicitarea ta a fost înregistrată și este în curs de preluare.";

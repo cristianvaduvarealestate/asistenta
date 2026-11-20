@@ -23,9 +23,16 @@ export const metadata: Metadata = {
         url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
         width: 1200,
         height: 630,
-        alt: "Cristian Văduva",
+        alt: "Cristian Văduva — Asistență Imobiliară & Partener Generali",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cristian Văduva — Asistență Imobiliară & Partener Generali",
+    description:
+      "Ajutor sincer și consultanță dedicată pentru decizii imobiliare și asigurări prin parteneriatul cu Generali România.",
+    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
   },
 };
 
@@ -89,10 +96,10 @@ export default function HomePage() {
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.1]">
             Hai să găsim împreună <br />
-            <span className="text-[#86868B]">drumul potrivit pentru tine.</span>
+            <span className="text-[#6E6E73]">drumul potrivit pentru tine.</span>
           </h1>
 
-          <p className="mt-6 mx-auto max-w-2xl text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+          <p className="mt-6 mx-auto max-w-2xl text-base sm:text-lg text-[#6E6E73] font-normal leading-relaxed">
             Când cauți o locuință, vrei să vinzi o proprietate sau ai nevoie de o asigurare bună, cel mai important este să ai pe cineva de încredere alături. Sunt aici să te ascult, să-ți explic opțiunile pe înțelesul tău și să te ajut să iei decizia corectă, fără grabă și fără presiune.
           </p>
 
@@ -132,14 +139,14 @@ export default function HomePage() {
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED] bg-[#F5F5F7]">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Locuințe & Proprietăți
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2 leading-tight">
               Sunt de partea ta. <br />
-              <span className="text-[#86868B]">Fără comisioane ascunse și fără interese împărțite.</span>
+              <span className="text-[#6E6E73]">Fără comisioane ascunse și fără interese împărțite.</span>
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-[#86868B] leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-[#6E6E73] leading-relaxed">
               Când cumperi sau vinzi o casă, ai nevoie de cineva care să reprezinte doar interesele tale. Verific actele cu atenție, negociem cinstit și sunt lângă tine la fiecare pas, de la prima vizionare până la semnarea actelor la notar. Nu iau niciodată comision dublu.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -166,7 +173,7 @@ export default function HomePage() {
               </div>
               <div className="px-2">
                 <h3 className="text-sm font-semibold text-[#1D1D1F]">Căutăm împreună zona potrivită</h3>
-                <p className="text-xs text-[#86868B] mt-0.5">Analizăm cartierul, accesul și facilitățile reale</p>
+                <p className="text-xs text-[#6E6E73] mt-0.5">Analizăm cartierul, accesul și facilitățile reale</p>
               </div>
             </div>
 
@@ -182,7 +189,7 @@ export default function HomePage() {
               </div>
               <div className="px-2">
                 <h3 className="text-sm font-semibold text-[#1D1D1F]">Mergem împreună la vizionări</h3>
-                <p className="text-xs text-[#86868B] mt-0.5">Verificăm calitatea construcției și actele de proprietate</p>
+                <p className="text-xs text-[#6E6E73] mt-0.5">Verificăm calitatea construcției și actele de proprietate</p>
               </div>
             </div>
           </div>
@@ -195,14 +202,14 @@ export default function HomePage() {
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#1D1D1F] text-white">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#A1A1A6]">
               Asigurări Generali România
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white mt-2 leading-tight">
               Asigurări explicate simplu. <br />
-              <span className="text-[#86868B]">Să știi exact pe ce te bazezi.</span>
+              <span className="text-[#A1A1A6]">Să știi exact pe ce te bazezi.</span>
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-[#86868B] leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-[#A1A1A6] leading-relaxed">
               O asigurare bună este cea pe care o înțelegi dinainte, nu cea plină de clauze mărunte pe care le descoperi abia la nevoie. Ca partener oficial Generali România, îți explic deschis ce acoperă fiecare poliță, ce înseamnă fiecare franșiză și te ajut personal dacă apare o daună.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -223,14 +230,13 @@ export default function HomePage() {
                   src="/images/cristian/cv-summit-suit.webp"
                   alt="Cristian Văduva — Parteneriat oficial cu Generali România"
                   fill
-                  loading="eager"
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover object-top opacity-95"
                 />
               </div>
               <div className="px-2">
                 <h3 className="text-sm font-semibold text-white">Parteneriat oficial Generali</h3>
-                <p className="text-xs text-[#86868B] mt-0.5">Garanția unei companii solide, cu sprijinul meu direct</p>
+                <p className="text-xs text-[#A1A1A6] mt-0.5">Garanția unei companii solide, cu sprijinul meu direct</p>
               </div>
             </div>
 
@@ -240,14 +246,13 @@ export default function HomePage() {
                   src="/images/cristian/cv-executive-white-tie.webp"
                   alt="Cristian Văduva la birou, explicând condițiile unei polițe"
                   fill
-                  loading="eager"
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover object-center opacity-95"
                 />
               </div>
               <div className="px-2">
                 <h3 className="text-sm font-semibold text-white">Fiecare franșiză explicată pe loc</h3>
-                <p className="text-xs text-[#86868B] mt-0.5">Știi din prima zi cum funcționează despăgubirea</p>
+                <p className="text-xs text-[#A1A1A6] mt-0.5">Știi din prima zi cum funcționează despăgubirea</p>
               </div>
             </div>
           </div>
@@ -265,7 +270,6 @@ export default function HomePage() {
                 src="/images/cristian/cv-palace-stairs.webp"
                 alt="Cristian Văduva — Despre mine, onestitate și respect"
                 fill
-                loading="eager"
                 sizes="(max-width: 1024px) 100vw, 480px"
                 className="object-cover object-top"
               />
@@ -273,17 +277,17 @@ export default function HomePage() {
           </div>
 
           <div className="lg:col-span-7 space-y-6">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Cine sunt
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-tight">
               Oamenii înainte de cifre. <br />
-              <span className="text-[#86868B]">Un parteneriat bazat pe încredere sinceră.</span>
+              <span className="text-[#6E6E73]">Un parteneriat bazat pe încredere sinceră.</span>
             </h2>
             <blockquote className="text-lg sm:text-xl text-[#1D1D1F] font-normal leading-relaxed border-l-2 border-[#1D1D1F] pl-4">
               „Cea mai bună decizie nu se ia sub presiune. Se ia atunci când ai toate informațiile pe masă, când cineva îți răspunde sincer la întrebări și când simți că ești pe mâini bune.”
             </blockquote>
-            <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
               Lucrez simplu și corect: când te asist la o achiziție sau vânzare imobiliară, reprezint doar partea ta, fără compromisuri. Când discutăm despre asigurări, îți ofer variante clare prin Generali România și îți spun deschis avantajele și limitele fiecărei opțiuni. Fără roluri inventate, fără promisiuni nerealiste.
             </p>
             <div className="pt-2">
@@ -301,7 +305,7 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] border-b border-[#E8E8ED]">
         <div className="mx-auto max-w-5xl">
           <div className="mb-10 text-center sm:text-left">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Momente din activitatea de zi cu zi
             </span>
             <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F] mt-1">
@@ -315,7 +319,6 @@ export default function HomePage() {
                 src="/images/cristian/cv-historic-architecture.webp"
                 alt="Cristian Văduva în centrul istoric"
                 fill
-                loading="eager"
                 sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover object-[50%_35%]"
               />
@@ -326,7 +329,6 @@ export default function HomePage() {
                 src="/images/cristian/cv-skytower-glass.webp"
                 alt="Cristian Văduva la SkyTower"
                 fill
-                loading="eager"
                 sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover object-top"
               />
@@ -337,7 +339,6 @@ export default function HomePage() {
                 src="/images/cristian/cv-rooftop-lounge.webp"
                 alt="Cristian Văduva în discuție personală"
                 fill
-                loading="eager"
                 sizes="(max-width: 768px) 100vw, 320px"
                 className="object-cover object-center"
               />
@@ -352,13 +353,13 @@ export default function HomePage() {
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-[#E8E8ED]">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-2xl mb-12">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Cum te pot ajuta
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
               Spune-mi de unde vrei să începem.
             </h2>
-            <p className="mt-3 text-sm text-[#86868B]">
+            <p className="mt-3 text-sm text-[#6E6E73]">
               Alege situația care se potrivește nevoii tale sau trimite-mi un mesaj direct.
             </p>
           </div>
@@ -371,17 +372,17 @@ export default function HomePage() {
                 className="group flex flex-col sm:flex-row sm:items-center justify-between py-6 px-3 transition-colors hover:bg-[#F5F5F7] rounded-2xl"
               >
                 <div className="flex items-baseline gap-5">
-                  <span className="font-mono text-sm text-[#86868B]">{op.num}</span>
+                  <span className="font-mono text-sm text-[#6E6E73]">{op.num}</span>
                   <div>
                     <div className="flex items-center gap-3">
                       <h3 className="text-lg sm:text-xl font-semibold text-[#1D1D1F] group-hover:text-black">
                         {op.title}
                       </h3>
-                      <span className="text-[11px] font-medium text-[#86868B] border border-[#D2D2D7] rounded-full px-2.5 py-0.5">
+                      <span className="text-[11px] font-medium text-[#6E6E73] border border-[#D2D2D7] rounded-full px-2.5 py-0.5">
                         {op.category}
                       </span>
                     </div>
-                    <p className="mt-1 text-xs sm:text-sm text-[#86868B] max-w-xl">
+                    <p className="mt-1 text-xs sm:text-sm text-[#6E6E73] max-w-xl">
                       {op.desc}
                     </p>
                   </div>
@@ -416,14 +417,14 @@ export default function HomePage() {
             />
           </div>
 
-          <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+          <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
             Discută direct cu Cristian Văduva
           </span>
           <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
             Nu trebuie să știi exact ce îți trebuie. <br />
-            <span className="text-[#86868B]">Vorbim și clarificăm totul.</span>
+            <span className="text-[#6E6E73]">Vorbim și clarificăm totul.</span>
           </h2>
-          <p className="mt-4 mx-auto max-w-xl text-base text-[#86868B]">
+          <p className="mt-4 mx-auto max-w-xl text-base text-[#6E6E73]">
             Răspund personal la fiecare apel și mesaj. Fără intermediari și fără robot telefonic.
           </p>
 
@@ -442,7 +443,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="apple-btn-secondary inline-flex items-center gap-2"
             >
-              <MessageSquare className="h-4 w-4 text-[#86868B]" />
+              <MessageSquare className="h-4 w-4 text-[#6E6E73]" />
               <span>Scrie-mi pe WhatsApp</span>
             </a>
 

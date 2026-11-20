@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { SITE } from "@/config/site";
-import { Phone, MessageSquare, Lock, Heart, ShieldCheck, UserCheck } from "lucide-react";
+import { Phone, MessageSquare, Lock, Heart, ShieldCheck, UserCheck, GraduationCap, Globe2, BookOpen, Scale } from "lucide-react";
 import { FAQSection } from "@/components/FAQSection";
 
 export const metadata: Metadata = {
@@ -23,9 +23,16 @@ export const metadata: Metadata = {
         url: `${SITE.publicUrl}/images/og-asistenta.jpg`,
         width: 1200,
         height: 630,
-        alt: "Cristian Văduva",
+        alt: "Despre Cristian Văduva — Cine sunt și cum te pot ajuta",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Despre Cristian Văduva — Cine sunt și cum te pot ajuta",
+    description:
+      "Află mai multe despre Cristian Văduva: consultanță imobiliară onestă și parteneriat oficial Generali România. Relații de lungă durată construite pe încredere.",
+    images: [`${SITE.publicUrl}/images/og-asistenta.jpg`],
   },
 };
 
@@ -76,7 +83,7 @@ export default function DespreMinePage() {
       {/* ========================================================================= */}
       <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED]">
         <div className="mx-auto max-w-5xl">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#86868B] mb-6">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#6E6E73] mb-6">
             <Link href="/" className="hover:text-[#1D1D1F] transition">
               Acasă
             </Link>
@@ -87,17 +94,17 @@ export default function DespreMinePage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Column: Personal Greeting & Philosophy */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+              <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
                 Salut, sunt Cristian Văduva
               </span>
               <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.08]">
                 Oameni înainte de cifre. <br />
-                <span className="text-[#86868B]">Și fapte înainte de vorbe.</span>
+                <span className="text-[#6E6E73]">Și fapte înainte de vorbe.</span>
               </h1>
-              <p className="text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+              <p className="text-base sm:text-lg text-[#6E6E73] font-normal leading-relaxed">
                 Cred că cele mai bune decizii financiare și de viață se iau atunci când ai alături un om care te ascultă cu atenție și îți spune adevărul, simplu și fără ocolișuri.
               </p>
-              <p className="text-base sm:text-lg text-[#86868B] font-normal leading-relaxed">
+              <p className="text-base sm:text-lg text-[#6E6E73] font-normal leading-relaxed">
                 Fără grabă, fără limbaj de lemn și fără să-ți vând iluzii. Sunt consultant imobiliar și partener oficial Generali România, dar mai presus de orice, sunt un om care ajută alți oameni să-și găsească liniștea.
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -105,7 +112,7 @@ export default function DespreMinePage() {
                   href={`tel:${SITE.phoneTel}`}
                   className="apple-btn-secondary inline-flex items-center gap-2"
                 >
-                  <Phone className="h-4 w-4 text-[#86868B]" />
+                  <Phone className="h-4 w-4 text-[#6E6E73]" />
                   <span>{SITE.phoneDisplay}</span>
                 </a>
                 <a
@@ -114,7 +121,7 @@ export default function DespreMinePage() {
                   rel="noopener noreferrer"
                   className="apple-btn-secondary inline-flex items-center gap-2"
                 >
-                  <MessageSquare className="h-4 w-4 text-[#86868B]" />
+                  <MessageSquare className="h-4 w-4 text-[#6E6E73]" />
                   <span>WhatsApp direct</span>
                 </a>
               </div>
@@ -154,8 +161,8 @@ export default function DespreMinePage() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#86868B] leading-relaxed">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#6E6E73] leading-relaxed">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Cum privesc eu lucrurile
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-tight">
@@ -177,7 +184,7 @@ export default function DespreMinePage() {
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED] bg-white">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-2xl mb-16">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Ce fac pentru tine
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
@@ -200,11 +207,11 @@ export default function DespreMinePage() {
                 </div>
               </div>
               <div className="lg:col-span-7 space-y-3">
-                <span className="font-mono text-xs text-[#86868B]">01 • IMOBILIARE</span>
+                <span className="font-mono text-xs text-[#6E6E73]">01 • IMOBILIARE</span>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
                   Cumpărare sau vânzare, de partea ta
                 </h3>
-                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
                   Fie că vrei să cumperi căminul potrivit, fie că vinzi o proprietate, sunt alături de tine de la prima vizionare până la semnarea actelor la notar. Verific actele cu atenție, negociez în folosul tău și nu iau niciodată comision dublu.
                 </p>
                 <div className="pt-2">
@@ -218,11 +225,11 @@ export default function DespreMinePage() {
             {/* Pilon 2: Asigurări Generali */}
             <div className="grid gap-8 lg:grid-cols-12 lg:items-center border-b border-[#E8E8ED] pb-14">
               <div className="lg:col-span-7 order-2 lg:order-1 space-y-3">
-                <span className="font-mono text-xs text-[#86868B]">02 • ASIGURĂRI GENERALI</span>
+                <span className="font-mono text-xs text-[#6E6E73]">02 • ASIGURĂRI GENERALI</span>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
                   Partener Oficial Generali România
                 </h3>
-                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
                   Îți explic pe înțelesul tău fiecare poliță: CASCO, asigurarea casei, sănătate sau răspunderi pentru compania ta. Fără steluțe ascunse, cu franșizele explicate dinainte și cu sprijin direct la telefon când apare un eveniment neplăcut.
                 </p>
                 <div className="pt-2">
@@ -258,13 +265,128 @@ export default function DespreMinePage() {
                 </div>
               </div>
               <div className="lg:col-span-7 space-y-3">
-                <span className="font-mono text-xs text-[#86868B]">03 • FINANȚARE</span>
+                <span className="font-mono text-xs text-[#6E6E73]">03 • FINANȚARE</span>
                 <h3 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F]">
                   Consultanță pentru credite ipotecare
                 </h3>
-                <p className="text-sm sm:text-base text-[#86868B] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">
                   Dacă ai nevoie de finanțare bancară pentru achiziție, colaborez cu Smart Credit România pentru a găsi cea mai avantajoasă opțiune de pe piață. Fără drumuri inutile și cu dosarul pregătit corect din prima.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. EDUCAȚIE VERIFICATĂ & FORMARE ACADEMICĂ */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-[#E8E8ED]">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-3xl mb-14">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#D2D2D7] bg-[#F5F5F7] px-3 py-1 text-xs font-semibold text-[#1D1D1F] mb-4">
+              <GraduationCap className="h-3.5 w-3.5 text-[#1D1D1F]" />
+              <span>Formare Academică & Experiență Internațională</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] leading-tight">
+              Trei licențe, trei masterate și o viziune completă.
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-[#6E6E73] leading-relaxed">
+              Consultanța responsabilă nu se învață doar din cărțile de vânzări. Fiecare etapă universitară și de cercetare mi-a oferit un unghi diferit de analiză: rigoarea cifrelor din economie, protecția drepturilor juridice, sustenabilitatea mediului și siguranța datelor. Toate aceste perspective se îmbină organic în fiecare sfat pe care ți-l ofer.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* Pilon 1: 3 Diplome de Licență */}
+            <div className="rounded-3xl border border-[#E8E8ED] bg-[#F5F5F7] p-7 sm:p-8 flex flex-col justify-between transition hover:border-[#6E6E73]">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs font-semibold text-[#6E6E73]">01 • LICENȚĂ</span>
+                  <BookOpen className="h-5 w-5 text-[#1D1D1F]" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#1D1D1F] tracking-tight">
+                  3 Diplome Universitare
+                </h3>
+                <p className="mt-2 text-xs text-[#6E6E73] leading-relaxed">
+                  Fundamente solide în științe complementare pentru decizii fără unghiuri moarte.
+                </p>
+
+                <div className="mt-6 space-y-4 text-xs text-[#424245]">
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Economie</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Analiză financiară, randamente investiționale și evaluare realistă a pieței imobiliare.</span>
+                  </div>
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Drept</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Descifrarea contractelor, identificarea clauzelor ascunse și protecția juridică a intereselor tale.</span>
+                  </div>
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Ecologie & Protecția Mediului</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Eficiență energetică, calitatea aerului și a amplasamentului, sustenabilitatea clădirilor.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pilon 2: 3 Programe de Master */}
+            <div className="rounded-3xl border border-[#E8E8ED] bg-[#F5F5F7] p-7 sm:p-8 flex flex-col justify-between transition hover:border-[#6E6E73]">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs font-semibold text-[#6E6E73]">02 • MASTER</span>
+                  <Scale className="h-5 w-5 text-[#1D1D1F]" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#1D1D1F] tracking-tight">
+                  3 Specializări Postuniversitare
+                </h3>
+                <p className="mt-2 text-xs text-[#6E6E73] leading-relaxed">
+                  Aprofundare strategică a managementului riscurilor, impactului ecologic și siguranței.
+                </p>
+
+                <div className="mt-6 space-y-4 text-xs text-[#424245]">
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Management Financiar</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Optimizarea bugetelor de investiții și structurarea finanțărilor pe termen lung.</span>
+                  </div>
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Evaluarea Impactului asupra Mediului</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Audit de zonă, riscuri de mediu și conformitate cu standardele europene de locuire.</span>
+                  </div>
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Securitatea Informației</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Confidențialitate absolută a datelor clienților și proceduri digitale protejate.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pilon 3: Experiență Internațională */}
+            <div className="rounded-3xl border border-[#E8E8ED] bg-[#F5F5F7] p-7 sm:p-8 flex flex-col justify-between transition hover:border-[#6E6E73]">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs font-semibold text-[#6E6E73]">03 • INTERNAȚIONAL</span>
+                  <Globe2 className="h-5 w-5 text-[#1D1D1F]" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#1D1D1F] tracking-tight">
+                  Studii & Stagiere în Străinătate
+                </h3>
+                <p className="mt-2 text-xs text-[#6E6E73] leading-relaxed">
+                  Experiențe formative care mi-au definit etica de lucru și respectul pentru oameni.
+                </p>
+
+                <div className="mt-6 space-y-4 text-xs text-[#424245]">
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Madrid, Spania (1 an)</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Studii universitare internaționale, deschidere culturală și standarde europene de dialog profesional.</span>
+                  </div>
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Amiens, Franța (6 luni)</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Aprofundare academică a piețelor europene și a modelelor occidentale de consultanță.</span>
+                  </div>
+                  <div className="border-t border-[#E8E8ED] pt-3">
+                    <span className="font-semibold text-[#1D1D1F] block text-sm">Malta (stagiu 3 luni)</span>
+                    <span className="text-[#6E6E73] block mt-0.5">Practică profesională într-un hub internațional financiar și imobiliar anglofon.</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -277,13 +399,13 @@ export default function DespreMinePage() {
       <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] border-b border-[#E8E8ED]">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-2xl mb-14 text-center sm:text-left">
-            <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+            <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
               Dincolo de ecran
             </span>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
               Momente și întâlniri autentice.
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-[#86868B]">
+            <p className="mt-3 text-sm sm:text-base text-[#6E6E73]">
               Imagini din activitatea de zi cu zi, pe teren, la birou și în dialog cu oamenii cu care colaborez.
             </p>
           </div>
@@ -296,7 +418,6 @@ export default function DespreMinePage() {
                     src={item.src}
                     alt={item.alt}
                     fill
-                    loading="eager"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 320px"
                     className="object-cover object-top transition duration-500 group-hover:scale-102"
                   />
@@ -317,7 +438,7 @@ export default function DespreMinePage() {
             <span>Transparență deplină și rol profesional</span>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-3 text-xs leading-relaxed text-[#86868B]">
+          <div className="grid gap-8 sm:grid-cols-3 text-xs leading-relaxed text-[#6E6E73]">
             <div>
               <strong className="text-[#1D1D1F] block text-sm mb-1">Consultanță Imobiliară</strong>
               Reprezentare exclusivă a unei singure părți în tranzacție. Nu ofer servicii notariale sau asistență juridică rezervată avocaților; actele finale se semnează întotdeauna la notari publici autorizați.
@@ -353,13 +474,13 @@ export default function DespreMinePage() {
             />
           </div>
 
-          <span className="text-xs font-semibold tracking-tight uppercase text-[#86868B]">
+          <span className="text-xs font-semibold tracking-tight uppercase text-[#6E6E73]">
             Hai să ne cunoaștem • Cristian Văduva
           </span>
           <h2 className="text-4xl sm:text-6xl font-semibold tracking-tight text-[#1D1D1F] mt-2">
             Vrei să stăm de vorbă?
           </h2>
-          <p className="mt-4 mx-auto max-w-xl text-base text-[#86868B]">
+          <p className="mt-4 mx-auto max-w-xl text-base text-[#6E6E73]">
             Răspund personal la telefon sau pe WhatsApp. Îmi poți povesti situația ta și găsim împreună cea mai bună cale de urmat.
           </p>
 
@@ -368,7 +489,7 @@ export default function DespreMinePage() {
               href={`tel:${SITE.phoneTel}`}
               className="apple-btn-secondary inline-flex items-center gap-2"
             >
-              <Phone className="h-4 w-4 text-[#86868B]" />
+              <Phone className="h-4 w-4 text-[#6E6E73]" />
               <span>{SITE.phoneDisplay}</span>
             </a>
 
@@ -378,7 +499,7 @@ export default function DespreMinePage() {
               rel="noopener noreferrer"
               className="apple-btn-secondary inline-flex items-center gap-2"
             >
-              <MessageSquare className="h-4 w-4 text-[#86868B]" />
+              <MessageSquare className="h-4 w-4 text-[#6E6E73]" />
               <span>WhatsApp</span>
             </a>
 

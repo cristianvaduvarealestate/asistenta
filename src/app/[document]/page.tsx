@@ -96,49 +96,6 @@ const documents: Record<string, Document> = {
       },
     ],
   },
-  "informare-servicii": {
-    title: "Informare privind serviciile",
-    intro:
-      "Prezentare transparentă a rolului profesional, a parteneriatelor active și a modului de colaborare pe platforma Cristian Văduva.",
-    sections: [
-      {
-        heading: "Consultanță în asigurări — Partener Generali",
-        body: [
-          "Cristian Văduva este partener Generali România și oferă consultanță, îndrumare și asistență în analiza nevoilor de protecție pentru persoane fizice și companii.",
-          "Cristian Văduva nu este broker de asigurare și nu oferă o comparație independentă a întregii piețe de asigurări. Soluțiile de protecție și ofertele sunt structurate în cadrul parteneriatului cu Generali România.",
-          "Te pot îndruma în pregătirea documentației și înțelegerea pașilor de urmat în caz de daună, însă evaluarea dosarului, decizia de despăgubire și termenele de plată aparțin exclusiv asigurătorului Generali, conform condițiilor contractuale.",
-        ],
-      },
-      {
-        heading: "Consultanță și reprezentare imobiliară",
-        body: [
-          "În serviciile imobiliare, rolul meu este stabilit în funcție de partea care solicită și angajează serviciile mele: proprietarul/vânzătorul sau cumpărătorul. Obiectivele colaborării și responsabilitățile sunt clarificate de la început.",
-          "Într-o tranzacție, rolul meu și partea pe care o reprezint sunt comunicate clar înainte de începerea colaborării. Orice situație în care există interese diferite ale părților este clarificată înainte de prestarea serviciilor.",
-        ],
-      },
-      {
-        heading: "Proprietăți în Dubai și oportunități internaționale",
-        body: [
-          "Pentru solicitările privind proprietăți în Dubai, discutăm inițial obiectivele și preferințele tale. Ulterior, te pot pune în legătură cu un broker local licențiat, care gestionează activitățile de intermediere și pașii tranzacției în jurisdicția respectivă.",
-          "Cristian Văduva este punctul inițial de contact și nu pretinde deținerea unei licențe de brokeraj imobiliar în Dubai sau Monaco.",
-        ],
-      },
-      {
-        heading: "Consultanță privind creditele — Smart Credit România",
-        body: [
-          "Pentru solicitările privind creditele și finanțarea, colaborez cu Smart Credit România. În funcție de situație, solicitarea poate fi preluată și analizată împreună cu partenerul specializat.",
-          "Cristian Văduva nu este bancă, creditor sau intermediar independent de credite. Aprobarea finanțării depinde de analiza și criteriile instituției finanțatoare.",
-        ],
-      },
-      {
-        heading: "Verificarea scadențelor polițelor de asigurare",
-        body: [
-          "Înregistrarea scadenței unei polițe reprezintă o cerere de contact și nu garantează transmiterea automată a unei notificări prin SMS sau e-mail.",
-          "Contactarea se realizează personal, în funcție de datele furnizate și disponibilitate, pentru a analiza opțiunile de reînnoire.",
-        ],
-      },
-    ],
-  },
   accesibilitate: {
     title: "Declarație de accesibilitate",
     intro:
@@ -239,10 +196,10 @@ export default function LegalPage({
     <div className="bg-[#F5F5F7] min-h-[85vh] py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#E8E8ED]">
       <article className="mx-auto max-w-4xl rounded-3xl border border-[#D2D2D7] bg-white p-6 sm:p-12 lg:p-16 shadow-apple">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E8E8ED] pb-6">
-          <span className="text-xs font-mono uppercase tracking-tight text-[#86868B]">
+          <span className="text-xs font-mono uppercase tracking-tight text-[#6E6E73]">
             Informare & Transparență
           </span>
-          <span className="text-xs text-[#86868B]">
+          <span className="text-xs text-[#6E6E73]">
             Ultima actualizare: {legalConfig.lastUpdatedLabel}
           </span>
         </div>
@@ -251,7 +208,7 @@ export default function LegalPage({
           {item.title}
         </h1>
 
-        <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#86868B]">
+        <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#6E6E73]">
           {item.intro}
         </p>
 
@@ -262,7 +219,7 @@ export default function LegalPage({
                 {section.heading}
               </h2>
               {section.body.map((paragraph) => (
-                <p key={paragraph} className="text-sm leading-relaxed text-[#86868B]">
+                <p key={paragraph} className="text-sm leading-relaxed text-[#6E6E73]">
                   {paragraph}
                 </p>
               ))}
@@ -285,7 +242,7 @@ export default function LegalPage({
                   className={`rounded-full border px-4 py-1.5 text-xs font-medium transition-all ${
                     isCurrent
                       ? "border-[#1D1D1F] bg-[#1D1D1F] text-white"
-                      : "border-[#D2D2D7] bg-white text-[#86868B] hover:text-[#1D1D1F] hover:border-[#86868B]"
+                      : "border-[#D2D2D7] bg-white text-[#6E6E73] hover:text-[#1D1D1F] hover:border-[#6E6E73]"
                   }`}
                   key={slug}
                   href={`/${slug}`}

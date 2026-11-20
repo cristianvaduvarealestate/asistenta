@@ -26,7 +26,7 @@ export function CookieBanner() {
           <p id="cookie-title" className="text-xs font-semibold text-[#1D1D1F]">
             Confidențialitate & Cookies
           </p>
-          <p className="mt-1 text-xs leading-relaxed text-[#86868B]">
+          <p className="mt-1 text-xs leading-relaxed text-[#6E6E73]">
             Acest website utilizează exclusiv stocare tehnică strict necesară bunei funcționări. Nu instalăm cookie-uri publicitare sau de urmărire a activității. Detalii în{" "}
             <Link className="text-[#1D1D1F] underline hover:opacity-70" href="/cookies">
               politica de cookies

@@ -101,7 +101,8 @@ export function Header() {
             <div className="relative h-7 w-7 overflow-hidden rounded-full border border-[#D2D2D7] bg-[#F5F5F7] shrink-0">
               <Image
                 src="/images/cristian/cv-avatar-vest.webp"
-                alt="Cristian Văduva"
+                alt=""
+                aria-hidden="true"
                 fill
                 className="object-cover"
               />
@@ -109,7 +110,7 @@ export function Header() {
             <span className="text-[15px] font-semibold tracking-tight text-[#1D1D1F] transition-opacity group-hover:opacity-70">
               Cristian Văduva
             </span>
-            <span className="hidden sm:inline-block text-[11px] font-normal text-[#86868B] border-l border-[#D2D2D7] pl-2.5">
+            <span className="hidden sm:inline-block text-[11px] font-normal text-[#6E6E73] border-l border-[#D2D2D7] pl-2.5">
               Imobiliare & Generali
             </span>
           </Link>
@@ -125,7 +126,7 @@ export function Header() {
                   className={`text-[13px] tracking-tight transition-colors duration-150 ${
                     active
                       ? "text-[#1D1D1F] font-semibold"
-                      : "text-[#86868B] hover:text-[#1D1D1F]"
+                      : "text-[#6E6E73] hover:text-[#1D1D1F]"
                   }`}
                 >
                   {link.label}
@@ -138,7 +139,7 @@ export function Header() {
           <div className="hidden items-center gap-3 sm:flex">
             <a
               href={`tel:${SITE.phoneTel}`}
-              className="text-[13px] tracking-tight text-[#86868B] hover:text-[#1D1D1F] transition-colors"
+              className="text-[13px] tracking-tight text-[#6E6E73] hover:text-[#1D1D1F] transition-colors"
             >
               {SITE.phoneDisplay}
             </a>
@@ -188,7 +189,8 @@ export function Header() {
               <div className="relative h-8 w-8 overflow-hidden rounded-full border border-[#D2D2D7] bg-[#F5F5F7] shrink-0">
                 <Image
                   src="/images/cristian/cv-avatar-vest.webp"
-                  alt="Cristian Văduva"
+                  alt=""
+                  aria-hidden="true"
                   fill
                   className="object-cover"
                 />
@@ -197,7 +199,7 @@ export function Header() {
                 <span className="block text-base font-semibold tracking-tight text-[#1D1D1F]">
                   Cristian Văduva
                 </span>
-                <span className="block text-[11px] text-[#86868B]">
+                <span className="block text-[11px] text-[#6E6E73]">
                   Imobiliare & Generali România
                 </span>
               </div>
@@ -232,7 +234,7 @@ export function Header() {
                   </span>
                   <ArrowRight
                     className={`h-5 w-5 transition-transform ${
-                      active ? "text-[#1D1D1F] translate-x-1" : "text-[#86868B] group-hover:translate-x-1"
+                      active ? "text-[#1D1D1F] translate-x-1" : "text-[#6E6E73] group-hover:translate-x-1"
                     }`}
                   />
                 </Link>

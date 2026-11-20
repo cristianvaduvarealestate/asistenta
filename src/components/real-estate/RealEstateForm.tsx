@@ -244,7 +244,7 @@ export function RealEstateForm() {
       {/* Progress Header */}
       {step < 4 && (
         <div className="mb-8">
-          <div className="flex items-center justify-between text-xs font-semibold text-[#86868B]">
+          <div className="flex items-center justify-between text-xs font-semibold text-[#6E6E73]">
             <span className="text-[#1D1D1F] font-bold uppercase tracking-wider">
               Asistență Imobiliară
             </span>
@@ -261,7 +261,7 @@ export function RealEstateForm() {
             {step === 2 && "Hai să stabilim detaliile proprietății"}
             {step === 3 && "Unde îți trimit propunerile și analiza?"}
           </h2>
-          <p className="mt-1 text-sm text-[#86868B]">
+          <p className="mt-1 text-sm text-[#6E6E73]">
             {step === 1 && "Selectează obiectivul tău pentru a adapta pașii următori."}
             {step === 2 && "Completează criteriile esențiale. Câmpurile sunt orientative și te ajută să primești opțiuni relevante."}
             {step === 3 && "Lasă datele de contact pentru a stabili următorii pași și a primi recomandări concrete."}
@@ -298,12 +298,12 @@ export function RealEstateForm() {
                     <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F5F5F7] border border-[#D2D2D7] text-[#1D1D1F] shadow-2xs group-hover:bg-[#1D1D1F] group-hover:text-white transition">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <ArrowRight className="h-4 w-4 text-[#86868B] opacity-0 transition group-hover:opacity-100 group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 text-[#6E6E73] opacity-0 transition group-hover:opacity-100 group-hover:translate-x-1" />
                   </div>
                   <h3 className="mt-4 text-base font-bold text-[#1D1D1F]">
                     {item.label}
                   </h3>
-                  <p className="mt-1.5 text-xs text-[#86868B] leading-relaxed">
+                  <p className="mt-1.5 text-xs text-[#6E6E73] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -321,7 +321,7 @@ export function RealEstateForm() {
         <div className="space-y-6">
           {/* Action indicator tag */}
           <div className="flex items-center justify-between rounded-2xl bg-[#F5F5F7] p-3.5 text-xs">
-            <span className="text-[#86868B]">
+            <span className="text-[#6E6E73]">
               Obiectiv selectat:{" "}
               <strong className="text-[#1D1D1F]">
                 {ACTIONS.find((a) => a.id === form.action)?.label}
@@ -423,7 +423,7 @@ export function RealEstateForm() {
                     <option value="Doresc și consultanță creditare">Doresc consultanță creditare (Smart Credit România)</option>
                   </select>
                   {form.financingMethod.includes("creditare") && (
-                    <p className="mt-2 text-xs leading-relaxed text-[#86868B]">
+                    <p className="mt-2 text-xs leading-relaxed text-[#6E6E73]">
                       Pentru solicitările privind creditele și finanțarea, colaborez cu Smart Credit România. În funcție de situație, solicitarea poate fi preluată și analizată împreună cu partenerul specializat.
                     </p>
                   )}
@@ -598,7 +598,7 @@ export function RealEstateForm() {
                     <option value="Deschis la propuneri calificate">Deschis la oportunități calificate</option>
                   </select>
                   {form.targetMarket === "Dubai / Emirate" && (
-                    <p className="mt-2 text-xs leading-relaxed text-[#86868B]">
+                    <p className="mt-2 text-xs leading-relaxed text-[#6E6E73]">
                       Pentru proprietăți în Dubai, discutăm inițial obiectivele tale, iar activitățile de intermediere sunt gestionate prin punerea în legătură cu un broker local licențiat în acea jurisdicție.
                     </p>
                   )}
@@ -665,20 +665,20 @@ export function RealEstateForm() {
             <p className="font-bold text-[#1D1D1F]">
               Rezumat solicitare: {ACTIONS.find((a) => a.id === form.action)?.label}
             </p>
-            <p className="mt-1 text-[#86868B]">
+            <p className="mt-1 text-[#6E6E73]">
               {form.propertyType && `Tip: ${form.propertyType}`}
               {form.location && ` • Zonă: ${form.location}`}
               {(form.budgetMax || form.askingPrice) && ` • Buget/Preț: ${form.budgetMax || form.askingPrice}`}
             </p>
           </div>
 
-          <p className="text-xs text-[#86868B] leading-relaxed">
+          <p className="text-xs text-[#6E6E73] leading-relaxed">
             În serviciile imobiliare, rolul meu este stabilit în funcție de partea care solicită și angajează serviciile mele (cumpărător sau vânzător), obiectivele colaborării fiind clarificate transparent de la început.
           </p>
 
           {/* PF vs PJ selector */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#86868B]">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#6E6E73]">
               Solicitarea este pentru:
             </label>
             <div className="mt-2 inline-flex rounded-2xl border border-[#D2D2D7] bg-[#F5F5F7] p-1">
@@ -688,7 +688,7 @@ export function RealEstateForm() {
                 className={`rounded-lg px-4 py-2 text-xs font-bold transition ${
                   form.customerType === "pf"
                     ? "bg-white text-[#1D1D1F] text-white border border-[#1D1D1F]/40 shadow-sm"
-                    : "text-[#86868B] hover:text-[#1D1D1F]"
+                    : "text-[#6E6E73] hover:text-[#1D1D1F]"
                 }`}
               >
                 Persoană Fizică (Individual)
@@ -699,7 +699,7 @@ export function RealEstateForm() {
                 className={`rounded-lg px-4 py-2 text-xs font-bold transition ${
                   form.customerType === "pj"
                     ? "bg-white text-[#1D1D1F] text-white border border-[#1D1D1F]/40 shadow-sm"
-                    : "text-[#86868B] hover:text-[#1D1D1F]"
+                    : "text-[#6E6E73] hover:text-[#1D1D1F]"
                 }`}
               >
                 Persoană Juridică (Companie)
@@ -843,12 +843,12 @@ export function RealEstateForm() {
           <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#1D1D1F] sm:text-3xl">
             Mulțumesc, {form.fullName}!
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm text-[#86868B] leading-relaxed">
+          <p className="mx-auto mt-3 max-w-lg text-sm text-[#6E6E73] leading-relaxed">
             Am preluat criteriile tale imobiliare. Voi analiza cerințele și te voi contacta direct pe numărul de telefon ({form.phone}) sau prin email ({form.email}) pentru primii pași concreți.
           </p>
 
           {savedId && (
-            <div className="mx-auto mt-6 max-w-xs rounded-xl bg-[#F5F5F7] border border-[#D2D2D7] p-3 text-xs text-[#86868B]">
+            <div className="mx-auto mt-6 max-w-xs rounded-xl bg-[#F5F5F7] border border-[#D2D2D7] p-3 text-xs text-[#6E6E73]">
               Număr de referință solicitare: <strong className="text-[#1D1D1F]">{savedId}</strong>
             </div>
           )}

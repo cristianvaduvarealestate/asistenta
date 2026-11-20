@@ -20,7 +20,7 @@ const config: Config = {
           bg: "#F5F5F7",
           subtle: "#E8E8ED",
           border: "#D2D2D7",
-          grey: "#86868B",
+          grey: "#6E6E73", // Updated to Apple accessible secondary (#6E6E73) for WCAG AA 4.88:1 on white
           dark: "#424245",
           ink: "#1D1D1F",
           black: "#000000",

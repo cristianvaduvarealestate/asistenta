@@ -35,11 +35,11 @@ export function ContactForm({ values, customerType, onChange }: Props) {
       {customerType === "pj" ? (
         <div className="space-y-6">
           {/* PJ Header banner */}
-          <div className="rounded-2xl border border-[#1D1D1F]/30 bg-[#F5F5F7] p-4.5 text-xs text-[#86868B]">
+          <div className="rounded-2xl border border-[#1D1D1F]/30 bg-[#F5F5F7] p-4.5 text-xs text-[#6E6E73]">
             <p className="font-semibold text-white">
               Solicitare pentru Persoană Juridică (Companie)
             </p>
-            <p className="mt-1 leading-relaxed text-[#86868B]">
+            <p className="mt-1 leading-relaxed text-[#6E6E73]">
               Completează datele firmei pentru a adapta recomandările și analiza de risc. Câmpurile opționale ne ajută la o calibrare mai precisă a ofertelor.
             </p>
           </div>
@@ -65,7 +65,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B]" htmlFor="activity">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#6E6E73]" htmlFor="activity">
                 Domeniul principal de activitate <span aria-hidden="true" className="text-[#C92B35]">*</span>
               </label>
               <select
@@ -75,7 +75,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
                 className="mt-2 min-h-11 w-full rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] px-3.5 text-sm text-[#1D1D1F] transition focus:border-[#1D1D1F] focus:outline-none"
                 required
               >
-                <option value="" className="bg-white text-[#1D1D1F] text-[#86868B]">Alege industria / domeniul firmei</option>
+                <option value="" className="bg-white text-[#1D1D1F] text-[#6E6E73]">Alege industria / domeniul firmei</option>
                 {BUSINESS_INDUSTRIES.map((ind) => (
                   <option key={ind.id} value={ind.name} className="bg-white text-[#1D1D1F] text-[#1D1D1F]">
                     {ind.letter}. {ind.name}
@@ -97,7 +97,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
           {/* Operational scope */}
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B]" htmlFor="employeeCount">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#6E6E73]" htmlFor="employeeCount">
                 Număr aproximativ de angajați
               </label>
               <select
@@ -106,7 +106,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
                 onChange={(e) => set("employeeCount", e.target.value)}
                 className="mt-2 min-h-11 w-full rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] px-3.5 text-sm text-[#1D1D1F] transition focus:border-[#1D1D1F] focus:outline-none"
               >
-                <option value="" className="bg-white text-[#1D1D1F] text-[#86868B]">Selectează intervalul</option>
+                <option value="" className="bg-white text-[#1D1D1F] text-[#6E6E73]">Selectează intervalul</option>
                 <option value="1-9" className="bg-white text-[#1D1D1F] text-[#1D1D1F]">Microîntreprindere (1-9 angajați)</option>
                 <option value="10-49" className="bg-white text-[#1D1D1F] text-[#1D1D1F]">Întreprindere mică (10-49 angajați)</option>
                 <option value="50-249" className="bg-white text-[#1D1D1F] text-[#1D1D1F]">Întreprindere medie (50-249 angajați)</option>
@@ -115,7 +115,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B]" htmlFor="turnoverRange">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#6E6E73]" htmlFor="turnoverRange">
                 Cifră de afaceri anuală estimată (Opțional)
               </label>
               <select
@@ -124,7 +124,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
                 onChange={(e) => set("turnoverRange", e.target.value)}
                 className="mt-2 min-h-11 w-full rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] px-3.5 text-sm text-[#1D1D1F] transition focus:border-[#1D1D1F] focus:outline-none"
               >
-                <option value="" className="bg-white text-[#1D1D1F] text-[#86868B]">Selectează intervalul</option>
+                <option value="" className="bg-white text-[#1D1D1F] text-[#6E6E73]">Selectează intervalul</option>
                 <option value="sub 100k EUR" className="bg-white text-[#1D1D1F] text-[#1D1D1F]">Sub 100.000 EUR</option>
                 <option value="100k - 500k EUR" className="bg-white text-[#1D1D1F] text-[#1D1D1F]">100.000 - 500.000 EUR</option>
                 <option value="500k - 2M EUR" className="bg-white text-[#1D1D1F] text-[#1D1D1F]">500.000 - 2.000.000 EUR</option>
@@ -136,7 +136,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
 
           {/* Contact Person Details */}
           <div className="border-t border-[#D2D2D7] pt-5">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#86868B]">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#6E6E73]">
               Persoană de contact din companie
             </p>
             <div className="mt-3 grid gap-4 sm:grid-cols-3">
@@ -173,11 +173,11 @@ export function ContactForm({ values, customerType, onChange }: Props) {
       ) : (
         /* PF Fields */
         <div className="space-y-4">
-          <div className="rounded-2xl border border-[#D2D2D7] bg-[#F5F5F7] p-4.5 text-xs text-[#86868B]">
+          <div className="rounded-2xl border border-[#D2D2D7] bg-[#F5F5F7] p-4.5 text-xs text-[#6E6E73]">
             <p className="font-semibold text-white">
               Solicitare pentru Persoană Fizică
             </p>
-            <p className="mt-1 leading-relaxed text-[#86868B]">
+            <p className="mt-1 leading-relaxed text-[#6E6E73]">
               Completează datele tale de contact pentru a primi oferta comparativă sau clarificările necesare.
             </p>
           </div>
@@ -216,7 +216,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
 
       {/* Consents */}
       <div className="space-y-3 pt-2">
-        <label className="flex items-start gap-3 text-xs leading-relaxed text-[#86868B]">
+        <label className="flex items-start gap-3 text-xs leading-relaxed text-[#6E6E73]">
           <input
             className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#D2D2D7] bg-[#F5F5F7] accent-[#1D1D1F]"
             type="checkbox"
@@ -232,7 +232,7 @@ export function ContactForm({ values, customerType, onChange }: Props) {
             . <span aria-hidden="true" className="text-[#C92B35]">*</span>
           </span>
         </label>
-        <label className="flex items-start gap-3 text-xs leading-relaxed text-[#86868B]">
+        <label className="flex items-start gap-3 text-xs leading-relaxed text-[#6E6E73]">
           <input
             className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#D2D2D7] bg-[#F5F5F7] accent-[#1D1D1F]"
             type="checkbox"
@@ -271,7 +271,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B]" htmlFor={id}>
+      <label className="block text-xs font-semibold uppercase tracking-wider text-[#6E6E73]" htmlFor={id}>
         {label}
         {required && (
           <span aria-hidden="true" className="text-[#C92B35]">
@@ -290,7 +290,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         className="mt-2 min-h-11 w-full rounded-xl border border-[#D2D2D7] bg-[#F5F5F7] px-3.5 text-sm text-[#1D1D1F] transition focus:border-[#1D1D1F] focus:outline-none"
       />
-      {hint && <p className="mt-1 text-[11px] text-[#86868B]">{hint}</p>}
+      {hint && <p className="mt-1 text-[11px] text-[#6E6E73]">{hint}</p>}
     </div>
   );
 }

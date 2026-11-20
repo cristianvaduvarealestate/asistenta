@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Source_Sans_3 } from "next/font/google";
 import { SITE } from "@/config/site";
 import { CookieBanner } from "@/components/CookieBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { FloatingActionDock } from "@/components/FloatingActionDock";
 import "./globals.css";
-
-const sans = Source_Sans_3({
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  variable: "--font-sans",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.publicUrl),
@@ -46,9 +39,74 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg" },
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Cristian Văduva",
+  jobTitle: "Consultanță Imobiliară & Partener Oficial Generali România",
+  url: SITE.publicUrl,
+  image: `${SITE.publicUrl}/images/cristian/cristian-hero-vest.webp`,
+  telephone: SITE.phoneTel,
+  email: SITE.email,
+  alumniOf: [
+    {
+      "@type": "EducationalOrganization",
+      name: "Facultatea de Economie",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Facultatea de Drept",
+    },
+    {
+      "@type": "EducationalOrganization",
+      name: "Facultatea de Ecologie și Protecția Mediului",
+    },
+  ],
+  knowsAbout: [
+    "Consultanță Imobiliară",
+    "Asigurări Generali România",
+    "CASCO & Decontare Directă",
+    "Management Financiar",
+    "Evaluarea Riscurilor Comerciale",
+    "Verificare Acte Imobiliare & Notariat",
+  ],
+  sameAs: [
+    SITE.social.instagram.url,
+    SITE.social.facebook.url,
+    SITE.social.youtube.url,
+    SITE.social.telegramPersonal.url,
+    SITE.social.telegramChannel.url,
+    SITE.social.linktree.url,
+    SITE.platforms.cristianvaduva.url,
+    SITE.platforms.aixluxury.url,
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.publicUrl,
+  description: SITE.seoDescription,
+  author: {
+    "@type": "Person",
+    name: "Cristian Văduva",
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ro" className={sans.variable}>
+    <html lang="ro">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="min-h-screen font-sans">
         <a className="skip-link" href="#continut">
           Sari la conținut

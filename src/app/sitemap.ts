@@ -48,7 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/confidentialitate",
     "/cookies",
     "/termeni",
-    "/informare-servicii",
     "/accesibilitate",
     "/contact",
   ];
